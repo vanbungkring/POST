@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "Suara_HewanAppDelegate.h"
+#import "POST_AppDelegate.h"
 
 int main(int argc, char *argv[])
 {
 	@autoreleasepool {
-	    return UIApplicationMain(argc, argv, nil, NSStringFromClass([Suara_HewanAppDelegate class]));
+	    return UIApplicationMain(argc, argv, nil, NSStringFromClass([POST_AppDelegate class]));
 	}
 }

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Suara_HewanAppDelegate : UIResponder <UIApplicationDelegate>
+@interface POST_AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

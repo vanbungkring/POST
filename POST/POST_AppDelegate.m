@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 netra. All rights reserved.
 //
 
-#import "Suara_HewanAppDelegate.h"
+#import "POST_AppDelegate.h"
 
-@implementation Suara_HewanAppDelegate
+@implementation POST_AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

@@ -12,7 +12,7 @@
 		D0C1E1F517E34815003333A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C1E1F417E34815003333A5 /* CoreGraphics.framework */; };
 		D0C1E1FB17E34815003333A5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0C1E1F917E34815003333A5 /* InfoPlist.strings */; };
 		D0C1E1FD17E34815003333A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1E1FC17E34815003333A5 /* main.m */; };
-		D0C1E20117E34815003333A5 /* Suara_HewanAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1E20017E34815003333A5 /* Suara_HewanAppDelegate.m */; };
+		D0C1E20117E34815003333A5 /* POST_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1E20017E34815003333A5 /* POST_AppDelegate.m */; };
 		D0C1E20317E34815003333A5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C1E20217E34815003333A5 /* Default.png */; };
 		D0C1E20517E34815003333A5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C1E20417E34815003333A5 /* Default@2x.png */; };
 		D0C1E20717E34815003333A5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C1E20617E34815003333A5 /* Default-568h@2x.png */; };
@@ -27,8 +27,8 @@
 		D0C1E1FA17E34815003333A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D0C1E1FC17E34815003333A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D0C1E1FE17E34815003333A5 /* POST-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "POST-Prefix.pch"; sourceTree = "<group>"; };
-		D0C1E1FF17E34815003333A5 /* Suara_HewanAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Suara_HewanAppDelegate.h; sourceTree = "<group>"; };
-		D0C1E20017E34815003333A5 /* Suara_HewanAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Suara_HewanAppDelegate.m; sourceTree = "<group>"; };
+		D0C1E1FF17E34815003333A5 /* POST_AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = POST_AppDelegate.h; sourceTree = "<group>"; };
+		D0C1E20017E34815003333A5 /* POST_AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = POST_AppDelegate.m; sourceTree = "<group>"; };
 		D0C1E20217E34815003333A5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		D0C1E20417E34815003333A5 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D0C1E20617E34815003333A5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -78,8 +78,8 @@
 		D0C1E1F617E34815003333A5 /* POST */ = {
 			isa = PBXGroup;
 			children = (
-				D0C1E1FF17E34815003333A5 /* Suara_HewanAppDelegate.h */,
-				D0C1E20017E34815003333A5 /* Suara_HewanAppDelegate.m */,
+				D0C1E1FF17E34815003333A5 /* POST_AppDelegate.h */,
+				D0C1E20017E34815003333A5 /* POST_AppDelegate.m */,
 				D0C1E1F717E34815003333A5 /* Supporting Files */,
 			);
 			path = POST;
@@ -166,7 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0C1E1FD17E34815003333A5 /* main.m in Sources */,
-				D0C1E20117E34815003333A5 /* Suara_HewanAppDelegate.m in Sources */,
+				D0C1E20117E34815003333A5 /* POST_AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +283,7 @@
 				D0C1E20C17E34815003333A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
