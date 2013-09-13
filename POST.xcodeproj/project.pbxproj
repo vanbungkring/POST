@@ -43,6 +43,13 @@
 		D0C1E27017E34F51003333A5 /* accountSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1E26F17E34F51003333A5 /* accountSettingViewController.m */; };
 		D0C1E27317E34F61003333A5 /* companiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1E27217E34F61003333A5 /* companiesViewController.m */; };
 		D0C1E27617E34F6C003333A5 /* aboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1E27517E34F6C003333A5 /* aboutViewController.m */; };
+		D0C1E27817E364D8003333A5 /* nav_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C1E27717E364D8003333A5 /* nav_header@2x.png */; };
+		D0C1E27B17E36824003333A5 /* leftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1E27A17E36824003333A5 /* leftCell.m */; };
+		D0C1E28217E3727B003333A5 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0C1E27D17E3727B003333A5 /* OpenSans-Bold.ttf */; };
+		D0C1E28317E3727B003333A5 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0C1E27E17E3727B003333A5 /* OpenSans-ExtraBold.ttf */; };
+		D0C1E28417E3727B003333A5 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0C1E27F17E3727B003333A5 /* OpenSans-Light.ttf */; };
+		D0C1E28517E3727B003333A5 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0C1E28017E3727B003333A5 /* OpenSans-Regular.ttf */; };
+		D0C1E28617E3727B003333A5 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0C1E28117E3727B003333A5 /* OpenSans-Semibold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +120,14 @@
 		D0C1E27217E34F61003333A5 /* companiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = companiesViewController.m; sourceTree = "<group>"; };
 		D0C1E27417E34F6C003333A5 /* aboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aboutViewController.h; sourceTree = "<group>"; };
 		D0C1E27517E34F6C003333A5 /* aboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = aboutViewController.m; sourceTree = "<group>"; };
+		D0C1E27717E364D8003333A5 /* nav_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_header@2x.png"; sourceTree = "<group>"; };
+		D0C1E27917E36824003333A5 /* leftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leftCell.h; sourceTree = "<group>"; };
+		D0C1E27A17E36824003333A5 /* leftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = leftCell.m; sourceTree = "<group>"; };
+		D0C1E27D17E3727B003333A5 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		D0C1E27E17E3727B003333A5 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		D0C1E27F17E3727B003333A5 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		D0C1E28017E3727B003333A5 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		D0C1E28117E3727B003333A5 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +205,7 @@
 		D0C1E20F17E34C31003333A5 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				D0C1E27C17E3727B003333A5 /* font */,
 				D0C1E21017E34C31003333A5 /* image */,
 			);
 			path = assets;
@@ -198,6 +214,7 @@
 		D0C1E21017E34C31003333A5 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				D0C1E27717E364D8003333A5 /* nav_header@2x.png */,
 			);
 			path = image;
 			sourceTree = "<group>";
@@ -237,6 +254,8 @@
 			children = (
 				D0C1E21517E34C4B003333A5 /* post_leftViewController.h */,
 				D0C1E21617E34C4B003333A5 /* post_leftViewController.m */,
+				D0C1E27917E36824003333A5 /* leftCell.h */,
+				D0C1E27A17E36824003333A5 /* leftCell.m */,
 			);
 			path = left;
 			sourceTree = "<group>";
@@ -412,6 +431,18 @@
 			path = stockwatch;
 			sourceTree = "<group>";
 		};
+		D0C1E27C17E3727B003333A5 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				D0C1E27D17E3727B003333A5 /* OpenSans-Bold.ttf */,
+				D0C1E27E17E3727B003333A5 /* OpenSans-ExtraBold.ttf */,
+				D0C1E27F17E3727B003333A5 /* OpenSans-Light.ttf */,
+				D0C1E28017E3727B003333A5 /* OpenSans-Regular.ttf */,
+				D0C1E28117E3727B003333A5 /* OpenSans-Semibold.ttf */,
+			);
+			path = font;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -468,6 +499,12 @@
 				D0C1E20317E34815003333A5 /* Default.png in Resources */,
 				D0C1E20517E34815003333A5 /* Default@2x.png in Resources */,
 				D0C1E20717E34815003333A5 /* Default-568h@2x.png in Resources */,
+				D0C1E27817E364D8003333A5 /* nav_header@2x.png in Resources */,
+				D0C1E28217E3727B003333A5 /* OpenSans-Bold.ttf in Resources */,
+				D0C1E28317E3727B003333A5 /* OpenSans-ExtraBold.ttf in Resources */,
+				D0C1E28417E3727B003333A5 /* OpenSans-Light.ttf in Resources */,
+				D0C1E28517E3727B003333A5 /* OpenSans-Regular.ttf in Resources */,
+				D0C1E28617E3727B003333A5 /* OpenSans-Semibold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +542,7 @@
 				D0C1E27017E34F51003333A5 /* accountSettingViewController.m in Sources */,
 				D0C1E27317E34F61003333A5 /* companiesViewController.m in Sources */,
 				D0C1E27617E34F6C003333A5 /* aboutViewController.m in Sources */,
+				D0C1E27B17E36824003333A5 /* leftCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

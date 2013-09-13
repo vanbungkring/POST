@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface post_leftViewController : UIViewController
-
+@interface post_leftViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+{
+	UITableView* menu;
+	/*section*/
+	UIView *view;
+	UILabel *section_label;
+	NSArray *trading;
+	NSArray *information;
+	NSArray *mytrade;
+	NSArray *akun;
+}
 @end

@@ -9,14 +9,41 @@
 #import "POST_AppDelegate.h"
 
 @implementation POST_AppDelegate
-
+@synthesize left = _left;
+@synthesize nav = _nav;
+@synthesize liveTradeViewController = _liveTradeViewController;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	//set cache url
+	NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:4*1024*1024
+													  diskCapacity:32*1024*1024
+														  diskPath:@"app_cache"];
+	
+	[NSURLCache setSharedURLCache:cache];
+	/* init mainview
+	 */
+	_liveTradeViewController=[[liveTradeViewController alloc]init];
+	_left=[[post_leftViewController alloc]init];
+	_nav=[[UINavigationController alloc]initWithRootViewController:_liveTradeViewController];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+	[_nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
+	[[UINavigationBar appearance]setShadowImage:[[UIImage alloc] init]];
+	_drawerController = [[MMDrawerController alloc]
+						 initWithCenterViewController:_nav
+						 leftDrawerViewController:_left];
+    [_drawerController setRestorationIdentifier:@"netra"];
+    [_drawerController setMaximumRightDrawerWidth:200.0];
+    [_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+	
+    [_drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+	[_drawerController setShouldStretchDrawer:FALSE];
+	[_drawerController setDrawerVisualStateBlock:[MMDrawerVisualState slideAndScaleVisualStateBlock]];
+	
+	
+	self.window.rootViewController=_drawerController;
     [self.window makeKeyAndVisible];
     return YES;
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -44,6 +71,23 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+- (UIViewController *)application:(UIApplication *)application viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder
+{
+    NSString * key = [identifierComponents lastObject];
+    if([key isEqualToString:@"netra"]){
+        return self.window.rootViewController;
+    }
+    else if ([key isEqualToString:@"MMExampleCenterNavigationControllerRestorationKey"]) {
+        return ((MMDrawerController *)self.window.rootViewController).centerViewController;
+    }
+    else if ([key isEqualToString:@"MMExampleLeftSideDrawerController"]){
+        return ((MMDrawerController *)self.window.rootViewController).leftDrawerViewController;
+    }
+    else if ([key isEqualToString:@"MMExampleRightSideDrawerController"]){
+        return ((MMDrawerController *)self.window.rootViewController).rightDrawerViewController;
+    }
+    return nil;
 }
 
 @end

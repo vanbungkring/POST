@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "post_leftViewController.h"
+#import "liveTradeViewController.h"
 
 @interface POST_AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (strong, nonatomic) post_leftViewController *left;
+@property (strong, nonatomic) liveTradeViewController *liveTradeViewController;
+@property (strong, nonatomic)  MMDrawerController * drawerController;
+@property (strong, nonatomic) UINavigationController *nav;
+
 
 @end
