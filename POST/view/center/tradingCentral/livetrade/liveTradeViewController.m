@@ -41,10 +41,60 @@
 		liveTrade.tableHeaderView = headerView;
 		
 		livetrade_data = [[NSMutableArray alloc]initWithCapacity:101];
-		//rightview;
 		
+		
+		
+		
+		
+		//rightview;
 		right=[[UIView alloc]initWithFrame:CGRectMake(492+30, 10, 490, 600)];
-		right.backgroundColor = [UIColor whiteColor];
+		right.backgroundColor = [UIColor clearColor];
+		
+		right_content =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 490, 100)];
+		right_content.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"livetrade_right"]];
+		
+		stock_wrap = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 130.5, 100)];
+		
+		stock_accronim = [[UILabel alloc]initWithFrame:CGRectMake(10, 20, 110, 40)];
+		stock_accronim.text = @"ADDR";
+		stock_accronim.textAlignment = NSTextAlignmentCenter;
+		stock_accronim.font = [UIFont fontWithName:@"HelveticaNeue" size:20];
+		stock_accronim.backgroundColor = [UIColor clearColor];
+		//stock_accronim.textColor = [UIColor colorWithRed:0.965 green:0.529 blue:0.122 alpha:1];
+		stock_accronim.textColor = [UIColor whiteColor];
+		
+		stock_details = [[UILabel alloc]initWithFrame:CGRectMake(10, 40, 110, 40)];
+		stock_details.text = @"Adaro Energy Tbk";
+		stock_details.textAlignment = NSTextAlignmentCenter;
+		stock_details.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
+		stock_details.backgroundColor = [UIColor clearColor];
+		stock_details.textColor = [UIColor colorWithRed:0.965 green:0.529 blue:0.122 alpha:1];
+		//stock_accronim.textColor = [UIColor whiteColor];
+
+		[stock_wrap addSubview:stock_details];
+		[stock_wrap addSubview:stock_accronim];
+		
+		stock_vol = [[UILabel alloc]initWithFrame:CGRectMake(135.5, 10, 158.5, 50)];
+		stock_vol.text = @"52,571";
+		stock_vol.textAlignment = NSTextAlignmentCenter;
+		stock_vol.font = [UIFont fontWithName:@"HelveticaNeue" size:30];
+		stock_vol.backgroundColor = [UIColor clearColor];
+		//stock_accronim.textColor = [UIColor colorWithRed:0.965 green:0.529 blue:0.122 alpha:1];
+		stock_vol.textColor = [UIColor colorWithRed:0.314 green:0.82 blue:0.133 alpha:1];
+		
+		stock_change = [[UILabel alloc]initWithFrame:CGRectMake(135.5, 40, 158.5, 50)];
+		stock_change.text = @"10 (1.05%)";
+		stock_change.textAlignment = NSTextAlignmentCenter;
+		stock_change.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
+		stock_change.backgroundColor = [UIColor clearColor];
+		//stock_accronim.textColor = [UIColor colorWithRed:0.965 green:0.529 blue:0.122 alpha:1];
+		stock_change.textColor = [UIColor colorWithRed:0.314 green:0.82 blue:0.133 alpha:1];
+		
+		[right_content addSubview:stock_change];
+		[right_content addSubview:stock_vol];
+		[right_content addSubview:stock_wrap];
+		
+		[right addSubview:right_content];
 		
 		[self.view addSubview:right];
 		
@@ -90,7 +140,7 @@
 	leftbuttonView.backgroundColor=[UIColor clearColor];
 	[leftbuttonView addSubview:leftbutton];
 	UIBarButtonItem* leftbarbutton = [[UIBarButtonItem alloc] initWithCustomView:leftbuttonView];
-
+	
 	[self.navigationItem setLeftBarButtonItem:leftbarbutton];
 }
 - (void)didReceiveMemoryWarning
@@ -102,7 +152,7 @@
 /////initial data from json and live trade set here
 
 -(void)callLiveThread{
-	[self performSelector:@selector(livethread) withObject:Nil afterDelay:1];
+	[self performSelector:@selector(livethread) withObject:Nil afterDelay:.9];
 }
 
 -(void)livethread{
@@ -112,19 +162,22 @@
 	
 	NSString *num = [NSString stringWithFormat:@"%d", randNum];
 	[livetrade_data insertObject:num atIndex:0];
-	if([livetrade_data count] >100){
+	if([livetrade_data count] >1000){
 		[livetrade_data removeAllObjects];
-		[self performSelector:@selector(reload) withObject:Nil afterDelay:2];
+		[self performSelector:@selector(reload) withObject:Nil afterDelay:0.02];
+		[self callLiveThread];
 	}
 	else{
-		[liveTrade reloadData];
+		[self performSelector:@selector(reload) withObject:Nil afterDelay:2];
+		[self callLiveThread];
 	}
 	
-	[self callLiveThread];
-
+	
+	
 }
 -(void)reload{
-[liveTrade reloadData];
+	
+	[liveTrade reloadData];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -138,6 +191,9 @@
 	
 	if(cell == Nil){
 		cell=[[liveTradeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellx"];
+	}
+	if(indexPath.row % 2 == 0){
+		cell.contentView.backgroundColor=[UIColor colorWithRed:0.078 green:0.098 blue:0.122 alpha:1];
 	}
 	//cell.time.textColor=[UIColor whiteColor];
 	//cell.textLabel.backgroundColor=[UIColor clearColor];
@@ -163,8 +219,11 @@
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 	return 30;
 }
-
+-(void)viewWillDisappear:(BOOL)animated{
+	[super viewWillDisappear:YES];
+	[livetrade_data removeAllObjects];
+}
 -(void)lefbuttonPush{
-
- [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];}
+	
+	[self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];}
 @end

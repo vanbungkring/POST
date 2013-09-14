@@ -12,9 +12,23 @@
 {
 	UILabel *navLabel;
 	UIView *right;
+	UIView *right_content;
 	
 	//livetrade
 	UITableView *liveTrade;
 	NSMutableArray *livetrade_data;
+	
+	///rightStock;
+	UIView *stock_wrap;
+	UILabel *stock_accronim;
+	UILabel *stock_details;
+	UILabel *stock_vol;
+	UILabel *stock_change;
+	UILabel *stock_last;
+	UILabel *stock_open;
+	UILabel *stock_prev;
+	UILabel *stock_hi;
+	UILabel *stock_low;
+	UILabel *stock_mcp;
 }
 @end
