@@ -113,7 +113,6 @@
 			}
 			break;
 	}
-	
 	return cell;
 }
 - (void)viewDidLoad

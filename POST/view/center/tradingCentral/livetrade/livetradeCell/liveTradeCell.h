@@ -10,4 +10,12 @@
 
 @interface liveTradeCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel *time;
+@property (nonatomic, strong) UILabel *code;
+@property (nonatomic, strong) UILabel *mkt;
+@property (nonatomic, strong) UILabel *price;
+@property (nonatomic, strong) UILabel *vol;
+@property (nonatomic, strong) UILabel *pm;
+@property (nonatomic, strong) UILabel *value;
+
 @end
