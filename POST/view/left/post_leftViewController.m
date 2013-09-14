@@ -115,6 +115,10 @@
 	}
 	return cell;
 }
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	NSLog(@"index-> %@",indexPath);
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
