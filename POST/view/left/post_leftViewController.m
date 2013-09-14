@@ -24,7 +24,7 @@
 		mytrade = [NSArray arrayWithObjects: @"Portfolio", @"My Order List",Nil];
 		self.view.backgroundColor=[UIColor blackColor];
 		menu=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 760)];
-		menu.backgroundColor = [UIColor colorWithRed:0.188 green:0.216 blue:0.255 alpha:1];
+		menu.backgroundColor = [UIColor colorWithRed:0.067 green:0.086 blue:0.122 alpha:1];
 		menu.separatorColor  = [UIColor colorWithRed:0.149 green:0.165 blue:0.208 alpha:1];
 		menu.dataSource = self;
 		menu.delegate = self;
@@ -56,7 +56,7 @@
 			[section_label setText:@"MY TRADING"];
 			break;
 		case 2:
-			[section_label setText:@"MY TRADING"];
+			[section_label setText:@"MY ACCOUNT"];
 			break;
 		default:
 			[section_label setText:@"INFORMATION"];
@@ -119,7 +119,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+	/*
 	for (NSString* family in [UIFont familyNames])
 	{
 		NSLog(@"%@", family);
@@ -129,7 +129,7 @@
 			NSLog(@"  %@", name);
 		}
 	}
-	
+	*/
 	
 	// Do any additional setup after loading the view.
 }

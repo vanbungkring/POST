@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface liveTradeViewController : UIViewController
-
+@interface liveTradeViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+{
+	UILabel *navLabel;
+	UIView *right;
+	
+	//livetrade
+	UITableView *liveTrade;
+	NSMutableArray *livetrade_data;
+}
 @end

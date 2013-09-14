@@ -26,7 +26,6 @@
 	_left=[[post_leftViewController alloc]init];
 	_nav=[[UINavigationController alloc]initWithRootViewController:_liveTradeViewController];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	[_nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
 	[[UINavigationBar appearance]setShadowImage:[[UIImage alloc] init]];
 	_drawerController = [[MMDrawerController alloc]
 						 initWithCenterViewController:_nav
@@ -39,7 +38,7 @@
 	[_drawerController setShouldStretchDrawer:FALSE];
 	[_drawerController setDrawerVisualStateBlock:[MMDrawerVisualState slideAndScaleVisualStateBlock]];
 	
-	
+	[_nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
 	self.window.rootViewController=_drawerController;
     [self.window makeKeyAndVisible];
     return YES;
