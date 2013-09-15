@@ -8,7 +8,7 @@
 
 #import "liveTradeViewController.h"
 #import "liveTradeCell.h"
-#import "UIViewController+MMDrawerController.h"
+
 @interface liveTradeViewController ()
 
 @end
@@ -299,5 +299,6 @@
 }
 -(void)lefbuttonPush{
 	
-	[self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];}
+	[self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
 @end
