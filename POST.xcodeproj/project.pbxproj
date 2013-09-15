@@ -46,6 +46,9 @@
 		D07FA63117E5A543000FE15E /* MagicalRecord+ShorthandSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = D07FA61417E5A543000FE15E /* MagicalRecord+ShorthandSupport.m */; };
 		D07FA63217E5A543000FE15E /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D07FA61617E5A543000FE15E /* MagicalRecord.m */; };
 		D07FA63417E5A55A000FE15E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07FA63317E5A559000FE15E /* CoreData.framework */; };
+		D07FA63A17E5CB07000FE15E /* ASDepthModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07FA63717E5CB07000FE15E /* ASDepthModalViewController.m */; };
+		D07FA63B17E5CB07000FE15E /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = D07FA63917E5CB07000FE15E /* UIImage+Blur.m */; };
+		D07FA63D17E5CB1A000FE15E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07FA63C17E5CB1A000FE15E /* Accelerate.framework */; };
 		D0C1E1F117E34815003333A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C1E1F017E34815003333A5 /* UIKit.framework */; };
 		D0C1E1F317E34815003333A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C1E1F217E34815003333A5 /* Foundation.framework */; };
 		D0C1E1F517E34815003333A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C1E1F417E34815003333A5 /* CoreGraphics.framework */; };
@@ -81,7 +84,7 @@
 		D0C1E26D17E34F3A003333A5 /* TradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1E26C17E34F3A003333A5 /* TradeViewController.m */; };
 		D0C1E27017E34F51003333A5 /* accountSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1E26F17E34F51003333A5 /* accountSettingViewController.m */; };
 		D0C1E27317E34F61003333A5 /* companiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1E27217E34F61003333A5 /* companiesViewController.m */; };
-		D0C1E27617E34F6C003333A5 /* aboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1E27517E34F6C003333A5 /* aboutViewController.m */; };
+		D0C1E27617E34F6C003333A5 /* contactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1E27517E34F6C003333A5 /* contactViewController.m */; };
 		D0C1E27817E364D8003333A5 /* nav_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C1E27717E364D8003333A5 /* nav_header@2x.png */; };
 		D0C1E27B17E36824003333A5 /* leftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C1E27A17E36824003333A5 /* leftCell.m */; };
 		D0C1E28217E3727B003333A5 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0C1E27D17E3727B003333A5 /* OpenSans-Bold.ttf */; };
@@ -160,6 +163,11 @@
 		D07FA61717E5A543000FE15E /* MagicalRecordShorthand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalRecordShorthand.h; sourceTree = "<group>"; };
 		D07FA61817E5A543000FE15E /* CoreData+MagicalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreData+MagicalRecord.h"; sourceTree = "<group>"; };
 		D07FA63317E5A559000FE15E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D07FA63617E5CB07000FE15E /* ASDepthModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDepthModalViewController.h; sourceTree = "<group>"; };
+		D07FA63717E5CB07000FE15E /* ASDepthModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDepthModalViewController.m; sourceTree = "<group>"; };
+		D07FA63817E5CB07000FE15E /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
+		D07FA63917E5CB07000FE15E /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blur.m"; sourceTree = "<group>"; };
+		D07FA63C17E5CB1A000FE15E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		D0C1E1ED17E34815003333A5 /* POST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C1E1F017E34815003333A5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D0C1E1F217E34815003333A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -225,8 +233,8 @@
 		D0C1E26F17E34F51003333A5 /* accountSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = accountSettingViewController.m; sourceTree = "<group>"; };
 		D0C1E27117E34F61003333A5 /* companiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = companiesViewController.h; sourceTree = "<group>"; };
 		D0C1E27217E34F61003333A5 /* companiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = companiesViewController.m; sourceTree = "<group>"; };
-		D0C1E27417E34F6C003333A5 /* aboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aboutViewController.h; sourceTree = "<group>"; };
-		D0C1E27517E34F6C003333A5 /* aboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = aboutViewController.m; sourceTree = "<group>"; };
+		D0C1E27417E34F6C003333A5 /* contactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = contactViewController.h; sourceTree = "<group>"; };
+		D0C1E27517E34F6C003333A5 /* contactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = contactViewController.m; sourceTree = "<group>"; };
 		D0C1E27717E364D8003333A5 /* nav_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_header@2x.png"; sourceTree = "<group>"; };
 		D0C1E27917E36824003333A5 /* leftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leftCell.h; sourceTree = "<group>"; };
 		D0C1E27A17E36824003333A5 /* leftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = leftCell.m; sourceTree = "<group>"; };
@@ -242,6 +250,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07FA63D17E5CB1A000FE15E /* Accelerate.framework in Frameworks */,
 				D07FA63417E5A55A000FE15E /* CoreData.framework in Frameworks */,
 				D0C1E22717E34CA0003333A5 /* QuartzCore.framework in Frameworks */,
 				D0C1E1F117E34815003333A5 /* UIKit.framework in Frameworks */,
@@ -364,9 +373,21 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		D07FA63517E5CB07000FE15E /* ASDepthModal */ = {
+			isa = PBXGroup;
+			children = (
+				D07FA63617E5CB07000FE15E /* ASDepthModalViewController.h */,
+				D07FA63717E5CB07000FE15E /* ASDepthModalViewController.m */,
+				D07FA63817E5CB07000FE15E /* UIImage+Blur.h */,
+				D07FA63917E5CB07000FE15E /* UIImage+Blur.m */,
+			);
+			path = ASDepthModal;
+			sourceTree = "<group>";
+		};
 		D0C1E1E417E34815003333A5 = {
 			isa = PBXGroup;
 			children = (
+				D07FA63C17E5CB1A000FE15E /* Accelerate.framework */,
 				D07FA63317E5A559000FE15E /* CoreData.framework */,
 				D0C1E1F617E34815003333A5 /* POST */,
 				D0C1E1EF17E34815003333A5 /* Frameworks */,
@@ -452,6 +473,7 @@
 		D0C1E21117E34C31003333A5 /* library */ = {
 			isa = PBXGroup;
 			children = (
+				D07FA63517E5CB07000FE15E /* ASDepthModal */,
 				D07FA5DD17E5A543000FE15E /* MagicalRecord */,
 				D0C1E22817E34CBE003333A5 /* AFNetworking */,
 				D0C1E21817E34C5D003333A5 /* MMDrawerController */,
@@ -536,8 +558,8 @@
 		D0C1E24717E34E63003333A5 /* about */ = {
 			isa = PBXGroup;
 			children = (
-				D0C1E27417E34F6C003333A5 /* aboutViewController.h */,
-				D0C1E27517E34F6C003333A5 /* aboutViewController.m */,
+				D0C1E27417E34F6C003333A5 /* contactViewController.h */,
+				D0C1E27517E34F6C003333A5 /* contactViewController.m */,
 			);
 			path = about;
 			sourceTree = "<group>";
@@ -784,7 +806,7 @@
 				D0C1E26D17E34F3A003333A5 /* TradeViewController.m in Sources */,
 				D0C1E27017E34F51003333A5 /* accountSettingViewController.m in Sources */,
 				D0C1E27317E34F61003333A5 /* companiesViewController.m in Sources */,
-				D0C1E27617E34F6C003333A5 /* aboutViewController.m in Sources */,
+				D0C1E27617E34F6C003333A5 /* contactViewController.m in Sources */,
 				D0C1E27B17E36824003333A5 /* leftCell.m in Sources */,
 				D07FA5C817E45713000FE15E /* liveTradeCell.m in Sources */,
 				D07FA61917E5A543000FE15E /* MagicalImportFunctions.m in Sources */,
@@ -813,6 +835,8 @@
 				D07FA63017E5A543000FE15E /* MagicalRecord+Setup.m in Sources */,
 				D07FA63117E5A543000FE15E /* MagicalRecord+ShorthandSupport.m in Sources */,
 				D07FA63217E5A543000FE15E /* MagicalRecord.m in Sources */,
+				D07FA63A17E5CB07000FE15E /* ASDepthModalViewController.m in Sources */,
+				D07FA63B17E5CB07000FE15E /* UIImage+Blur.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,6 +21,7 @@
         // Custom initialization
 		
 		trading = [NSArray arrayWithObjects: @"Live Trade", @"Stock Watch",@"Stock Quote",@"Broker Rank",@"Complete Book",@"Charts",@"Index",@"Companies",nil];
+		trading_c = [NSArray arrayWithObjects: @"liveTradeViewController", @"st_watchViewController",@"st_QuoteViewController",@"brokerRankViewController",@"completeBookViewController",@"chartViewController",@"indexViewController",@"companiesViewController",nil];
 		mytrade = [NSArray arrayWithObjects: @"Portfolio", @"My Order List",Nil];
 		akun = [NSArray arrayWithObjects: @"Account Setting",Nil];
 		information = [NSArray arrayWithObjects: @"Contact Us",@"Research",@"Logout",Nil];
@@ -111,7 +112,15 @@
 }
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
-	[vanbungkring setCenter:@"A"];
+	switch (indexPath.section) {
+		case 0:
+			
+			[vanbungkring setCenter:[trading_c objectAtIndex:indexPath.row]];
+			break;
+			
+		default:
+			break;
+	}
 	
 	
 }

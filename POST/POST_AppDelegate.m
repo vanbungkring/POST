@@ -39,7 +39,7 @@
 	[_drawerController setShouldStretchDrawer:FALSE];
 	[_drawerController setDrawerVisualStateBlock:[MMDrawerVisualState slideAndScaleVisualStateBlock]];
 	
-	[_nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
+	
 	self.window.rootViewController=_drawerController;
     [self.window makeKeyAndVisible];
     return YES;
@@ -47,19 +47,22 @@
 }
 -(void)setCenter:(NSString *)center{
 	
-	if([center isEqualToString:self.lastController]){
-	
-		[self.drawerController closeDrawerAnimated:YES completion:nil];
-	}
 	if ([center isEqualToString:@""]) {
-		self.lastController = @"_liveTradeViewController";
 		_nav=[[UINavigationController alloc]initWithRootViewController:_liveTradeViewController];
 		[self.drawerController setCenterViewController:_nav withCloseAnimation:YES completion:nil];
+		
+		self.lastController = @"liveTradeViewController";
 	}
-	else if([center isEqualToString:@"A"]){
-		NSLog(@"A");
-	[self.drawerController closeDrawerAnimated:YES completion:nil];
+	else if([center isEqualToString:self.lastController]){
+		
+		[self.drawerController closeDrawerAnimated:YES completion:nil];
 	}
+	else{
+		_nav=[[UINavigationController alloc]initWithRootViewController:[[NSClassFromString(center) alloc]init]];
+		[self.drawerController setCenterViewController:_nav withCloseAnimation:YES completion:nil];
+		self.lastController = center;
+	}
+	[_nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
 	
 	
 

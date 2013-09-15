@@ -11,11 +11,13 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
 #import "MMDrawerVisualState.h"
 #import "AFNetworking.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIViewController+MMDrawerController.h"
 #import "POST_AppDelegate.h"
 #import "CoreData+MagicalRecord.h"
+#import "ASDepthModalViewController.h"
 #define vanbungkring ((POST_AppDelegate *)[[UIApplication sharedApplication] delegate])
 #endif

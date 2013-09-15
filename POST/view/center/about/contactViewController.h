@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface aboutViewController : UIViewController
+@interface contactViewController : UIViewController<UIWebViewDelegate>
+{
+	UIWebView *webview;
+	UILabel *navLabel;
+}
 
 @end

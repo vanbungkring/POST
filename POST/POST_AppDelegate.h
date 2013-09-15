@@ -11,7 +11,9 @@
 #import "liveTradeViewController.h"
 
 @interface POST_AppDelegate : UIResponder <UIApplicationDelegate>
-
+{
+	UIView *popupView;
+}
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) post_leftViewController *left;
@@ -23,4 +25,5 @@
 @property (strong, nonatomic) NSString *lastController;
 
 -(void)setCenter:(NSString *)center;
+-(void)BuyStock;
 @end

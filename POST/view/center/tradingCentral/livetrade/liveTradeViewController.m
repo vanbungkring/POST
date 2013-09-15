@@ -19,6 +19,10 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+		
+		popupView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 270, 350)];
+		popupView.backgroundColor=[UIColor whiteColor];
+
         // Custom initialization
 		self.view.backgroundColor = [UIColor colorWithRed:0.188 green:0.216 blue:0.255 alpha:1];
 		//self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"main_bg"]];
@@ -57,6 +61,7 @@
 		dataStock = [[UITableView alloc]initWithFrame:CGRectMake(5, 115, 480, 170)];
 		dataStock.delegate = self;
 		dataStock.dataSource = self;
+		dataStock.tableFooterView = [[UIView alloc] init];
 		//dataStock.tableHeaderView = headerView;
 		dataStock.separatorColor = [UIColor colorWithRed:0.161 green:0.18 blue:0.216 alpha:1];
 		dataStock.userInteractionEnabled=false;
@@ -139,6 +144,7 @@
 	buy.backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"buy"]];
 	[buy setBackgroundImage:[UIImage imageNamed:@"buy"] forState:UIControlStateNormal];
 	[buy setBackgroundImage:[UIImage imageNamed:@"buy_"] forState:UIControlStateHighlighted];
+	[buy addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
 	
 	UIButton *sell = [UIButton buttonWithType:UIButtonTypeCustom];
 	sell.frame = CGRectMake(190, 0, 100, 44);
@@ -178,6 +184,12 @@
 	
 	[self.navigationItem setLeftBarButtonItem:leftbarbutton];
 }
+-(void)buy{
+	
+}
+-(void)sell{
+
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -187,7 +199,7 @@
 /////initial data from json and live trade set here
 
 -(void)callLiveThread{
-	[self performSelector:@selector(livethread) withObject:Nil afterDelay:.9];
+	[self performSelector:@selector(livethread) withObject:Nil afterDelay:1];
 }
 
 -(void)livethread{
@@ -199,15 +211,15 @@
 	[livetrade_data insertObject:num atIndex:0];
 	if([livetrade_data count] >1000){
 		[livetrade_data removeAllObjects];
-		[self performSelector:@selector(reload) withObject:Nil afterDelay:0.02];
+		[self performSelector:@selector(reload) withObject:Nil afterDelay:1];
 		[self callLiveThread];
 	}
 	else{
-		[self performSelector:@selector(reload) withObject:Nil afterDelay:2];
+		[self performSelector:@selector(reload) withObject:Nil afterDelay:1];
 		[self callLiveThread];
 	}
 	
-	
+
 	
 }
 -(void)reload{
@@ -301,4 +313,5 @@
 	
 	[self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
+
 @end
