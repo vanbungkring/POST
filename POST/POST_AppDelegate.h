@@ -19,5 +19,8 @@
 @property (strong, nonatomic)  MMDrawerController * drawerController;
 @property (strong, nonatomic) UINavigationController *nav;
 
+//initialize last controller that used;
+@property (strong, nonatomic) NSString *lastController;
 
+-(void)setCenter:(NSString *)center;
 @end
