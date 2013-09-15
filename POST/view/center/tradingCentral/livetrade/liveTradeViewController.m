@@ -47,7 +47,7 @@
 		
 		
 		//rightview;
-		right=[[UIView alloc]initWithFrame:CGRectMake(492+30, 10, 490, 600)];
+		right=[[UIView alloc]initWithFrame:CGRectMake(492+30, 6, 490, 600)];
 		right.backgroundColor = [UIColor clearColor];
 		
 		right_content =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 490, 100)];
@@ -115,6 +115,26 @@
 	// Do any additional setup after loading the view.
 }
 -(void)initnavbar{
+	UIView *buy_sell=[[UIView alloc]initWithFrame:CGRectMake(1024-300, 0, 300, 44)];
+	[buy_sell setBackgroundColor:[UIColor clearColor]];
+	[self.navigationController.navigationBar addSubview:buy_sell];
+	
+	UIButton *buy = [UIButton buttonWithType:UIButtonTypeCustom];
+	buy.frame = CGRectMake(70, 0, 100, 44);
+	buy.backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"buy"]];
+	[buy setBackgroundImage:[UIImage imageNamed:@"buy"] forState:UIControlStateNormal];
+	[buy setBackgroundImage:[UIImage imageNamed:@"buy_"] forState:UIControlStateHighlighted];
+	
+	UIButton *sell = [UIButton buttonWithType:UIButtonTypeCustom];
+	sell.frame = CGRectMake(190, 0, 100, 44);
+	sell.backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"sell"]];
+	[sell setBackgroundImage:[UIImage imageNamed:@"sell"] forState:UIControlStateNormal];
+	[sell setBackgroundImage:[UIImage imageNamed:@"sell_"] forState:UIControlStateHighlighted];
+	
+	
+	[buy_sell addSubview:buy];
+	[buy_sell addSubview:sell];
+	
 	navLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -2, 220, 18)];
 	navLabel.backgroundColor = [UIColor clearColor];
 	navLabel.textColor = [UIColor whiteColor];
