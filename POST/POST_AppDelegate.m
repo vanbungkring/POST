@@ -14,6 +14,7 @@
 @synthesize liveTradeViewController = _liveTradeViewController;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	[MagicalRecord setupCoreDataStackWithStoreNamed:@"MyDatabase.sqlite"];
 	//set cache url
 	NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:4*1024*1024
 													  diskCapacity:32*1024*1024
@@ -87,6 +88,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+	[MagicalRecord cleanUp];
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 - (UIViewController *)application:(UIApplication *)application viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder
