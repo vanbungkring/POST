@@ -234,7 +234,7 @@
 	//cell.textLabel.text=[livetrade_data objectAtIndex:indexPath.row];
 	NSDate *now = [NSDate date];
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	[dateFormatter setDateFormat:@"DD/MM/YY HH:mm:ss"];
+	[dateFormatter setDateFormat:@"dd/MM/YY HH:mm:ss"];
 	
 	NSString *string = [dateFormatter stringFromDate:now];
 	if([[livetrade_data objectAtIndex:indexPath.row] intValue] < 0){
