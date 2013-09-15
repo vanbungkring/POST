@@ -116,7 +116,8 @@
 	return cell;
 }
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-	NSLog(@"index-> %@",indexPath);
+	
+	[vanbungkring setCenter:@"A"];
 	
 	
 }

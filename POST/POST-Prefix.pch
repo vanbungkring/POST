@@ -15,4 +15,6 @@
 #import "AFNetworking.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIViewController+MMDrawerController.h"
+#import "POST_AppDelegate.h"
+#define vanbungkring ((POST_AppDelegate *)[[UIApplication sharedApplication] delegate])
 #endif

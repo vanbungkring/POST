@@ -7,7 +7,7 @@
 //
 
 #import "POST_AppDelegate.h"
-
+#import "UIViewController+MMDrawerController.h"
 @implementation POST_AppDelegate
 @synthesize left = _left;
 @synthesize nav = _nav;
@@ -24,12 +24,12 @@
 	 */
 	_liveTradeViewController=[[liveTradeViewController alloc]init];
 	_left=[[post_leftViewController alloc]init];
-	_nav=[[UINavigationController alloc]initWithRootViewController:_liveTradeViewController];
+	
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	[[UINavigationBar appearance]setShadowImage:[[UIImage alloc] init]];
-	_drawerController = [[MMDrawerController alloc]
-						 initWithCenterViewController:_nav
-						 leftDrawerViewController:_left];
+	_drawerController = [[MMDrawerController alloc] init];
+	[self setCenter:@""];
+	[_drawerController setLeftDrawerViewController:_left];
     [_drawerController setRestorationIdentifier:@"netra"];
     [_drawerController setMaximumRightDrawerWidth:200.0];
     [_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
@@ -44,7 +44,25 @@
     return YES;
 
 }
+-(void)setCenter:(NSString *)center{
+	
+	if([center isEqualToString:self.lastController]){
+	
+		[self.drawerController closeDrawerAnimated:YES completion:nil];
+	}
+	if ([center isEqualToString:@""]) {
+		self.lastController = @"_liveTradeViewController";
+		_nav=[[UINavigationController alloc]initWithRootViewController:_liveTradeViewController];
+		[self.drawerController setCenterViewController:_nav withCloseAnimation:YES completion:nil];
+	}
+	else if([center isEqualToString:@"A"]){
+		NSLog(@"A");
+	[self.drawerController closeDrawerAnimated:YES completion:nil];
+	}
+	
+	
 
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
 	// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
