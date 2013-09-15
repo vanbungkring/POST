@@ -20,8 +20,10 @@
     if (self) {
         // Custom initialization
 		
-		trading = [NSArray arrayWithObjects: @"Live Trade", @"Stock Watch",@"Stock Quote",@"Broker Rank",@"Complete Book",@"Charts",@"Research",@"Index",@"Companies",nil];
+		trading = [NSArray arrayWithObjects: @"Live Trade", @"Stock Watch",@"Stock Quote",@"Broker Rank",@"Complete Book",@"Charts",@"Index",@"Companies",nil];
 		mytrade = [NSArray arrayWithObjects: @"Portfolio", @"My Order List",Nil];
+		akun = [NSArray arrayWithObjects: @"Account Setting",Nil];
+		information = [NSArray arrayWithObjects: @"Contact Us",@"Research",@"Logout",Nil];
 		self.view.backgroundColor=[UIColor blackColor];
 		menu=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 760)];
 		menu.backgroundColor = [UIColor colorWithRed:0.067 green:0.086 blue:0.122 alpha:1];
@@ -75,13 +77,13 @@
 		return trading.count;
 	}
 	else if(section == 1){
-		return 2;
+		return [mytrade count];
 	}
 	else if(section == 2){
-		return 1;
+		return [akun count];
 	}
 	
-	return 2;
+	return 3;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellReuseIdentifier   = @"SectionTwoCell";
@@ -99,18 +101,10 @@
 			cell.text.text=[mytrade objectAtIndex:indexPath.row];
 			break;
 		case 2:
-			cell.text.text=@"Account Setting";
+			cell.text.text=[akun objectAtIndex:indexPath.row];
 			break;
 		default:
-			switch (indexPath.row) {
-				case 0:
-					cell.text.text=@"Contact Us";
-					break;
-					
-				default:
-					cell.text.text=@"Logout";
-					break;
-			}
+			cell.text.text=[information objectAtIndex:indexPath.row];
 			break;
 	}
 	return cell;
