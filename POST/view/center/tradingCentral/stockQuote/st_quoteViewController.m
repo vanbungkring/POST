@@ -19,6 +19,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+		self.view.backgroundColor = [UIColor colorWithRed:0.188 green:0.216 blue:0.255 alpha:1];
+		
+		stockQ = [[UITableView alloc]init];
+		[self.view addSubview:stockQ];
     }
     return self;
 }

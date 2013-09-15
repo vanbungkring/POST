@@ -13,6 +13,7 @@
 @interface POST_AppDelegate : UIResponder <UIApplicationDelegate>
 {
 	UIView *popupView;
+	UILabel *navLabel;
 }
 @property (strong, nonatomic) UIWindow *window;
 
@@ -24,6 +25,5 @@
 //initialize last controller that used;
 @property (strong, nonatomic) NSString *lastController;
 
--(void)setCenter:(NSString *)center;
--(void)BuyStock;
+-(void)setCenter:(NSString *)center name:(NSString*)name;
 @end

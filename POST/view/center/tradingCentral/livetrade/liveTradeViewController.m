@@ -130,59 +130,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-	[self initnavbar];
+	//[self initnavbar];
 	[self callLiveThread];
 	// Do any additional setup after loading the view.
-}
--(void)initnavbar{
-	UIView *buy_sell=[[UIView alloc]initWithFrame:CGRectMake(1024-300, 0, 300, 44)];
-	[buy_sell setBackgroundColor:[UIColor clearColor]];
-	[self.navigationController.navigationBar addSubview:buy_sell];
-	
-	UIButton *buy = [UIButton buttonWithType:UIButtonTypeCustom];
-	buy.frame = CGRectMake(70, 0, 100, 44);
-	buy.backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"buy"]];
-	[buy setBackgroundImage:[UIImage imageNamed:@"buy"] forState:UIControlStateNormal];
-	[buy setBackgroundImage:[UIImage imageNamed:@"buy_"] forState:UIControlStateHighlighted];
-	[buy addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
-	
-	UIButton *sell = [UIButton buttonWithType:UIButtonTypeCustom];
-	sell.frame = CGRectMake(190, 0, 100, 44);
-	sell.backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"sell"]];
-	[sell setBackgroundImage:[UIImage imageNamed:@"sell"] forState:UIControlStateNormal];
-	[sell setBackgroundImage:[UIImage imageNamed:@"sell_"] forState:UIControlStateHighlighted];
-	
-	
-	[buy_sell addSubview:buy];
-	[buy_sell addSubview:sell];
-	
-	navLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -2, 220, 18)];
-	navLabel.backgroundColor = [UIColor clearColor];
-	navLabel.textColor = [UIColor whiteColor];
-	navLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:16];
-	navLabel.textAlignment = NSTextAlignmentCenter;
-	navLabel.text = @"POST LIVE TRADE";
-	self.navigationItem.titleView = navLabel;
-	
-	
-	//self.titleImage=[[UIImageView alloc]initWithFrame:CGRectMake(3, 0, 142, 24.5)];
-	//[self.titleImage setImage:[UIImage imageNamed:@"topChart"]];
-	
-	//selectedCellIndexPath=[[NSIndexPath alloc]init];
-	
-	UIImage* image = [UIImage imageNamed:@"right"];
-	CGRect frame = CGRectMake(0, 0, 44, 44);
-	UIButton* leftbutton = [[UIButton alloc] initWithFrame:frame];
-	[leftbutton setBackgroundImage:image forState:UIControlStateNormal];
-	//[leftbutton setBackgroundImage:[UIImage imageNamed:@"left-push"] forState:UIControlStateHighlighted];
-	[leftbutton addTarget:self action:@selector(lefbuttonPush) forControlEvents:UIControlEventTouchUpInside];
-	
-	UIView *leftbuttonView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
-	leftbuttonView.backgroundColor=[UIColor clearColor];
-	[leftbuttonView addSubview:leftbutton];
-	UIBarButtonItem* leftbarbutton = [[UIBarButtonItem alloc] initWithCustomView:leftbuttonView];
-	
-	[self.navigationItem setLeftBarButtonItem:leftbarbutton];
 }
 -(void)buy{
 	
@@ -309,9 +259,6 @@
 	[super viewWillDisappear:YES];
 	[livetrade_data removeAllObjects];
 }
--(void)lefbuttonPush{
-	
-	[self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-}
+
 
 @end

@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface st_quoteViewController : UIViewController
-
+{
+	UITableView *stockQ;
+	UILabel *navLabel;
+}
 @end

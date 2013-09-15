@@ -14,6 +14,8 @@
 @synthesize liveTradeViewController = _liveTradeViewController;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	
+		
 	[MagicalRecord setupCoreDataStackWithStoreNamed:@"MyDatabase.sqlite"];
 	//set cache url
 	NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:4*1024*1024
@@ -29,7 +31,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	[[UINavigationBar appearance]setShadowImage:[[UIImage alloc] init]];
 	_drawerController = [[MMDrawerController alloc] init];
-	[self setCenter:@""];
+	[self setCenter:@"" name:@"Live Trade"];
 	[_drawerController setLeftDrawerViewController:_left];
     [_drawerController setRestorationIdentifier:@"netra"];
     [_drawerController setMaximumRightDrawerWidth:200.0];
@@ -43,14 +45,19 @@
 	self.window.rootViewController=_drawerController;
     [self.window makeKeyAndVisible];
     return YES;
-
+	
 }
--(void)setCenter:(NSString *)center{
+-(void)setCenter:(NSString *)center name:(NSString*)name{
+	navLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 300, 22)];
+	navLabel.backgroundColor = [UIColor clearColor];
+	navLabel.textColor = [UIColor whiteColor];
+	navLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:16];
+	navLabel.textAlignment = NSTextAlignmentCenter;
+
 	
 	if ([center isEqualToString:@""]) {
 		_nav=[[UINavigationController alloc]initWithRootViewController:_liveTradeViewController];
 		[self.drawerController setCenterViewController:_nav withCloseAnimation:YES completion:nil];
-		
 		self.lastController = @"liveTradeViewController";
 	}
 	else if([center isEqualToString:self.lastController]){
@@ -62,10 +69,66 @@
 		[self.drawerController setCenterViewController:_nav withCloseAnimation:YES completion:nil];
 		self.lastController = center;
 	}
+
+		
+	UIView *main_center = [[UIView alloc]initWithFrame:CGRectMake(362, 0, 300, 44)];
+	main_center.backgroundColor = [UIColor clearColor];
+	[main_center addSubview:navLabel];
+	[_nav.navigationBar addSubview:main_center];
+
+	
 	[_nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
 	
-	
+	UIView *buy_sell=[[UIView alloc]initWithFrame:CGRectMake(1024-300, 0, 300, 44)];
+	[buy_sell setBackgroundColor:[UIColor clearColor]];
+	[_nav.navigationBar addSubview:buy_sell];
 
+	UIView *left=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 300, 44)];
+	[left setBackgroundColor:[UIColor clearColor]];
+	
+	UIImage* image = [UIImage imageNamed:@"right"];
+	CGRect frame = CGRectMake(0, 0, 44, 44);
+	UIButton* leftbutton = [[UIButton alloc] initWithFrame:frame];
+	[leftbutton setBackgroundImage:image forState:UIControlStateNormal];
+	//[leftbutton setBackgroundImage:[UIImage imageNamed:@"left-push"] forState:UIControlStateHighlighted];
+	[leftbutton addTarget:self action:@selector(lefbuttonPush) forControlEvents:UIControlEventTouchUpInside];
+	UIView *leftbuttonView=[[UIView alloc]initWithFrame:CGRectMake(10, 0, 44, 44)];
+	leftbuttonView.backgroundColor=[UIColor clearColor];
+	[leftbuttonView addSubview:leftbutton];
+	[_nav.navigationBar addSubview:leftbuttonView];
+
+	UIButton *buy = [UIButton buttonWithType:UIButtonTypeCustom];
+	buy.frame = CGRectMake(70, 0, 100, 44);
+	buy.backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"buy"]];
+	[buy setBackgroundImage:[UIImage imageNamed:@"buy"] forState:UIControlStateNormal];
+	[buy setBackgroundImage:[UIImage imageNamed:@"buy_"] forState:UIControlStateHighlighted];
+	[buy addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
+	
+	UIButton *sell = [UIButton buttonWithType:UIButtonTypeCustom];
+	sell.frame = CGRectMake(190, 0, 100, 44);
+	sell.backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"sell"]];
+	[sell setBackgroundImage:[UIImage imageNamed:@"sell"] forState:UIControlStateNormal];
+	[sell setBackgroundImage:[UIImage imageNamed:@"sell_"] forState:UIControlStateHighlighted];
+	
+	
+	[buy_sell addSubview:buy];
+	[buy_sell addSubview:sell];
+	navLabel.text = [name uppercaseString];
+	_nav.navigationItem.titleView = navLabel;
+
+
+
+
+}
+-(void)lefbuttonPush{
+	
+	[_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+-(void)buy{
+	
+}
+-(void)sell{
+	
 }
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -75,7 +138,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-	// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+	// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
 	// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
