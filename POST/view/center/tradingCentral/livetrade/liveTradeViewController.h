@@ -30,5 +30,12 @@
 	UILabel *stock_hi;
 	UILabel *stock_low;
 	UILabel *stock_mcp;
+	
+	
+	
+	
+	/////////rightstock
+	
+	UITableView *dataStock;
 }
 @end

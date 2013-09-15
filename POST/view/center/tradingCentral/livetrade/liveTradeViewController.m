@@ -38,17 +38,31 @@
 		UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 490, 25)];
 		[imageView setImage:[UIImage imageNamed:@"livetrade_head"]];
 		[headerView addSubview:imageView];
+		
+		UIView *headerView_table = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 490, 25)];
+		UIImageView *imageViews = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 490, 25)];
+		[imageViews setImage:[UIImage imageNamed:@"livetrade_head_table"]];
+		[headerView_table addSubview:imageViews];
+
 		liveTrade.tableHeaderView = headerView;
 		
 		livetrade_data = [[NSMutableArray alloc]initWithCapacity:101];
 		
-		
-		
-		
-		
 		//rightview;
+		
 		right=[[UIView alloc]initWithFrame:CGRectMake(492+30, 6, 490, 600)];
 		right.backgroundColor = [UIColor clearColor];
+		////datastock table
+		
+		dataStock = [[UITableView alloc]initWithFrame:CGRectMake(5, 115, 480, 170)];
+		dataStock.delegate = self;
+		dataStock.dataSource = self;
+		//dataStock.tableHeaderView = headerView;
+		dataStock.separatorColor = [UIColor colorWithRed:0.161 green:0.18 blue:0.216 alpha:1];
+		dataStock.userInteractionEnabled=false;
+		dataStock.backgroundColor = [UIColor colorWithRed:0.059 green:0.071 blue:0.09 alpha:1];
+		
+		dataStock.tableHeaderView = headerView_table;
 		
 		right_content =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 490, 100)];
 		right_content.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"livetrade_right"]];
@@ -95,6 +109,7 @@
 		[right_content addSubview:stock_wrap];
 		
 		[right addSubview:right_content];
+		[right addSubview:dataStock];
 		
 		[self.view addSubview:right];
 		
@@ -196,17 +211,54 @@
 	
 }
 -(void)reload{
-	
+	[dataStock reloadData];
 	[liveTrade reloadData];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	
+	if(tableView == dataStock){
+		return [livetrade_data count];
+	}
 	return [livetrade_data count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
+	if(tableView == dataStock){
+		liveTradeCell *cell = [[liveTradeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellx"];
+		
+		if(cell == Nil){
+			cell=[[liveTradeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellx"];
+		}
+		if(indexPath.row % 2 == 0){
+			cell.contentView.backgroundColor=[UIColor colorWithRed:0.078 green:0.098 blue:0.122 alpha:1];
+		}
+		//cell.time.textColor=[UIColor whiteColor];
+		//cell.textLabel.backgroundColor=[UIColor clearColor];
+		//cell.textLabel.text=[livetrade_data objectAtIndex:indexPath.row];
+		NSDate *now = [NSDate date];
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setDateFormat:@"DD/MM/YY HH:mm:ss"];
+		
+		NSString *string = [dateFormatter stringFromDate:now];
+		if([[livetrade_data objectAtIndex:indexPath.row] intValue] < 0){
+			cell.time.textColor  = [UIColor redColor];
+			cell.code.textColor  = [UIColor redColor];
+			cell.mkt.textColor = [UIColor redColor];
+			cell.price.textColor = [UIColor redColor];
+			cell.vol.textColor = [UIColor redColor];
+		}
+		//cell.time.text = [livetrade_data objectAtIndex:indexPath.row];
+		cell.time.text = string;
+		cell.code.text = @"AAPL";
+		cell.price.text = [livetrade_data objectAtIndex:indexPath.row];
+		return cell;
+
+	
+	}
+	else{
 	liveTradeCell *cell = [[liveTradeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellx"];
 	
 	if(cell == Nil){
@@ -235,8 +287,10 @@
 	cell.code.text = @"AAPL";
 	cell.price.text = [livetrade_data objectAtIndex:indexPath.row];
 	return cell;
+	}
 }
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+
 	return 30;
 }
 -(void)viewWillDisappear:(BOOL)animated{
