@@ -25,6 +25,7 @@
 		mytrade = [NSArray arrayWithObjects: @"Portfolio", @"My Order List",Nil];
 		akun = [NSArray arrayWithObjects: @"Account Setting",Nil];
 		information = [NSArray arrayWithObjects: @"Contact Us",@"Research",@"Logout",Nil];
+		information_c = [NSArray arrayWithObjects: @"companiesViewController",@"researchViewController",@"Logout",Nil];
 		self.view.backgroundColor=[UIColor blackColor];
 		menu=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 760)];
 		menu.backgroundColor = [UIColor colorWithRed:0.067 green:0.086 blue:0.122 alpha:1];
@@ -48,21 +49,21 @@
 	view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"nav_header"]];
 	
 	section_label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, menu.frame.size.width, 22)];
-    [section_label setFont:[UIFont fontWithName:@"OpenSans-Semibold" size:15]];
+    [section_label setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14]];
 	section_label.backgroundColor = [UIColor clearColor];
 	section_label.textColor = [UIColor colorWithRed:0.965 green:0.965 blue:0.965 alpha:1];
 	switch (section) {
 		case 0:
-			[section_label setText:@"TRADING CENTRAL"];
+			[section_label setText:@"Trading Central"];
 			break;
 		case 1:
-			[section_label setText:@"MY TRADING"];
+			[section_label setText:@"My Trading"];
 			break;
 		case 2:
-			[section_label setText:@"MY ACCOUNT"];
+			[section_label setText:@"My Account"];
 			break;
 		default:
-			[section_label setText:@"INFORMATION"];
+			[section_label setText:@"Other Information"];
 			break;
 	}
 
@@ -119,6 +120,7 @@
 			break;
 			
 		default:
+			[vanbungkring setCenter:[information_c objectAtIndex:indexPath.row] name:[information objectAtIndex:indexPath.row]];
 			break;
 	}
 	

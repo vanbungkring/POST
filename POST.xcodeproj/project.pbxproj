@@ -50,6 +50,9 @@
 		D07FA63B17E5CB07000FE15E /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = D07FA63917E5CB07000FE15E /* UIImage+Blur.m */; };
 		D07FA63D17E5CB1A000FE15E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07FA63C17E5CB1A000FE15E /* Accelerate.framework */; };
 		D07FA63F17E5F69A000FE15E /* sq_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07FA63E17E5F69A000FE15E /* sq_header@2x.png */; };
+		D096F6AF17E889E700ADB9F9 /* netra.m in Sources */ = {isa = PBXBuildFile; fileRef = D096F6AE17E889E700ADB9F9 /* netra.m */; };
+		D096F6B317E891A800ADB9F9 /* researchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D096F6B217E891A800ADB9F9 /* researchViewController.m */; };
+		D09EA39E17E75FDB00DD22CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09EA39D17E75FDB00DD22CB /* LoginViewController.m */; };
 		D0C1E1F117E34815003333A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C1E1F017E34815003333A5 /* UIKit.framework */; };
 		D0C1E1F317E34815003333A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C1E1F217E34815003333A5 /* Foundation.framework */; };
 		D0C1E1F517E34815003333A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C1E1F417E34815003333A5 /* CoreGraphics.framework */; };
@@ -170,6 +173,12 @@
 		D07FA63917E5CB07000FE15E /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blur.m"; sourceTree = "<group>"; };
 		D07FA63C17E5CB1A000FE15E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		D07FA63E17E5F69A000FE15E /* sq_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sq_header@2x.png"; sourceTree = "<group>"; };
+		D096F6AD17E889E700ADB9F9 /* netra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = netra.h; sourceTree = "<group>"; };
+		D096F6AE17E889E700ADB9F9 /* netra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = netra.m; sourceTree = "<group>"; };
+		D096F6B117E891A800ADB9F9 /* researchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = researchViewController.h; sourceTree = "<group>"; };
+		D096F6B217E891A800ADB9F9 /* researchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = researchViewController.m; sourceTree = "<group>"; };
+		D09EA39C17E75FDB00DD22CB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		D09EA39D17E75FDB00DD22CB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D0C1E1ED17E34815003333A5 /* POST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C1E1F017E34815003333A5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D0C1E1F217E34815003333A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -386,6 +395,41 @@
 			path = ASDepthModal;
 			sourceTree = "<group>";
 		};
+		D096F6AB17E889D300ADB9F9 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				D096F6AC17E889D300ADB9F9 /* netra */,
+			);
+			path = helper;
+			sourceTree = "<group>";
+		};
+		D096F6AC17E889D300ADB9F9 /* netra */ = {
+			isa = PBXGroup;
+			children = (
+				D096F6AD17E889E700ADB9F9 /* netra.h */,
+				D096F6AE17E889E700ADB9F9 /* netra.m */,
+			);
+			path = netra;
+			sourceTree = "<group>";
+		};
+		D096F6B017E8916400ADB9F9 /* research */ = {
+			isa = PBXGroup;
+			children = (
+				D096F6B117E891A800ADB9F9 /* researchViewController.h */,
+				D096F6B217E891A800ADB9F9 /* researchViewController.m */,
+			);
+			path = research;
+			sourceTree = "<group>";
+		};
+		D09EA39B17E75FCE00DD22CB /* login */ = {
+			isa = PBXGroup;
+			children = (
+				D09EA39C17E75FDB00DD22CB /* LoginViewController.h */,
+				D09EA39D17E75FDB00DD22CB /* LoginViewController.m */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
 		D0C1E1E417E34815003333A5 = {
 			isa = PBXGroup;
 			children = (
@@ -476,6 +520,7 @@
 		D0C1E21117E34C31003333A5 /* library */ = {
 			isa = PBXGroup;
 			children = (
+				D096F6AB17E889D300ADB9F9 /* helper */,
 				D07FA63517E5CB07000FE15E /* ASDepthModal */,
 				D07FA5DD17E5A543000FE15E /* MagicalRecord */,
 				D0C1E22817E34CBE003333A5 /* AFNetworking */,
@@ -496,6 +541,7 @@
 		D0C1E21317E34C31003333A5 /* center */ = {
 			isa = PBXGroup;
 			children = (
+				D09EA39B17E75FCE00DD22CB /* login */,
 				D0C1E24717E34E63003333A5 /* about */,
 				D0C1E24817E34E63003333A5 /* information */,
 				D0C1E24A17E34E63003333A5 /* myaccount */,
@@ -570,6 +616,7 @@
 		D0C1E24817E34E63003333A5 /* information */ = {
 			isa = PBXGroup;
 			children = (
+				D096F6B017E8916400ADB9F9 /* research */,
 				D0C1E24917E34E63003333A5 /* companies */,
 			);
 			path = information;
@@ -841,6 +888,9 @@
 				D07FA63217E5A543000FE15E /* MagicalRecord.m in Sources */,
 				D07FA63A17E5CB07000FE15E /* ASDepthModalViewController.m in Sources */,
 				D07FA63B17E5CB07000FE15E /* UIImage+Blur.m in Sources */,
+				D09EA39E17E75FDB00DD22CB /* LoginViewController.m in Sources */,
+				D096F6AF17E889E700ADB9F9 /* netra.m in Sources */,
+				D096F6B317E891A800ADB9F9 /* researchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -51,7 +51,7 @@
 	navLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 300, 22)];
 	navLabel.backgroundColor = [UIColor clearColor];
 	navLabel.textColor = [UIColor whiteColor];
-	navLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:16];
+	navLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
 	navLabel.textAlignment = NSTextAlignmentCenter;
 
 	

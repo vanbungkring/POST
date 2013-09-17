@@ -17,7 +17,9 @@
 	NSArray *trading;
 	NSArray *trading_c;
 	NSArray *information;
+	NSArray *information_c;
 	NSArray *mytrade;
+	NSArray *mytrade_c;
 	NSArray *akun;
 }
 @end

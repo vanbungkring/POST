@@ -132,6 +132,7 @@
     [super viewWillAppear:YES];
 	//[self initnavbar];
 	[self callLiveThread];
+	[self login];
 	// Do any additional setup after loading the view.
 }
 -(void)buy{
@@ -250,6 +251,68 @@
 	cell.price.text = [livetrade_data objectAtIndex:indexPath.row];
 	return cell;
 	}
+}
+
+-(void)login{
+	
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"login", @"request",
+							@"jimmy_it", @"user",
+							@"031171", @"password",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	NSLog(@"request-->%@",request);
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	
+	[request setHTTPShouldHandleCookies:YES];
+	
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		// Print the response body in text
+	
+		NSLog(@"Response: %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+		NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+		NSLog(@"cookieStorage.cookies->%@",cookieStorage.cookies);
+		for (NSHTTPCookie *each in cookieStorage.cookies) {
+			[netra setSessionId:each.value];
+		}
+		
+		
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		
+		NSLog(@"Error: %@", error);
+	}];
+	[operation start];
+}
+
+-(void)fetchData{
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"login", @"request",
+							@"jimmy_it", @"user",
+							@"031171", @"password",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
+	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id responseObject) {
+		NSLog(@"responseObject->%@",responseObject);
+
+    }failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+		NSLog(@"error %@",error);
+    }];
+    
+	// self.filteredArray = [NSMutableArray arrayWithCapacity:netrax.count];
+	
+    [operation start];
+	
 }
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 

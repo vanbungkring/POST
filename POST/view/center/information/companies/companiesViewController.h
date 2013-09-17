@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface companiesViewController : UIViewController
-
+{
+	UIWebView *webview;
+}
 @end
