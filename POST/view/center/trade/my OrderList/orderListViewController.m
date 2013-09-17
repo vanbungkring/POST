@@ -1,25 +1,25 @@
 //
-//  accountSettingViewController.m
+//  orderListViewController.m
 //  POST
 //
-//  Created by Arie on 9/13/13.
+//  Created by Arie on 9/17/13.
 //  Copyright (c) 2013 netra. All rights reserved.
 //
 
-#import "accountSettingViewController.h"
+#import "orderListViewController.h"
 
-@interface accountSettingViewController ()
+@interface orderListViewController ()
 
 @end
 
-@implementation accountSettingViewController
+@implementation orderListViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-		self.view.backgroundColor = [UIColor colorWithRed:0.188 green:0.216 blue:0.255 alpha:1];
         // Custom initialization
+		self.view.backgroundColor = [UIColor colorWithRed:0.188 green:0.216 blue:0.255 alpha:1];
     }
     return self;
 }

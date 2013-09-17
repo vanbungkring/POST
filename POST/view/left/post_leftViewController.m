@@ -22,10 +22,14 @@
 		
 		trading = [NSArray arrayWithObjects: @"Live Trade", @"Stock Watch",@"Stock Quote",@"Broker Rank",@"Complete Book",@"Charts",@"Index",@"Companies",nil];
 		trading_c = [NSArray arrayWithObjects: @"liveTradeViewController", @"st_watchViewController",@"st_quoteViewController",@"brokerRankViewController",@"completeBookViewController",@"chartViewController",@"indexViewController",@"companiesViewController",nil];
+		
 		mytrade = [NSArray arrayWithObjects: @"Portfolio", @"My Order List",Nil];
+		mytrade_c =[NSArray arrayWithObjects: @"portfolioViewController", @"orderListViewController",Nil];
 		akun = [NSArray arrayWithObjects: @"Account Setting",Nil];
+		akun_c = [NSArray arrayWithObjects: @"accountSettingViewController",Nil];
+		
 		information = [NSArray arrayWithObjects: @"Contact Us",@"Research",@"Logout",Nil];
-		information_c = [NSArray arrayWithObjects: @"companiesViewController",@"researchViewController",@"Logout",Nil];
+		information_c = [NSArray arrayWithObjects: @"contactViewController",@"researchViewController",@"Logout",Nil];
 		self.view.backgroundColor=[UIColor blackColor];
 		menu=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 760)];
 		menu.backgroundColor = [UIColor colorWithRed:0.067 green:0.086 blue:0.122 alpha:1];
@@ -118,7 +122,12 @@
 			
 			[vanbungkring setCenter:[trading_c objectAtIndex:indexPath.row] name:[trading objectAtIndex:indexPath.row]];
 			break;
-			
+		case 1:
+			[vanbungkring setCenter:[mytrade_c objectAtIndex:indexPath.row] name:[mytrade objectAtIndex:indexPath.row]];
+			break;
+		case 2:
+			[vanbungkring setCenter:[akun_c objectAtIndex:indexPath.row] name:[akun objectAtIndex:indexPath.row]];
+			break;
 		default:
 			[vanbungkring setCenter:[information_c objectAtIndex:indexPath.row] name:[information objectAtIndex:indexPath.row]];
 			break;

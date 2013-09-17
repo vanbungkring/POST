@@ -21,5 +21,6 @@
 	NSArray *mytrade;
 	NSArray *mytrade_c;
 	NSArray *akun;
+	NSArray *akun_c;
 }
 @end
