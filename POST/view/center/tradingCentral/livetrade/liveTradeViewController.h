@@ -13,7 +13,7 @@
 	UILabel *navLabel;
 	UIView *right;
 	UIView *right_content;
-	
+	UIView *popupView;
 	//livetrade
 	UITableView *liveTrade;
 	NSMutableArray *livetrade_data;

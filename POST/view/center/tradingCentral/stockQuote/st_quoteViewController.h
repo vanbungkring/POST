@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface st_quoteViewController : UIViewController
-
+@interface st_quoteViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+{
+	UITableView *stockQ;
+	UILabel *navLabel;
+}
 @end

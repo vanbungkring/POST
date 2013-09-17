@@ -19,6 +19,10 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+		
+		popupView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 270, 350)];
+		popupView.backgroundColor=[UIColor whiteColor];
+
         // Custom initialization
 		self.view.backgroundColor = [UIColor colorWithRed:0.188 green:0.216 blue:0.255 alpha:1];
 		//self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"main_bg"]];
@@ -57,6 +61,7 @@
 		dataStock = [[UITableView alloc]initWithFrame:CGRectMake(5, 115, 480, 170)];
 		dataStock.delegate = self;
 		dataStock.dataSource = self;
+		dataStock.tableFooterView = [[UIView alloc] init];
 		//dataStock.tableHeaderView = headerView;
 		dataStock.separatorColor = [UIColor colorWithRed:0.161 green:0.18 blue:0.216 alpha:1];
 		dataStock.userInteractionEnabled=false;
@@ -125,58 +130,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-	[self initnavbar];
+	//[self initnavbar];
 	[self callLiveThread];
+	[self login];
 	// Do any additional setup after loading the view.
 }
--(void)initnavbar{
-	UIView *buy_sell=[[UIView alloc]initWithFrame:CGRectMake(1024-300, 0, 300, 44)];
-	[buy_sell setBackgroundColor:[UIColor clearColor]];
-	[self.navigationController.navigationBar addSubview:buy_sell];
+-(void)buy{
 	
-	UIButton *buy = [UIButton buttonWithType:UIButtonTypeCustom];
-	buy.frame = CGRectMake(70, 0, 100, 44);
-	buy.backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"buy"]];
-	[buy setBackgroundImage:[UIImage imageNamed:@"buy"] forState:UIControlStateNormal];
-	[buy setBackgroundImage:[UIImage imageNamed:@"buy_"] forState:UIControlStateHighlighted];
-	
-	UIButton *sell = [UIButton buttonWithType:UIButtonTypeCustom];
-	sell.frame = CGRectMake(190, 0, 100, 44);
-	sell.backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"sell"]];
-	[sell setBackgroundImage:[UIImage imageNamed:@"sell"] forState:UIControlStateNormal];
-	[sell setBackgroundImage:[UIImage imageNamed:@"sell_"] forState:UIControlStateHighlighted];
-	
-	
-	[buy_sell addSubview:buy];
-	[buy_sell addSubview:sell];
-	
-	navLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -2, 220, 18)];
-	navLabel.backgroundColor = [UIColor clearColor];
-	navLabel.textColor = [UIColor whiteColor];
-	navLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:16];
-	navLabel.textAlignment = NSTextAlignmentCenter;
-	navLabel.text = @"POST LIVE TRADE";
-	self.navigationItem.titleView = navLabel;
-	
-	
-	//self.titleImage=[[UIImageView alloc]initWithFrame:CGRectMake(3, 0, 142, 24.5)];
-	//[self.titleImage setImage:[UIImage imageNamed:@"topChart"]];
-	
-	//selectedCellIndexPath=[[NSIndexPath alloc]init];
-	
-	UIImage* image = [UIImage imageNamed:@"right"];
-	CGRect frame = CGRectMake(0, 0, 44, 44);
-	UIButton* leftbutton = [[UIButton alloc] initWithFrame:frame];
-	[leftbutton setBackgroundImage:image forState:UIControlStateNormal];
-	//[leftbutton setBackgroundImage:[UIImage imageNamed:@"left-push"] forState:UIControlStateHighlighted];
-	[leftbutton addTarget:self action:@selector(lefbuttonPush) forControlEvents:UIControlEventTouchUpInside];
-	
-	UIView *leftbuttonView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
-	leftbuttonView.backgroundColor=[UIColor clearColor];
-	[leftbuttonView addSubview:leftbutton];
-	UIBarButtonItem* leftbarbutton = [[UIBarButtonItem alloc] initWithCustomView:leftbuttonView];
-	
-	[self.navigationItem setLeftBarButtonItem:leftbarbutton];
+}
+-(void)sell{
+
 }
 - (void)didReceiveMemoryWarning
 {
@@ -187,7 +150,7 @@
 /////initial data from json and live trade set here
 
 -(void)callLiveThread{
-	[self performSelector:@selector(livethread) withObject:Nil afterDelay:.9];
+	[self performSelector:@selector(livethread) withObject:Nil afterDelay:1];
 }
 
 -(void)livethread{
@@ -199,15 +162,15 @@
 	[livetrade_data insertObject:num atIndex:0];
 	if([livetrade_data count] >1000){
 		[livetrade_data removeAllObjects];
-		[self performSelector:@selector(reload) withObject:Nil afterDelay:0.02];
+		[self performSelector:@selector(reload) withObject:Nil afterDelay:1];
 		[self callLiveThread];
 	}
 	else{
-		[self performSelector:@selector(reload) withObject:Nil afterDelay:2];
+		[self performSelector:@selector(reload) withObject:Nil afterDelay:1];
 		[self callLiveThread];
 	}
 	
-	
+
 	
 }
 -(void)reload{
@@ -272,7 +235,7 @@
 	//cell.textLabel.text=[livetrade_data objectAtIndex:indexPath.row];
 	NSDate *now = [NSDate date];
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	[dateFormatter setDateFormat:@"DD/MM/YY HH:mm:ss"];
+	[dateFormatter setDateFormat:@"dd/MM/YY HH:mm:ss"];
 	
 	NSString *string = [dateFormatter stringFromDate:now];
 	if([[livetrade_data objectAtIndex:indexPath.row] intValue] < 0){
@@ -289,6 +252,68 @@
 	return cell;
 	}
 }
+
+-(void)login{
+	
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"login", @"request",
+							@"jimmy_it", @"user",
+							@"031171", @"password",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	NSLog(@"request-->%@",request);
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	
+	[request setHTTPShouldHandleCookies:YES];
+	
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		// Print the response body in text
+	
+		NSLog(@"Response: %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+		NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+		NSLog(@"cookieStorage.cookies->%@",cookieStorage.cookies);
+		for (NSHTTPCookie *each in cookieStorage.cookies) {
+			[netra setSessionId:each.value];
+		}
+		
+		
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		
+		NSLog(@"Error: %@", error);
+	}];
+	[operation start];
+}
+
+-(void)fetchData{
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"login", @"request",
+							@"jimmy_it", @"user",
+							@"031171", @"password",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
+	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id responseObject) {
+		NSLog(@"responseObject->%@",responseObject);
+
+    }failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+		NSLog(@"error %@",error);
+    }];
+    
+	// self.filteredArray = [NSMutableArray arrayWithCapacity:netrax.count];
+	
+    [operation start];
+	
+}
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
 	return 30;
@@ -297,8 +322,6 @@
 	[super viewWillDisappear:YES];
 	[livetrade_data removeAllObjects];
 }
--(void)lefbuttonPush{
-	
-	[self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-}
+
+
 @end
