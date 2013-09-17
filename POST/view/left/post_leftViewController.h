@@ -15,8 +15,12 @@
 	UIView *view;
 	UILabel *section_label;
 	NSArray *trading;
+	NSArray *trading_c;
 	NSArray *information;
+	NSArray *information_c;
 	NSArray *mytrade;
+	NSArray *mytrade_c;
 	NSArray *akun;
+	NSArray *akun_c;
 }
 @end

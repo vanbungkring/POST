@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface companiesViewController : UIViewController
-
+{
+	UIWebView *webview;
+	NSMutableArray *buffer;
+}
 @end

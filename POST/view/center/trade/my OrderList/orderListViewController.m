@@ -1,24 +1,25 @@
 //
-//  aboutViewController.m
+//  orderListViewController.m
 //  POST
 //
-//  Created by Arie on 9/13/13.
+//  Created by Arie on 9/17/13.
 //  Copyright (c) 2013 netra. All rights reserved.
 //
 
-#import "aboutViewController.h"
+#import "orderListViewController.h"
 
-@interface aboutViewController ()
+@interface orderListViewController ()
 
 @end
 
-@implementation aboutViewController
+@implementation orderListViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+		self.view.backgroundColor = [UIColor colorWithRed:0.188 green:0.216 blue:0.255 alpha:1];
     }
     return self;
 }

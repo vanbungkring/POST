@@ -1,25 +1,25 @@
 //
-//  accountSettingViewController.m
+//  LoginViewController.m
 //  POST
 //
-//  Created by Arie on 9/13/13.
+//  Created by Arie on 9/16/13.
 //  Copyright (c) 2013 netra. All rights reserved.
 //
 
-#import "accountSettingViewController.h"
+#import "LoginViewController.h"
 
-@interface accountSettingViewController ()
+@interface LoginViewController ()
 
 @end
 
-@implementation accountSettingViewController
+@implementation LoginViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-		self.view.backgroundColor = [UIColor colorWithRed:0.188 green:0.216 blue:0.255 alpha:1];
         // Custom initialization
+		self.view.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }

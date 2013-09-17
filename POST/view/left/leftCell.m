@@ -19,7 +19,7 @@
 		_text = [[UILabel alloc]initWithFrame:CGRectMake(20, 10, 300, 25)];
 		_text.backgroundColor = [UIColor clearColor];
 		_text.textColor=[UIColor colorWithRed:0.941 green:0.957 blue:0.969 alpha:1];
-		[_text setFont:[UIFont fontWithName:@"OpenSans-Semibold" size:14]];
+		[_text setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:13]];
 		
 		[self.contentView addSubview:_text];
     }
