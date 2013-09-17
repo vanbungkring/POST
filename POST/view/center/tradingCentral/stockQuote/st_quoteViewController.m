@@ -7,7 +7,7 @@
 //
 
 #import "st_quoteViewController.h"
-
+#import "sqCell.h"
 @interface st_quoteViewController ()
 
 @end
@@ -56,17 +56,64 @@
 	return 532;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cex"];
+	sqCell *cell = [[sqCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cex"];
 	
 	if(cell == nil){
-		cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cex"];
+		cell = [[sqCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cex"];
 	}
 	if(indexPath.row % 2 == 0){
 		cell.contentView.backgroundColor=[UIColor colorWithRed:0.078 green:0.098 blue:0.122 alpha:1];
+		
+		//cell.no.textColor = [UIColor redColor];
+		cell.code.textColor = [UIColor redColor];
+		cell.last.textColor = [UIColor redColor];
+		
+		cell.change.textColor = [UIColor redColor];
+		cell.change_p.textColor = [UIColor redColor];
+		cell.fb_val.textColor = [UIColor redColor];
+		
+		cell.fb_vol.textColor = [UIColor redColor];
+		cell.fs_val.textColor = [UIColor redColor];
+		cell.fs_vol.textColor = [UIColor redColor];
+		
+		cell.value.textColor = [UIColor redColor];
+		cell.volume.textColor = [UIColor redColor];
+		
 	}
-	cell.textLabel.text=@"a";
-	cell.textLabel.textColor = [UIColor whiteColor];
-	cell.textLabel.backgroundColor=[UIColor clearColor];
+	if(indexPath.row % 78 ==0){
+		//cell.no.textColor = [UIColor yellowColor];
+		cell.code.textColor = [UIColor yellowColor];
+		cell.last.textColor = [UIColor yellowColor];
+		
+		cell.change.textColor = [UIColor yellowColor];
+		cell.change_p.textColor = [UIColor yellowColor];
+		cell.fb_val.textColor = [UIColor yellowColor];
+		
+		cell.fb_vol.textColor = [UIColor yellowColor];
+		cell.fs_val.textColor = [UIColor yellowColor];
+		cell.fs_vol.textColor = [UIColor yellowColor];
+		
+		cell.value.textColor = [UIColor yellowColor];
+		cell.volume.textColor = [UIColor yellowColor];
+	}
+	if(indexPath.row % 3 ==0){
+		//cell.no.textColor = [UIColor greenColor];
+		cell.code.textColor = [UIColor greenColor];
+		cell.last.textColor = [UIColor greenColor];
+		
+		cell.change.textColor = [UIColor greenColor];
+		cell.change_p.textColor = [UIColor greenColor];
+		cell.fb_val.textColor = [UIColor greenColor];
+		
+		cell.fb_vol.textColor = [UIColor greenColor];
+		cell.fs_val.textColor = [UIColor greenColor];
+		cell.fs_vol.textColor = [UIColor greenColor];
+		
+		cell.value.textColor = [UIColor greenColor];
+		cell.volume.textColor = [UIColor greenColor];
+	}
+	cell.no.text = [NSString stringWithFormat:@"%d",indexPath.row+1];
+	
 	return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

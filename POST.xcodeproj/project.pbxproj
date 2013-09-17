@@ -55,6 +55,7 @@
 		D096F6B717E89B8C00ADB9F9 /* contactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D096F6B617E89B8C00ADB9F9 /* contactViewController.m */; };
 		D096F6BD17E8B7F800ADB9F9 /* portfolioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D096F6BC17E8B7F800ADB9F9 /* portfolioViewController.m */; };
 		D096F6C017E8B80400ADB9F9 /* orderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D096F6BF17E8B80400ADB9F9 /* orderListViewController.m */; };
+		D096F6C317E8BA8C00ADB9F9 /* sqCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D096F6C217E8BA8C00ADB9F9 /* sqCell.m */; };
 		D09EA39E17E75FDB00DD22CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09EA39D17E75FDB00DD22CB /* LoginViewController.m */; };
 		D0C1E1F117E34815003333A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C1E1F017E34815003333A5 /* UIKit.framework */; };
 		D0C1E1F317E34815003333A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C1E1F217E34815003333A5 /* Foundation.framework */; };
@@ -184,6 +185,8 @@
 		D096F6BC17E8B7F800ADB9F9 /* portfolioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = portfolioViewController.m; sourceTree = "<group>"; };
 		D096F6BE17E8B80400ADB9F9 /* orderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = orderListViewController.h; sourceTree = "<group>"; };
 		D096F6BF17E8B80400ADB9F9 /* orderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = orderListViewController.m; sourceTree = "<group>"; };
+		D096F6C117E8BA8C00ADB9F9 /* sqCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqCell.h; sourceTree = "<group>"; };
+		D096F6C217E8BA8C00ADB9F9 /* sqCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sqCell.m; sourceTree = "<group>"; };
 		D09EA39C17E75FDB00DD22CB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D09EA39D17E75FDB00DD22CB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D0C1E1ED17E34815003333A5 /* POST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POST.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -744,6 +747,8 @@
 			children = (
 				D0C1E25C17E34EE7003333A5 /* st_quoteViewController.h */,
 				D0C1E25D17E34EE7003333A5 /* st_quoteViewController.m */,
+				D096F6C117E8BA8C00ADB9F9 /* sqCell.h */,
+				D096F6C217E8BA8C00ADB9F9 /* sqCell.m */,
 			);
 			path = stockQuote;
 			sourceTree = "<group>";
@@ -914,6 +919,7 @@
 				D096F6B717E89B8C00ADB9F9 /* contactViewController.m in Sources */,
 				D096F6BD17E8B7F800ADB9F9 /* portfolioViewController.m in Sources */,
 				D096F6C017E8B80400ADB9F9 /* orderListViewController.m in Sources */,
+				D096F6C317E8BA8C00ADB9F9 /* sqCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
