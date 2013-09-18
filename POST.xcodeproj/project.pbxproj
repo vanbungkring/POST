@@ -10,6 +10,7 @@
 		D040F3F417E8DEE30017A174 /* stockInit.m in Sources */ = {isa = PBXBuildFile; fileRef = D040F3F317E8DEE30017A174 /* stockInit.m */; };
 		D040F3F717E8DF6C0017A174 /* brokerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D040F3F617E8DF6C0017A174 /* brokerCell.m */; };
 		D040F3F917E8E1500017A174 /* bq_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D040F3F817E8E1500017A174 /* bq_header@2x.png */; };
+		D040F3FB17E982960017A174 /* details@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D040F3FA17E982960017A174 /* details@2x.png */; };
 		D07FA5C417E3F488000FE15E /* navbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07FA5C317E3F488000FE15E /* navbar@2x.png */; };
 		D07FA5C817E45713000FE15E /* liveTradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07FA5C717E45713000FE15E /* liveTradeCell.m */; };
 		D07FA5CA17E457E5000FE15E /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07FA5C917E457E5000FE15E /* main_bg@2x.png */; };
@@ -109,6 +110,7 @@
 		D040F3F517E8DF6C0017A174 /* brokerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brokerCell.h; sourceTree = "<group>"; };
 		D040F3F617E8DF6C0017A174 /* brokerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = brokerCell.m; sourceTree = "<group>"; };
 		D040F3F817E8E1500017A174 /* bq_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bq_header@2x.png"; sourceTree = "<group>"; };
+		D040F3FA17E982960017A174 /* details@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "details@2x.png"; sourceTree = "<group>"; };
 		D07FA5C317E3F488000FE15E /* navbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar@2x.png"; sourceTree = "<group>"; };
 		D07FA5C617E45713000FE15E /* liveTradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = liveTradeCell.h; sourceTree = "<group>"; };
 		D07FA5C717E45713000FE15E /* liveTradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = liveTradeCell.m; sourceTree = "<group>"; };
@@ -560,6 +562,7 @@
 		D0C1E21017E34C31003333A5 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				D040F3FA17E982960017A174 /* details@2x.png */,
 				D040F3F817E8E1500017A174 /* bq_header@2x.png */,
 				D07FA63E17E5F69A000FE15E /* sq_header@2x.png */,
 				D07FA5CB17E45AB6000FE15E /* livetrade_head@2x.png */,
@@ -878,6 +881,7 @@
 				D07FA5DC17E57CC4000FE15E /* livetrade_head_table@2x.png in Resources */,
 				D07FA63F17E5F69A000FE15E /* sq_header@2x.png in Resources */,
 				D040F3F917E8E1500017A174 /* bq_header@2x.png in Resources */,
+				D040F3FB17E982960017A174 /* details@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

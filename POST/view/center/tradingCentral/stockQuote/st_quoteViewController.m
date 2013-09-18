@@ -19,6 +19,25 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+		
+		stock_accronim =[[UILabel alloc]initWithFrame:CGRectMake(0, 40, 400, 50)];
+		stock_accronim.text =@"AAPL";
+		stock_accronim.textColor = [UIColor colorWithRed:0.243 green:0.278 blue:0.384 alpha:1];
+		stock_accronim.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:45];
+		stock_accronim.textAlignment = NSTextAlignmentCenter;
+		stock_accronim.backgroundColor = [UIColor clearColor];
+		
+		popupView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 400, 400)];
+		popupView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"details"]];
+		popupView.layer.cornerRadius = 5;
+		popupView.layer.masksToBounds = YES;
+		
+		[popupView addSubview:stock_accronim];
+		top_border = [[UIView alloc]initWithFrame:CGRectMake(0, 0, popupView.frame.size.width, 5)];
+		top_border.backgroundColor = [UIColor colorWithRed:1 green:0.4 blue:0 alpha:1];
+		
+		//[popupView addSubview:top_border];
+		
 		self.view.backgroundColor = [UIColor colorWithRed:0.188 green:0.216 blue:0.255 alpha:1];
 		
 		stockQ = [[UITableView alloc]init];
@@ -118,6 +137,14 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
+	UIColor *color = [UIColor blackColor];
+	[ASDepthModalViewController presentView:popupView
+                            backgroundColor:color
+                                    options:ASDepthModalOptionAnimationShrink | ASDepthModalOptionTapOutsideToClose
+                          completionHandler:^{
+                              NSLog(@"Modal view closed.");
+                          }];
+	
 }
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 	
@@ -134,6 +161,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+	
 }
 -(void)fetchdata{
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
