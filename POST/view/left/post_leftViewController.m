@@ -31,7 +31,7 @@
 		information = [NSArray arrayWithObjects: @"Contact Us",@"Research",@"Logout",Nil];
 		information_c = [NSArray arrayWithObjects: @"contactViewController",@"researchViewController",@"Logout",Nil];
 		self.view.backgroundColor=[UIColor blackColor];
-		menu=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 760)];
+		menu=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 750)];
 		menu.backgroundColor = [UIColor colorWithRed:0.067 green:0.086 blue:0.122 alpha:1];
 		menu.separatorColor  = [UIColor colorWithRed:0.149 green:0.165 blue:0.208 alpha:1];
 		menu.dataSource = self;
