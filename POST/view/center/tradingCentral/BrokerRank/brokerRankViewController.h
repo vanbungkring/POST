@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface brokerRankViewController : UIViewController
+@interface brokerRankViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+{
+	UITableView *brQ;
+}
 
 @end

@@ -30,4 +30,8 @@ static netra *sharedObject;
     netra *shared = [netra sharedInstance];
     shared.sessionString = session;
 }
+
+/////get stock init
+
+
 @end

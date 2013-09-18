@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D040F3F417E8DEE30017A174 /* stockInit.m in Sources */ = {isa = PBXBuildFile; fileRef = D040F3F317E8DEE30017A174 /* stockInit.m */; };
+		D040F3F717E8DF6C0017A174 /* brokerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D040F3F617E8DF6C0017A174 /* brokerCell.m */; };
+		D040F3F917E8E1500017A174 /* bq_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D040F3F817E8E1500017A174 /* bq_header@2x.png */; };
 		D07FA5C417E3F488000FE15E /* navbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07FA5C317E3F488000FE15E /* navbar@2x.png */; };
 		D07FA5C817E45713000FE15E /* liveTradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07FA5C717E45713000FE15E /* liveTradeCell.m */; };
 		D07FA5CA17E457E5000FE15E /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07FA5C917E457E5000FE15E /* main_bg@2x.png */; };
@@ -101,6 +104,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D040F3F217E8DEE30017A174 /* stockInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stockInit.h; sourceTree = "<group>"; };
+		D040F3F317E8DEE30017A174 /* stockInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = stockInit.m; sourceTree = "<group>"; };
+		D040F3F517E8DF6C0017A174 /* brokerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brokerCell.h; sourceTree = "<group>"; };
+		D040F3F617E8DF6C0017A174 /* brokerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = brokerCell.m; sourceTree = "<group>"; };
+		D040F3F817E8E1500017A174 /* bq_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bq_header@2x.png"; sourceTree = "<group>"; };
 		D07FA5C317E3F488000FE15E /* navbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar@2x.png"; sourceTree = "<group>"; };
 		D07FA5C617E45713000FE15E /* liveTradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = liveTradeCell.h; sourceTree = "<group>"; };
 		D07FA5C717E45713000FE15E /* liveTradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = liveTradeCell.m; sourceTree = "<group>"; };
@@ -280,6 +288,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D040F3F017E8DEAB0017A174 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				D040F3F117E8DED20017A174 /* stockInit */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		D040F3F117E8DED20017A174 /* stockInit */ = {
+			isa = PBXGroup;
+			children = (
+				D040F3F217E8DEE30017A174 /* stockInit.h */,
+				D040F3F317E8DEE30017A174 /* stockInit.m */,
+			);
+			path = stockInit;
+			sourceTree = "<group>";
+		};
 		D07FA5C517E45705000FE15E /* livetradeCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,6 +523,7 @@
 		D0C1E1F617E34815003333A5 /* POST */ = {
 			isa = PBXGroup;
 			children = (
+				D040F3F017E8DEAB0017A174 /* model */,
 				D0C1E20F17E34C31003333A5 /* assets */,
 				D0C1E21117E34C31003333A5 /* library */,
 				D0C1E21217E34C31003333A5 /* view */,
@@ -534,6 +560,7 @@
 		D0C1E21017E34C31003333A5 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				D040F3F817E8E1500017A174 /* bq_header@2x.png */,
 				D07FA63E17E5F69A000FE15E /* sq_header@2x.png */,
 				D07FA5CB17E45AB6000FE15E /* livetrade_head@2x.png */,
 				D07FA5DB17E57CC4000FE15E /* livetrade_head_table@2x.png */,
@@ -701,6 +728,8 @@
 			children = (
 				D0C1E26817E34F16003333A5 /* brokerRankViewController.h */,
 				D0C1E26917E34F16003333A5 /* brokerRankViewController.m */,
+				D040F3F517E8DF6C0017A174 /* brokerCell.h */,
+				D040F3F617E8DF6C0017A174 /* brokerCell.m */,
 			);
 			path = BrokerRank;
 			sourceTree = "<group>";
@@ -848,6 +877,7 @@
 				D07FA5DA17E5610E000FE15E /* sell_@2x.png in Resources */,
 				D07FA5DC17E57CC4000FE15E /* livetrade_head_table@2x.png in Resources */,
 				D07FA63F17E5F69A000FE15E /* sq_header@2x.png in Resources */,
+				D040F3F917E8E1500017A174 /* bq_header@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,6 +950,8 @@
 				D096F6BD17E8B7F800ADB9F9 /* portfolioViewController.m in Sources */,
 				D096F6C017E8B80400ADB9F9 /* orderListViewController.m in Sources */,
 				D096F6C317E8BA8C00ADB9F9 /* sqCell.m in Sources */,
+				D040F3F417E8DEE30017A174 /* stockInit.m in Sources */,
+				D040F3F717E8DF6C0017A174 /* brokerCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
