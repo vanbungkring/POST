@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
-
+@interface LoginViewController : UIViewController<UITextFieldDelegate>
+{
+	UIView *login_container;
+	UITextField *userName;
+	UITextField *passWord;
+	UIButton *sign_in;
+	
+	
+}
 @end

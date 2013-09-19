@@ -160,22 +160,15 @@
 	
 	NSString *num = [NSString stringWithFormat:@"%d", randNum];
 	[livetrade_data insertObject:num atIndex:0];
-	if([livetrade_data count] >1000){
-		[livetrade_data removeAllObjects];
-		[self performSelector:@selector(reload) withObject:Nil afterDelay:1];
-		[self callLiveThread];
-	}
-	else{
-		[self performSelector:@selector(reload) withObject:Nil afterDelay:1];
-		[self callLiveThread];
-	}
-	
+
+	[self performSelector:@selector(reload) withObject:Nil afterDelay:1];
 
 	
 }
 -(void)reload{
 	[dataStock reloadData];
 	[liveTrade reloadData];
+	[self callLiveThread];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -260,11 +253,10 @@
 							@"jimmy_it", @"user",
 							@"031171", @"password",
 							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.2/"]];
 	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
 															path:@"mi2/marketInfoData?"
 													  parameters:params];
-	NSLog(@"request-->%@",request);
 	
 	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
 	
@@ -274,15 +266,18 @@
 	
 	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
 		// Print the response body in text
-	
+		NSMutableArray *xxx=[[NSMutableArray alloc]init];
 		NSLog(@"Response: %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-		NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-		NSLog(@"cookieStorage.cookies->%@",cookieStorage.cookies);
-		for (NSHTTPCookie *each in cookieStorage.cookies) {
-			[netra setSessionId:each.value];
+		
+		for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
+		{
+			NSLog(@"cookie==>%@",[cookie value]);
+			NSLog(@"cookie==>%@",[cookie name]);
+			[xxx addObject:[cookie value]];
+			
 		}
-		
-		
+		[netra setSessionId:[xxx objectAtIndex:0]];
+		NSLog(@"--------->%@",[netra getSessionActive]);
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		
 		NSLog(@"Error: %@", error);

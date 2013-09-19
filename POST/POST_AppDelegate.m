@@ -31,7 +31,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	[[UINavigationBar appearance]setShadowImage:[[UIImage alloc] init]];
 	_drawerController = [[MMDrawerController alloc] init];
-	[self setCenter:@"" name:@"Live Trade"];
+	[self setCenter:@"LoginViewController" name:@"Live Trade"];
 
     [_drawerController setRestorationIdentifier:@"netra"];
     [_drawerController setMaximumRightDrawerWidth:200.0];
@@ -47,9 +47,10 @@
     return YES;
 	
 }
+
 -(void)setCenter:(NSString *)center name:(NSString*)name{
 	NSLog(@"center-->%@",center);
-	navLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 15, 300, 22)];
+	navLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 300, 22)];
 	navLabel.backgroundColor = [UIColor clearColor];
 	navLabel.textColor = [UIColor whiteColor];
 	navLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];

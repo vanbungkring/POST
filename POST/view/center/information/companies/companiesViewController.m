@@ -64,8 +64,7 @@
 	}
 	
 	//cell.textLabel.textColor  = [UIColor whiteColor];
-	NSLog(@"---->%@",[clean_data objectAtIndex:1]);
-	cell.no.text = [NSString stringWithFormat:@"%d",indexPath.row];
+	cell.no.text = [NSString stringWithFormat:@"%d",indexPath.row+1];
 	cell.code.text = [NSString stringWithFormat:@"%@ - %@",[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[1]"],[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[2]"]];
 	cell.cp_name.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[3]"];
 	cell.prev.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[4]"];

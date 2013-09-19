@@ -175,24 +175,61 @@
 	
 }
 -(void)fetchdata{
+	
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"login", @"request",
+							@"start", @"act",
+							@"runningTrade", @"request",
 							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.2/"]];
 	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
 															path:@"mi2/marketInfoData?"
 													  parameters:params];
-	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
-	[AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
-	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id responseObject) {
-		NSLog(@"responseObject->%@",responseObject);
-		
-    }failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-		NSLog(@"error %@",error);
-    }];
-    
-	// self.filteredArray = [NSMutableArray arrayWithCapacity:netrax.count];
+	//[request setTimeoutInterval:];
 	
-    [operation start];
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		// Print the response body in text
+		NSLog(@"----------->%@",operation);
+		if([operation.responseString isEqualToString:@"msg:\"session timeout\""]){
+			NSLog(@"gak bisa stream");
+		}
+		else{
+			[self stream];
+		}
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+	}];
+	[operation start];
 }
+-(void)stream{
+	
+	NSLog(@"dataSStream di panggil");
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"dataStream", @"request",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.2/"]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		// Print the response body in text
+		NSLog(@"----------->%@",operation.responseString);
+		[self stream];
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+	}];
+	[operation start];}
+
+
 @end
