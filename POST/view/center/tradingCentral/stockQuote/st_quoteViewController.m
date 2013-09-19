@@ -19,6 +19,33 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+		
+		stock_accronim =[[UILabel alloc]initWithFrame:CGRectMake(0, 50, 307, 50)];
+		stock_accronim.text =@"AAPL";
+		stock_accronim.textColor = [UIColor colorWithRed:0.243 green:0.278 blue:0.384 alpha:1];
+		stock_accronim.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:44];
+		stock_accronim.textAlignment = NSTextAlignmentCenter;
+		stock_accronim.backgroundColor = [UIColor clearColor];
+		
+		stock_volume =[[UILabel alloc]initWithFrame:CGRectMake(0, 80, 307, 50)];
+		stock_volume.text =@"(+ 200000)";
+		stock_volume.textColor = [UIColor colorWithRed:0.243 green:0.278 blue:0.384 alpha:1];
+		stock_volume.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
+		stock_volume.textAlignment = NSTextAlignmentCenter;
+		stock_volume.backgroundColor = [UIColor clearColor];
+		
+		popupView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 307, 297)];
+		popupView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"details"]];
+		popupView.layer.cornerRadius = 5;
+		popupView.layer.masksToBounds = YES;
+		
+		[popupView addSubview:stock_accronim];
+		[popupView addSubview:stock_volume];
+		top_border = [[UIView alloc]initWithFrame:CGRectMake(0, 0, popupView.frame.size.width, 5)];
+		top_border.backgroundColor = [UIColor colorWithRed:1 green:0.4 blue:0 alpha:1];
+		
+		//[popupView addSubview:top_border];
+		
 		self.view.backgroundColor = [UIColor colorWithRed:0.188 green:0.216 blue:0.255 alpha:1];
 		
 		stockQ = [[UITableView alloc]init];
@@ -118,6 +145,14 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
+	UIColor *color = [UIColor blackColor];
+	[ASDepthModalViewController presentView:popupView
+                            backgroundColor:color
+                                    options:ASDepthModalOptionAnimationShrink | ASDepthModalOptionTapOutsideToClose
+                          completionHandler:^{
+                              NSLog(@"Modal view closed.");
+                          }];
+	
 }
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 	
@@ -135,25 +170,66 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+	
+}
 -(void)fetchdata{
+	
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"login", @"request",
+							@"start", @"act",
+							@"runningTrade", @"request",
 							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.2/"]];
 	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
 															path:@"mi2/marketInfoData?"
 													  parameters:params];
-	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
-	[AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
-	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id responseObject) {
-		NSLog(@"responseObject->%@",responseObject);
-		
-    }failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-		NSLog(@"error %@",error);
-    }];
-    
-	// self.filteredArray = [NSMutableArray arrayWithCapacity:netrax.count];
+	//[request setTimeoutInterval:];
 	
-    [operation start];
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		// Print the response body in text
+		NSLog(@"----------->%@",operation);
+		if([operation.responseString isEqualToString:@"msg:\"session timeout\""]){
+			NSLog(@"gak bisa stream");
+		}
+		else{
+			[self stream];
+		}
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+	}];
+	[operation start];
 }
+-(void)stream{
+	
+	NSLog(@"dataSStream di panggil");
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"dataStream", @"request",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.2/"]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		// Print the response body in text
+		NSLog(@"----------->%@",operation.responseString);
+		[self stream];
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+	}];
+	[operation start];}
+
+
 @end

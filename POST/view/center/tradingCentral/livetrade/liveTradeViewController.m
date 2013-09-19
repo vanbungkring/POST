@@ -24,7 +24,7 @@
 		popupView.backgroundColor=[UIColor whiteColor];
 
         // Custom initialization
-		self.view.backgroundColor = [UIColor colorWithRed:0.188 green:0.216 blue:0.255 alpha:1];
+		self.view.backgroundColor = [UIColor colorWithRed:0.204 green:0.247 blue:0.275 alpha:1];
 		//self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"main_bg"]];
 		/* running thread 1 */
 		liveTrade = [[UITableView alloc]initWithFrame:CGRectMake(10, 10, 490, 595)];
@@ -160,22 +160,15 @@
 	
 	NSString *num = [NSString stringWithFormat:@"%d", randNum];
 	[livetrade_data insertObject:num atIndex:0];
-	if([livetrade_data count] >1000){
-		[livetrade_data removeAllObjects];
-		[self performSelector:@selector(reload) withObject:Nil afterDelay:1];
-		[self callLiveThread];
-	}
-	else{
-		[self performSelector:@selector(reload) withObject:Nil afterDelay:1];
-		[self callLiveThread];
-	}
-	
+
+	[self performSelector:@selector(reload) withObject:Nil afterDelay:1];
 
 	
 }
 -(void)reload{
 	[dataStock reloadData];
 	[liveTrade reloadData];
+	[self callLiveThread];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -260,11 +253,10 @@
 							@"jimmy_it", @"user",
 							@"031171", @"password",
 							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.2/"]];
 	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
 															path:@"mi2/marketInfoData?"
 													  parameters:params];
-	NSLog(@"request-->%@",request);
 	
 	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
 	
@@ -274,15 +266,8 @@
 	
 	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
 		// Print the response body in text
-	
-		NSLog(@"Response: %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-		NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-		NSLog(@"cookieStorage.cookies->%@",cookieStorage.cookies);
-		for (NSHTTPCookie *each in cookieStorage.cookies) {
-			[netra setSessionId:each.value];
-		}
 		
-		
+		NSLog(@"--------->%@",[netra getSessionActive]);
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		
 		NSLog(@"Error: %@", error);

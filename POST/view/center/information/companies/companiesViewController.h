@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface companiesViewController : UIViewController
+@interface companiesViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 {
-	UIWebView *webview;
+	UITableView *table;
 	NSMutableArray *buffer;
+	NSMutableArray *clean_data;
+	
 }
 @end

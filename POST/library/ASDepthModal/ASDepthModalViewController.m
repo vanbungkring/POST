@@ -28,8 +28,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+Blur.h"
 
-static NSTimeInterval const kModalViewAnimationDuration = 0.3;
-static CGFloat const kBlurValue = 0.2;
+static NSTimeInterval const kModalViewAnimationDuration = 0.2;
+static CGFloat const kBlurValue = 0.01;
 static CGFloat const kDefaultiPhoneCornerRadius = 4;
 static CGFloat const kDefaultiPadCornerRadius = 6;
 
@@ -200,7 +200,7 @@ static NSInteger const kDepthModalOptionTapMask = 1 << 9;
     [self.rootViewController.view.layer setMasksToBounds:YES];
     [UIView animateWithDuration:kModalViewAnimationDuration
                      animations:^{
-                         self.rootViewController.view.transform = CGAffineTransformMakeScale(0.9, 0.9);
+                         self.rootViewController.view.transform = CGAffineTransformMakeScale(1, 1);
                          self.coverView.alpha = 1;
                          self.blurView.alpha = 1;
                      }];
