@@ -266,17 +266,7 @@
 	
 	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
 		// Print the response body in text
-		NSMutableArray *xxx=[[NSMutableArray alloc]init];
-		NSLog(@"Response: %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
 		
-		for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
-		{
-			NSLog(@"cookie==>%@",[cookie value]);
-			NSLog(@"cookie==>%@",[cookie name]);
-			[xxx addObject:[cookie value]];
-			
-		}
-		[netra setSessionId:[xxx objectAtIndex:0]];
 		NSLog(@"--------->%@",[netra getSessionActive]);
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		

@@ -108,12 +108,88 @@
 	
 	}
 	else{
+		[self login_toServer];
 		[userName resignFirstResponder];
 		[passWord resignFirstResponder];
-		[vanbungkring setCenter:@"liveTradeViewController" name:@"Live Trade"];
+		
+		
 	}
 	
 }
-
-
+-(void)login_toServer{
+	
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"login", @"request",
+							userName.text, @"user",
+							passWord.text, @"password",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.2/"]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	[httpClient setDefaultHeader:@"Accept-Charset" value:@"utf-8"];
+	[httpClient setDefaultHeader:@"Accept" value:@"text/plain"];
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+	
+		if(operation.responseString.boolValue ==true){
+			NSMutableArray *xxx=[[NSMutableArray alloc]init];
+			for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
+			{
+				NSLog(@"cookie==>%@",[cookie value]);
+				NSLog(@"cookie==>%@",[cookie name]);
+				[xxx addObject:[cookie value]];
+				
+			}
+			[netra setSessionId:[xxx objectAtIndex:0]];
+			[vanbungkring setCenter:@"" name:@"Live Trade"];
+		}
+		else{
+			UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error!"
+															  message:@"Login Failed! check your username and password"
+															 delegate:nil
+													cancelButtonTitle:@"OK"
+													otherButtonTitles:nil];
+			[message show];
+		}
+		
+		
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error!"
+														  message:[error localizedDescription]
+														 delegate:nil
+												cancelButtonTitle:@"OK"
+												otherButtonTitles:nil];
+		[message show];
+	}];
+	[operation start];
+}
+/*
+-(void)fetchData{
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"login", @"request",
+							@"jimmy_it", @"user",
+							@"031171", @"password",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
+	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id responseObject) {
+		NSLog(@"responseObject->%@",responseObject);
+		
+    }failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+		NSLog(@"error %@",error);
+    }];
+    
+	// self.filteredArray = [NSMutableArray arrayWithCapacity:netrax.count];
+	
+    [operation start];
+	
+}
+*/
 @end
