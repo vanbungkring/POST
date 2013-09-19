@@ -20,19 +20,27 @@
     if (self) {
         // Custom initialization
 		
-		stock_accronim =[[UILabel alloc]initWithFrame:CGRectMake(0, 40, 400, 50)];
+		stock_accronim =[[UILabel alloc]initWithFrame:CGRectMake(0, 50, 307, 50)];
 		stock_accronim.text =@"AAPL";
 		stock_accronim.textColor = [UIColor colorWithRed:0.243 green:0.278 blue:0.384 alpha:1];
-		stock_accronim.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:45];
+		stock_accronim.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:44];
 		stock_accronim.textAlignment = NSTextAlignmentCenter;
 		stock_accronim.backgroundColor = [UIColor clearColor];
 		
-		popupView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 400, 400)];
+		stock_volume =[[UILabel alloc]initWithFrame:CGRectMake(0, 80, 307, 50)];
+		stock_volume.text =@"(+ 200000)";
+		stock_volume.textColor = [UIColor colorWithRed:0.243 green:0.278 blue:0.384 alpha:1];
+		stock_volume.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
+		stock_volume.textAlignment = NSTextAlignmentCenter;
+		stock_volume.backgroundColor = [UIColor clearColor];
+		
+		popupView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 307, 297)];
 		popupView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"details"]];
 		popupView.layer.cornerRadius = 5;
 		popupView.layer.masksToBounds = YES;
 		
 		[popupView addSubview:stock_accronim];
+		[popupView addSubview:stock_volume];
 		top_border = [[UIView alloc]initWithFrame:CGRectMake(0, 0, popupView.frame.size.width, 5)];
 		top_border.backgroundColor = [UIColor colorWithRed:1 green:0.4 blue:0 alpha:1];
 		

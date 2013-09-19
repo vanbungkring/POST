@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D02A4DA917EA880100BB7CCD /* comapanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A4DA817EA880000BB7CCD /* comapanyCell.m */; };
+		D02A4DAB17EA892000BB7CCD /* cp_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D02A4DAA17EA892000BB7CCD /* cp_header@2x.png */; };
 		D040F3F417E8DEE30017A174 /* stockInit.m in Sources */ = {isa = PBXBuildFile; fileRef = D040F3F317E8DEE30017A174 /* stockInit.m */; };
 		D040F3F717E8DF6C0017A174 /* brokerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D040F3F617E8DF6C0017A174 /* brokerCell.m */; };
 		D040F3F917E8E1500017A174 /* bq_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D040F3F817E8E1500017A174 /* bq_header@2x.png */; };
@@ -105,6 +107,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D02A4DA717EA880000BB7CCD /* comapanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comapanyCell.h; sourceTree = "<group>"; };
+		D02A4DA817EA880000BB7CCD /* comapanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = comapanyCell.m; sourceTree = "<group>"; };
+		D02A4DAA17EA892000BB7CCD /* cp_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cp_header@2x.png"; sourceTree = "<group>"; };
 		D040F3F217E8DEE30017A174 /* stockInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stockInit.h; sourceTree = "<group>"; };
 		D040F3F317E8DEE30017A174 /* stockInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = stockInit.m; sourceTree = "<group>"; };
 		D040F3F517E8DF6C0017A174 /* brokerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brokerCell.h; sourceTree = "<group>"; };
@@ -562,6 +567,7 @@
 		D0C1E21017E34C31003333A5 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				D02A4DAA17EA892000BB7CCD /* cp_header@2x.png */,
 				D040F3FA17E982960017A174 /* details@2x.png */,
 				D040F3F817E8E1500017A174 /* bq_header@2x.png */,
 				D07FA63E17E5F69A000FE15E /* sq_header@2x.png */,
@@ -682,6 +688,8 @@
 			children = (
 				D0C1E27117E34F61003333A5 /* companiesViewController.h */,
 				D0C1E27217E34F61003333A5 /* companiesViewController.m */,
+				D02A4DA717EA880000BB7CCD /* comapanyCell.h */,
+				D02A4DA817EA880000BB7CCD /* comapanyCell.m */,
 			);
 			path = companies;
 			sourceTree = "<group>";
@@ -882,6 +890,7 @@
 				D07FA63F17E5F69A000FE15E /* sq_header@2x.png in Resources */,
 				D040F3F917E8E1500017A174 /* bq_header@2x.png in Resources */,
 				D040F3FB17E982960017A174 /* details@2x.png in Resources */,
+				D02A4DAB17EA892000BB7CCD /* cp_header@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -956,6 +965,7 @@
 				D096F6C317E8BA8C00ADB9F9 /* sqCell.m in Sources */,
 				D040F3F417E8DEE30017A174 /* stockInit.m in Sources */,
 				D040F3F717E8DF6C0017A174 /* brokerCell.m in Sources */,
+				D02A4DA917EA880100BB7CCD /* comapanyCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

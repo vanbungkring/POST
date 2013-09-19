@@ -19,11 +19,15 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+		//self.view.backgroundColor = [UIColor colorWithRed:0.141 green:0.196 blue:0.231 alpha:1];
 		self.view.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
+	[self.navigationController setNavigationBarHidden:YES];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

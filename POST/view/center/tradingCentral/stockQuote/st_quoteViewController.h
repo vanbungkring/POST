@@ -15,5 +15,6 @@
 	UIView *popupView;
 	UIView *top_border;
 	UILabel *stock_accronim;
+	UILabel *stock_volume;
 }
 @end

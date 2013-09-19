@@ -7,7 +7,7 @@
 //
 
 #import "companiesViewController.h"
-
+#import "comapanyCell.h"
 @interface companiesViewController ()
 
 @end
@@ -19,12 +19,61 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-		self.view.backgroundColor = [UIColor colorWithRed:0.188 green:0.216 blue:0.255 alpha:1];
+		self.view.backgroundColor = [UIColor colorWithRed:0.204 green:0.247 blue:0.275 alpha:1];
 		
-		buffer =[[NSMutableArray alloc]init];
+		buffer = [[NSMutableArray alloc]init];
+		clean_data = [[NSMutableArray alloc]init];
+		table = [[UITableView alloc]init];
+		table.frame= CGRectMake(10, 10, 1004, 608);
+		table.delegate = self;
+		table.dataSource = self;
+		
+		table.separatorColor = [UIColor colorWithRed:0.161 green:0.18 blue:0.216 alpha:1];
+		//stockQ.userInteractionEnabled=false;
+		table.backgroundColor = [UIColor colorWithRed:0.059 green:0.071 blue:0.09 alpha:1];
+		
+		[self.view addSubview:table];
     }
     return self;
 }
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+	UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1004, 25)];
+	UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 1004, 25)];
+	[imageView setImage:[UIImage imageNamed:@"cp_header"]];
+	[headerView addSubview:imageView];
+	
+	return headerView;
+	
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+	return 25;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	
+	return [clean_data count];
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	comapanyCell *cell = [[comapanyCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cex"];
+	
+	if(cell == nil){
+		cell = [[comapanyCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cex"];
+	}
+	
+	//cell.textLabel.textColor  = [UIColor whiteColor];
+	NSLog(@"---->%@",[clean_data objectAtIndex:1]);
+	cell.no.text = [NSString stringWithFormat:@"%d",indexPath.row];
+	cell.code.text = [NSString stringWithFormat:@"%@ - %@",[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[1]"],[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[2]"]];
+	cell.cp_name.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[3]"];
+	cell.prev.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[4]"];
+	cell.sb_sc.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[6]"];
+	cell.mk_cp.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[10]"];
+	return cell;
+}
+
 
 - (void)viewDidLoad
 {
@@ -64,7 +113,30 @@
 		NSArray *testArray = [buffers componentsSeparatedByString:@"]}"];
 		//NSArray *testArrays = [testArray componentsSeparatedByString:@"]}"];
 		buffer = [NSMutableArray arrayWithArray:testArray];
-		[self digg];
+		NSMutableArray *stringArray =[[NSMutableArray alloc]init];
+		for (int i=0; i<buffer.count; i++) {
+			NSString *first=[[buffer objectAtIndex:i] stringByReplacingOccurrencesOfString:@"{" withString:@""];
+			NSString *second = [first stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+			NSString *third = [second stringByReplacingOccurrencesOfString:@"data:[" withString:@""];
+			NSString *fourth = [third stringByReplacingOccurrencesOfString:@"id:" withString:@""];
+			
+			NSArray *separate =[fourth componentsSeparatedByString:@","];
+			NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+			for (int i = 0; i<[separate count]; i++) {
+				[dic setValue:[separate objectAtIndex:i] forKey:[NSString stringWithFormat:@"id[%d]", i]];
+				[stringArray addObject:dic];
+				
+			}
+			if (![clean_data containsObject:dic]) {
+                [clean_data addObject:dic];
+				
+				
+            }
+
+			[table reloadData];
+						
+		}
+		
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		NSLog(@"Error: %@", error);
 	}];
@@ -73,16 +145,4 @@
 	
 }
 
--(void)digg{
-	for (int i=0; i<buffer.count; i++) {
-		NSString *first=[[buffer objectAtIndex:i] stringByReplacingOccurrencesOfString:@"{" withString:@""];
-		NSString *second = [first stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-		NSString *third = [second stringByReplacingOccurrencesOfString:@"data:[" withString:@""];
-		NSString *fourth = [third stringByReplacingOccurrencesOfString:@"id:" withString:@""];
-		
-		NSLog(@"sekarang %d---->%@",i,fourth);
-	}
-	
-	
-	}
 @end
