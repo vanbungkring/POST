@@ -19,6 +19,7 @@
 #import "POST_AppDelegate.h"
 #import "CoreData+MagicalRecord.h"
 #import "ASDepthModalViewController.h"
+
 #import "netra.h"
 #define vanbungkring ((POST_AppDelegate *)[[UIApplication sharedApplication] delegate])
 #endif

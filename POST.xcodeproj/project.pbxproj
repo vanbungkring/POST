@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D02A4DA917EA880100BB7CCD /* comapanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A4DA817EA880000BB7CCD /* comapanyCell.m */; };
+		D02A4DAB17EA892000BB7CCD /* cp_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D02A4DAA17EA892000BB7CCD /* cp_header@2x.png */; };
 		D040F3F417E8DEE30017A174 /* stockInit.m in Sources */ = {isa = PBXBuildFile; fileRef = D040F3F317E8DEE30017A174 /* stockInit.m */; };
 		D040F3F717E8DF6C0017A174 /* brokerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D040F3F617E8DF6C0017A174 /* brokerCell.m */; };
 		D040F3F917E8E1500017A174 /* bq_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D040F3F817E8E1500017A174 /* bq_header@2x.png */; };
+		D040F3FB17E982960017A174 /* details@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D040F3FA17E982960017A174 /* details@2x.png */; };
 		D07FA5C417E3F488000FE15E /* navbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07FA5C317E3F488000FE15E /* navbar@2x.png */; };
 		D07FA5C817E45713000FE15E /* liveTradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07FA5C717E45713000FE15E /* liveTradeCell.m */; };
 		D07FA5CA17E457E5000FE15E /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07FA5C917E457E5000FE15E /* main_bg@2x.png */; };
@@ -60,6 +63,10 @@
 		D096F6C017E8B80400ADB9F9 /* orderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D096F6BF17E8B80400ADB9F9 /* orderListViewController.m */; };
 		D096F6C317E8BA8C00ADB9F9 /* sqCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D096F6C217E8BA8C00ADB9F9 /* sqCell.m */; };
 		D09EA39E17E75FDB00DD22CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09EA39D17E75FDB00DD22CB /* LoginViewController.m */; };
+		D0AA8A4517EB280200FB2497 /* login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AA8A4417EB280200FB2497 /* login@2x.png */; };
+		D0AA8A4717EB2B0800FB2497 /* tf@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AA8A4617EB2B0800FB2497 /* tf@2x.png */; };
+		D0AA8A4917EB2C8700FB2497 /* sign_in@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AA8A4817EB2C8700FB2497 /* sign_in@2x.png */; };
+		D0AA8A4B17EB2FFB00FB2497 /* sign_in_p@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0AA8A4A17EB2FFB00FB2497 /* sign_in_p@2x.png */; };
 		D0C1E1F117E34815003333A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C1E1F017E34815003333A5 /* UIKit.framework */; };
 		D0C1E1F317E34815003333A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C1E1F217E34815003333A5 /* Foundation.framework */; };
 		D0C1E1F517E34815003333A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0C1E1F417E34815003333A5 /* CoreGraphics.framework */; };
@@ -104,11 +111,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D02A4DA717EA880000BB7CCD /* comapanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comapanyCell.h; sourceTree = "<group>"; };
+		D02A4DA817EA880000BB7CCD /* comapanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = comapanyCell.m; sourceTree = "<group>"; };
+		D02A4DAA17EA892000BB7CCD /* cp_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cp_header@2x.png"; sourceTree = "<group>"; };
 		D040F3F217E8DEE30017A174 /* stockInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stockInit.h; sourceTree = "<group>"; };
 		D040F3F317E8DEE30017A174 /* stockInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = stockInit.m; sourceTree = "<group>"; };
 		D040F3F517E8DF6C0017A174 /* brokerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brokerCell.h; sourceTree = "<group>"; };
 		D040F3F617E8DF6C0017A174 /* brokerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = brokerCell.m; sourceTree = "<group>"; };
 		D040F3F817E8E1500017A174 /* bq_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bq_header@2x.png"; sourceTree = "<group>"; };
+		D040F3FA17E982960017A174 /* details@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "details@2x.png"; sourceTree = "<group>"; };
 		D07FA5C317E3F488000FE15E /* navbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar@2x.png"; sourceTree = "<group>"; };
 		D07FA5C617E45713000FE15E /* liveTradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = liveTradeCell.h; sourceTree = "<group>"; };
 		D07FA5C717E45713000FE15E /* liveTradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = liveTradeCell.m; sourceTree = "<group>"; };
@@ -197,6 +208,10 @@
 		D096F6C217E8BA8C00ADB9F9 /* sqCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sqCell.m; sourceTree = "<group>"; };
 		D09EA39C17E75FDB00DD22CB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D09EA39D17E75FDB00DD22CB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		D0AA8A4417EB280200FB2497 /* login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login@2x.png"; sourceTree = "<group>"; };
+		D0AA8A4617EB2B0800FB2497 /* tf@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tf@2x.png"; sourceTree = "<group>"; };
+		D0AA8A4817EB2C8700FB2497 /* sign_in@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sign_in@2x.png"; sourceTree = "<group>"; };
+		D0AA8A4A17EB2FFB00FB2497 /* sign_in_p@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sign_in_p@2x.png"; sourceTree = "<group>"; };
 		D0C1E1ED17E34815003333A5 /* POST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C1E1F017E34815003333A5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D0C1E1F217E34815003333A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -560,15 +575,21 @@
 		D0C1E21017E34C31003333A5 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				D02A4DAA17EA892000BB7CCD /* cp_header@2x.png */,
+				D040F3FA17E982960017A174 /* details@2x.png */,
 				D040F3F817E8E1500017A174 /* bq_header@2x.png */,
 				D07FA63E17E5F69A000FE15E /* sq_header@2x.png */,
+				D0AA8A4817EB2C8700FB2497 /* sign_in@2x.png */,
 				D07FA5CB17E45AB6000FE15E /* livetrade_head@2x.png */,
 				D07FA5DB17E57CC4000FE15E /* livetrade_head_table@2x.png */,
 				D07FA5CD17E4737D000FE15E /* table_s@2x.png */,
 				D07FA5D517E54D50000FE15E /* buy@2x.png */,
 				D07FA5D317E54A95000FE15E /* sell@2x.png */,
+				D0AA8A4417EB280200FB2497 /* login@2x.png */,
 				D07FA5D717E5610E000FE15E /* buy_@2x.png */,
 				D07FA5D817E5610E000FE15E /* sell_@2x.png */,
+				D0AA8A4617EB2B0800FB2497 /* tf@2x.png */,
+				D0AA8A4A17EB2FFB00FB2497 /* sign_in_p@2x.png */,
 				D07FA5D117E4A9F6000FE15E /* livetrade_right@2x.png */,
 				D07FA5CF17E47542000FE15E /* right@2x.png */,
 				D07FA5C917E457E5000FE15E /* main_bg@2x.png */,
@@ -679,6 +700,8 @@
 			children = (
 				D0C1E27117E34F61003333A5 /* companiesViewController.h */,
 				D0C1E27217E34F61003333A5 /* companiesViewController.m */,
+				D02A4DA717EA880000BB7CCD /* comapanyCell.h */,
+				D02A4DA817EA880000BB7CCD /* comapanyCell.m */,
 			);
 			path = companies;
 			sourceTree = "<group>";
@@ -878,6 +901,12 @@
 				D07FA5DC17E57CC4000FE15E /* livetrade_head_table@2x.png in Resources */,
 				D07FA63F17E5F69A000FE15E /* sq_header@2x.png in Resources */,
 				D040F3F917E8E1500017A174 /* bq_header@2x.png in Resources */,
+				D040F3FB17E982960017A174 /* details@2x.png in Resources */,
+				D02A4DAB17EA892000BB7CCD /* cp_header@2x.png in Resources */,
+				D0AA8A4517EB280200FB2497 /* login@2x.png in Resources */,
+				D0AA8A4717EB2B0800FB2497 /* tf@2x.png in Resources */,
+				D0AA8A4917EB2C8700FB2497 /* sign_in@2x.png in Resources */,
+				D0AA8A4B17EB2FFB00FB2497 /* sign_in_p@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -952,6 +981,7 @@
 				D096F6C317E8BA8C00ADB9F9 /* sqCell.m in Sources */,
 				D040F3F417E8DEE30017A174 /* stockInit.m in Sources */,
 				D040F3F717E8DF6C0017A174 /* brokerCell.m in Sources */,
+				D02A4DA917EA880100BB7CCD /* comapanyCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

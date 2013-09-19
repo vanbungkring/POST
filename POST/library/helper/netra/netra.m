@@ -31,6 +31,11 @@ static netra *sharedObject;
     shared.sessionString = session;
 }
 
+//+(id)getcity{
+	
+	//return getcity;
+
+//}
 /////get stock init
 
 

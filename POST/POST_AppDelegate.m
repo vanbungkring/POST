@@ -31,8 +31,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	[[UINavigationBar appearance]setShadowImage:[[UIImage alloc] init]];
 	_drawerController = [[MMDrawerController alloc] init];
-	[self setCenter:@"" name:@"Live Trade"];
-	[_drawerController setLeftDrawerViewController:_left];
+	[self setCenter:@"LoginViewController" name:@"Live Trade"];
+
     [_drawerController setRestorationIdentifier:@"netra"];
     [_drawerController setMaximumRightDrawerWidth:200.0];
     [_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
@@ -47,7 +47,9 @@
     return YES;
 	
 }
+
 -(void)setCenter:(NSString *)center name:(NSString*)name{
+	NSLog(@"center-->%@",center);
 	navLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 300, 22)];
 	navLabel.backgroundColor = [UIColor clearColor];
 	navLabel.textColor = [UIColor whiteColor];
@@ -56,18 +58,28 @@
 
 	
 	if ([center isEqualToString:@""]) {
+			[_drawerController setLeftDrawerViewController:_left];
 		_nav=[[UINavigationController alloc]initWithRootViewController:_liveTradeViewController];
 		[self.drawerController setCenterViewController:_nav withCloseAnimation:YES completion:nil];
 		self.lastController = @"liveTradeViewController";
 	}
 	else if([center isEqualToString:self.lastController]){
 		
-		[self.drawerController closeDrawerAnimated:YES completion:nil];
+		[_drawerController closeDrawerAnimated:YES completion:nil];
+			[_drawerController setLeftDrawerViewController:_left];
 	}
 	else{
 		_nav=[[UINavigationController alloc]initWithRootViewController:[[NSClassFromString(center) alloc]init]];
-		[self.drawerController setCenterViewController:_nav withCloseAnimation:YES completion:nil];
-		self.lastController = center;
+		if( [center isEqualToString:@"LoginViewController"]){
+			[_drawerController setCenterViewController:_nav withCloseAnimation:YES completion:nil];
+			[_drawerController setLeftDrawerViewController:nil];
+		}
+		else{
+			[_drawerController setCenterViewController:_nav withCloseAnimation:YES completion:nil];
+			self.lastController = center;
+				[_drawerController setLeftDrawerViewController:_left];
+		}
+		
 	}
 
 		
@@ -149,6 +161,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+	
 	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
