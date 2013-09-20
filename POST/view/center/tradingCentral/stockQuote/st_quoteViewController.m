@@ -212,24 +212,27 @@
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
 							@"dataStream", @"request",
 							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.2/"]];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
 	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
 															path:@"mi2/marketInfoData?"
 													  parameters:params];
 	
 	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
 	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
-	
+	[httpClient setDefaultHeader:@"Accept" value:@"text/plain"];
+	[request setTimeoutInterval:2];
 	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
 	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
 	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
 		// Print the response body in text
 		NSLog(@"----------->%@",operation.responseString);
-		[self stream];
+		[self performSelector:@selector(stream) withObject:nil afterDelay:2];
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		NSLog(@"Error: %@", error);
+		[self performSelector:@selector(stream) withObject:nil afterDelay:2];
 	}];
-	[operation start];}
+	[operation start];
+}
 
 
 @end

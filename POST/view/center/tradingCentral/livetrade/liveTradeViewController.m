@@ -130,9 +130,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+	
+	[self initLiveTrade:@"start"];
 	//[self initnavbar];
-	[self callLiveThread];
-	[self login];
+	//[self callLiveThread];
+	//[self login];
 	// Do any additional setup after loading the view.
 }
 -(void)buy{
@@ -246,58 +248,82 @@
 	}
 }
 
--(void)login{
+-(void)initLiveTrade:(NSString*)act{
+		
+		NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+								@"runningTrade", @"request",
+								act, @"act",
+								nil];
+		AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
+		NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+																path:@"mi2/marketInfoData?"
+														  parameters:params];
+	 
+		//[request setTimeoutInterval:];
+		
+		[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+		[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
+		
+		AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+		[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+		
+		[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+			// Print the response body in text
+			
+			NSLog(@"initLiveTrade ----------->%@",operation.responseString);
+			if(operation.responseString==(NSString*) [NSNull null] || [operation.responseString length]==0 || [operation.responseString isEqualToString:@""]){
+				NSLog(@"Siap Siap stream");
+				[self liveTradeStream];
+			}
+			else{
+				//[self stream];
+				NSLog(@"gak bisa stream");
+				
+			}
+		} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+			NSLog(@"Error: %@", error);
 	
+		}];
+		[operation start];
+}
+
+-(void)liveTradeStream{
+	NSLog(@"dataSStream di panggil");
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"login", @"request",
-							@"jimmy_it", @"user",
-							@"031171", @"password",
+							@"dataStream", @"request",
 							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.2/"]];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
+	
 	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
 															path:@"mi2/marketInfoData?"
 													  parameters:params];
+	
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
 	
 	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
 	
 	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
 	
-	[request setHTTPShouldHandleCookies:YES];
-	
 	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
 		// Print the response body in text
 		
-		NSLog(@"--------->%@",[netra getSessionActive]);
+		NSLog(@"----------->%@",operation.responseString);
+		[self liveTradeStream];
+		//[self stream];
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		
 		NSLog(@"Error: %@", error);
+		[self liveTradeStream];
 	}];
 	[operation start];
+
 }
 
--(void)fetchData{
-	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"login", @"request",
-							@"jimmy_it", @"user",
-							@"031171", @"password",
-							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
-	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
-															path:@"mi2/marketInfoData?"
-													  parameters:params];
-	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
-	[AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
-	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id responseObject) {
-		NSLog(@"responseObject->%@",responseObject);
+-(void)initSimpleCompleteBook{
 
-    }failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-		NSLog(@"error %@",error);
-    }];
-    
-	// self.filteredArray = [NSMutableArray arrayWithCapacity:netrax.count];
-	
-    [operation start];
-	
+}
+
+-(void)streamCompleteBook{
+
 }
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 

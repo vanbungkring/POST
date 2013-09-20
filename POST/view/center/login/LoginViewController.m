@@ -22,18 +22,19 @@
 		//self.view.backgroundColor = [UIColor colorWithRed:0.141 green:0.196 blue:0.231 alpha:1];
 		self.view.backgroundColor = [UIColor colorWithRed:0.204 green:0.247 blue:0.275 alpha:1];
 		
-		login_container =[[UIView alloc]initWithFrame:CGRectMake(512-150, 100, 300, 300)];
-		login_container.backgroundColor = [UIColor colorWithRed:0.255 green:0.322 blue:0.353 alpha:1];
-		login_container.layer.cornerRadius =10;
+		login_container =[[UIView alloc]initWithFrame:CGRectMake(30, 100, 500, 300)];
+		//login_container.backgroundColor = [UIColor colorWithRed:0.255 green:0.322 blue:0.353 alpha:1];
+		//login_container.layer.cornerRadius =10;
 		// drop shadow
+		/*
 		[login_container.layer setShadowColor:[UIColor blackColor].CGColor];
 		[login_container.layer setShadowOpacity:0.5];
 		[login_container.layer setShadowRadius:10.0];
 		[login_container.layer setShadowOffset:CGSizeMake(1, 1.0)];
-		
+		*/
 		//UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 20)];
 		
-		userName =[[UITextField alloc]initWithFrame:CGRectMake(10, 100, 280, 44)];
+		userName =[[UITextField alloc]initWithFrame:CGRectMake(10, 90, 480, 44)];
 		userName.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16];
 		userName.placeholder = @"Username";
 		userName.tag=1;
@@ -41,9 +42,9 @@
 		userName.clearButtonMode = UITextFieldViewModeWhileEditing;
 		userName.returnKeyType = UIReturnKeyNext;
 		userName.layer.sublayerTransform = CATransform3DMakeTranslation(20, 10, 0);
-		userName.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tf"]];
+		userName.backgroundColor = [UIColor whiteColor];
 		
-		passWord =[[UITextField alloc]initWithFrame:CGRectMake(10, 150, 280, 44)];
+		passWord =[[UITextField alloc]initWithFrame:CGRectMake(10, 150, 480, 44)];
 		passWord.layer.sublayerTransform = CATransform3DMakeTranslation(20, 10, 0);
 		passWord.returnKeyType = UIReturnKeyDone;
 		passWord.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16];
@@ -51,7 +52,7 @@
 		passWord.tag = 2;
 		passWord.delegate = self;
 		passWord.secureTextEntry = YES;
-		passWord.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tf"]];
+		passWord.backgroundColor = [UIColor whiteColor];
 		
 		sign_in =[UIButton buttonWithType:UIButtonTypeCustom];
 		sign_in.frame = CGRectMake(10, 210, 280, 44);
@@ -86,12 +87,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+	userName.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tf"]];
+	passWord.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tf"]];
+	return YES;
+}
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
     if (theTextField.tag ==1) {
+		userName.backgroundColor = [UIColor whiteColor];
         [userName resignFirstResponder];
 		[passWord becomeFirstResponder];
     }
 	else{
+		passWord.backgroundColor = [UIColor whiteColor];
 		[passWord resignFirstResponder];
 	}
     return YES;
@@ -123,7 +131,7 @@
 							userName.text, @"user",
 							passWord.text, @"password",
 							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.2/"]];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
 	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
 															path:@"mi2/marketInfoData?"
 													  parameters:params];
@@ -166,30 +174,5 @@
 	}];
 	[operation start];
 }
-/*
--(void)fetchData{
-	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"login", @"request",
-							@"jimmy_it", @"user",
-							@"031171", @"password",
-							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
-	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
-															path:@"mi2/marketInfoData?"
-													  parameters:params];
-	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
-	[AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
-	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id responseObject) {
-		NSLog(@"responseObject->%@",responseObject);
-		
-    }failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-		NSLog(@"error %@",error);
-    }];
-    
-	// self.filteredArray = [NSMutableArray arrayWithCapacity:netrax.count];
-	
-    [operation start];
-	
-}
-*/
+
 @end

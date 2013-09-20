@@ -108,6 +108,11 @@
 		D0C1E28417E3727B003333A5 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0C1E27F17E3727B003333A5 /* OpenSans-Light.ttf */; };
 		D0C1E28517E3727B003333A5 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0C1E28017E3727B003333A5 /* OpenSans-Regular.ttf */; };
 		D0C1E28617E3727B003333A5 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0C1E28117E3727B003333A5 /* OpenSans-Semibold.ttf */; };
+		D0FAF5AE17EC016F001F813D /* Panin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0FAF5AC17EC016F001F813D /* Panin.xcdatamodeld */; };
+		D0FAF5B417EC01DA001F813D /* StockWatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FAF5B317EC01DA001F813D /* StockWatch.m */; };
+		D0FAF5B717EC01DB001F813D /* StockInit.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FAF5B617EC01DA001F813D /* StockInit.m */; };
+		D0FAF5BA17EC01DB001F813D /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FAF5B917EC01DB001F813D /* Configuration.m */; };
+		D0FAF5BD17EC01DB001F813D /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FAF5BC17EC01DB001F813D /* Server.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -283,6 +288,15 @@
 		D0C1E27F17E3727B003333A5 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		D0C1E28017E3727B003333A5 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		D0C1E28117E3727B003333A5 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		D0FAF5AD17EC016F001F813D /* Panin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Panin.xcdatamodel; sourceTree = "<group>"; };
+		D0FAF5B217EC01DA001F813D /* StockWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockWatch.h; sourceTree = "<group>"; };
+		D0FAF5B317EC01DA001F813D /* StockWatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockWatch.m; sourceTree = "<group>"; };
+		D0FAF5B517EC01DA001F813D /* StockInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockInit.h; sourceTree = "<group>"; };
+		D0FAF5B617EC01DA001F813D /* StockInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockInit.m; sourceTree = "<group>"; };
+		D0FAF5B817EC01DB001F813D /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
+		D0FAF5B917EC01DB001F813D /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
+		D0FAF5BB17EC01DB001F813D /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
+		D0FAF5BC17EC01DB001F813D /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +320,7 @@
 		D040F3F017E8DEAB0017A174 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				D0FAF5AB17EC0163001F813D /* panin */,
 				D040F3F117E8DED20017A174 /* stockInit */,
 			);
 			path = model;
@@ -826,6 +841,22 @@
 			path = font;
 			sourceTree = "<group>";
 		};
+		D0FAF5AB17EC0163001F813D /* panin */ = {
+			isa = PBXGroup;
+			children = (
+				D0FAF5AC17EC016F001F813D /* Panin.xcdatamodeld */,
+				D0FAF5B517EC01DA001F813D /* StockInit.h */,
+				D0FAF5B617EC01DA001F813D /* StockInit.m */,
+				D0FAF5BB17EC01DB001F813D /* Server.h */,
+				D0FAF5BC17EC01DB001F813D /* Server.m */,
+				D0FAF5B817EC01DB001F813D /* Configuration.h */,
+				D0FAF5B917EC01DB001F813D /* Configuration.m */,
+				D0FAF5B217EC01DA001F813D /* StockWatch.h */,
+				D0FAF5B317EC01DA001F813D /* StockWatch.m */,
+			);
+			path = panin;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -982,6 +1013,11 @@
 				D040F3F417E8DEE30017A174 /* stockInit.m in Sources */,
 				D040F3F717E8DF6C0017A174 /* brokerCell.m in Sources */,
 				D02A4DA917EA880100BB7CCD /* comapanyCell.m in Sources */,
+				D0FAF5AE17EC016F001F813D /* Panin.xcdatamodeld in Sources */,
+				D0FAF5B417EC01DA001F813D /* StockWatch.m in Sources */,
+				D0FAF5B717EC01DB001F813D /* StockInit.m in Sources */,
+				D0FAF5BA17EC01DB001F813D /* Configuration.m in Sources */,
+				D0FAF5BD17EC01DB001F813D /* Server.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1101,6 +1137,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D0FAF5AC17EC016F001F813D /* Panin.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D0FAF5AD17EC016F001F813D /* Panin.xcdatamodel */,
+			);
+			currentVersion = D0FAF5AD17EC016F001F813D /* Panin.xcdatamodel */;
+			path = Panin.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D0C1E1E517E34815003333A5 /* Project object */;
 }
