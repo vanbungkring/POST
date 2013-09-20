@@ -187,5 +187,7 @@
     }
     return nil;
 }
-
+-(void)logOut{
+	[self setCenter:@"LoginViewController" name:@"Live Trade"];
+}
 @end

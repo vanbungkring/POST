@@ -26,4 +26,5 @@
 @property (strong, nonatomic) NSString *lastController;
 
 -(void)setCenter:(NSString *)center name:(NSString*)name;
+-(void)logOut;
 @end

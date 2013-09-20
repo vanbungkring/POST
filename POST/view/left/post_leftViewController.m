@@ -129,12 +129,19 @@
 			[vanbungkring setCenter:[akun_c objectAtIndex:indexPath.row] name:[akun objectAtIndex:indexPath.row]];
 			break;
 		default:
-			[vanbungkring setCenter:[information_c objectAtIndex:indexPath.row] name:[information objectAtIndex:indexPath.row]];
+			if([[information_c objectAtIndex:indexPath.row] isEqualToString:@"Logout"]){
+				NSLog(@"Logout");
+				[vanbungkring logOut];
+			}
+			else{
+				[vanbungkring setCenter:[information_c objectAtIndex:indexPath.row] name:[information objectAtIndex:indexPath.row]];
+			}
 			break;
 	}
 	
 	
 }
+
 
 - (void)viewDidLoad
 {

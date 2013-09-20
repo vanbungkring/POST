@@ -260,10 +260,13 @@
 														  parameters:params];
 	 
 		//[request setTimeoutInterval:];
+	
 		
 		[httpClient setParameterEncoding:AFFormURLParameterEncoding];
 		[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
 		
+	NSLog(@"reqest--->%@",request);
+	NSLog(@"reqest--->%@",httpClient);
 		AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
 		[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
 		
@@ -297,25 +300,27 @@
 	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
 															path:@"mi2/marketInfoData?"
 													  parameters:params];
+	NSLog(@"reqest--->%@",request);
+	NSLog(@"reqest--->%@",httpClient);
+	
 	
 	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
 	
+	NSLog(@"reqest--->%@",request);
+	NSLog(@"reqest--->%@",httpClient);
 	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-	
 	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
 	
 	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
 		// Print the response body in text
 		
-		NSLog(@"----------->%@",operation.responseString);
-		[self liveTradeStream];
-		//[self stream];
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"initLiveTrade ----------->%@",operation.responseString);
+			} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		NSLog(@"Error: %@", error);
-		[self liveTradeStream];
+		
 	}];
 	[operation start];
-
 }
 
 -(void)initSimpleCompleteBook{

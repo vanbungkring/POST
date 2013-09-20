@@ -16,5 +16,4 @@
 +(NSString *) getSessionActive;
 +(void) setSessionId:(NSString *)session; ///set session string
 +(void)fetchData;
-+(id)getcity;
 @end

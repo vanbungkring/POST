@@ -232,6 +232,7 @@
 		[self performSelector:@selector(stream) withObject:nil afterDelay:2];
 	}];
 	[operation start];
+	
 }
 
 
