@@ -14,7 +14,7 @@
 @synthesize liveTradeViewController = _liveTradeViewController;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 		
 	[MagicalRecord setupCoreDataStackWithStoreNamed:@"MyDatabase.sqlite"];
 	//set cache url
@@ -31,16 +31,15 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	[[UINavigationBar appearance]setShadowImage:[[UIImage alloc] init]];
 	_drawerController = [[MMDrawerController alloc] init];
-	[self setCenter:@"LoginViewController" name:@"Live Trade"];
+	[self setCenter:@"" name:@"Live Trade"];
 
     [_drawerController setRestorationIdentifier:@"netra"];
     [_drawerController setMaximumRightDrawerWidth:200.0];
     [_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-	
     [_drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
 	[_drawerController setShouldStretchDrawer:FALSE];
 	[_drawerController setDrawerVisualStateBlock:[MMDrawerVisualState slideAndScaleVisualStateBlock]];
-	
+	_drawerController.showsShadow = NO;
 	
 	self.window.rootViewController=_drawerController;
     [self.window makeKeyAndVisible];

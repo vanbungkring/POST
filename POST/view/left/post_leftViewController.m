@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-		
+		self.view.backgroundColor = [UIColor blackColor];
 		trading = [NSArray arrayWithObjects: @"Live Trade", @"Stock Watch",@"Stock Quote",@"Broker Rank",@"Complete Book",@"Charts",@"Index",@"Companies",nil];
 		trading_c = [NSArray arrayWithObjects: @"liveTradeViewController", @"st_watchViewController",@"st_quoteViewController",@"brokerRankViewController",@"completeBookViewController",@"chartViewController",@"indexViewController",@"companiesViewController",nil];
 		
@@ -31,9 +31,10 @@
 		information = [NSArray arrayWithObjects: @"Contact Us",@"Research",@"Logout",Nil];
 		information_c = [NSArray arrayWithObjects: @"contactViewController",@"researchViewController",@"Logout",Nil];
 		self.view.backgroundColor=[UIColor blackColor];
-		menu=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 750)];
-		menu.backgroundColor = [UIColor colorWithRed:0.075 green:0.149 blue:0.192 alpha:1];
-		menu.separatorColor  = [UIColor colorWithRed:0.012 green:0.09 blue:0.137 alpha:1];
+		menu=[[UITableView alloc]initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 750)];
+		menu.backgroundColor = [UIColor colorWithRed:0.141 green:0.196 blue:0.251 alpha:1];
+		menu.separatorColor  = [UIColor colorWithRed:0.141 green:0.196 blue:0.251 alpha:1];
+		[menu setSeparatorInset:UIEdgeInsetsZero];
 		menu.dataSource = self;
 		menu.delegate = self;
 		[self.view addSubview:menu];
@@ -50,7 +51,7 @@
    
 
 	view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, menu.frame.size.width, 44)];
-	view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"nav_header"]];
+	view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"navbar"]];
 	
 	section_label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, menu.frame.size.width, 22)];
     [section_label setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14]];
@@ -113,6 +114,9 @@
 			cell.text.text=[information objectAtIndex:indexPath.row];
 			break;
 	}
+	UIView *myBackView = [[UIView alloc] initWithFrame:cell.frame];
+	myBackView.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
+	cell.selectedBackgroundView = myBackView;
 	return cell;
 }
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

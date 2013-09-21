@@ -46,7 +46,7 @@
 		
 		//[popupView addSubview:top_border];
 		
-		self.view.backgroundColor = [UIColor colorWithRed:0.188 green:0.216 blue:0.255 alpha:1];
+		self.view.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
 		
 		stockQ = [[UITableView alloc]init];
 		stockQ.frame= CGRectMake(10, 10, 1004, 608);

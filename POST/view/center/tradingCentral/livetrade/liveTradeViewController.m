@@ -24,7 +24,7 @@
 		popupView.backgroundColor=[UIColor whiteColor];
 
         // Custom initialization
-		self.view.backgroundColor = [UIColor colorWithRed:0.204 green:0.247 blue:0.275 alpha:1];
+		self.view.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
 		//self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"main_bg"]];
 		/* running thread 1 */
 		liveTrade = [[UITableView alloc]initWithFrame:CGRectMake(10, 10, 490, 595)];
