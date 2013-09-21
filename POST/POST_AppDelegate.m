@@ -31,7 +31,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	[[UINavigationBar appearance]setShadowImage:[[UIImage alloc] init]];
 	_drawerController = [[MMDrawerController alloc] init];
-	[self setCenter:@"" name:@"Live Trade"];
+	[self setCenter:@"LoginViewController" name:@"Live Trade"];
 
     [_drawerController setRestorationIdentifier:@"netra"];
     [_drawerController setMaximumRightDrawerWidth:200.0];
@@ -136,6 +136,41 @@
 	[_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 -(void)buy{
+	
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"stockQuote", @"request",
+							@"start", @"act",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	
+	//[request setTimeoutInterval:];
+	
+	
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		// Print the response body in text
+		
+		if(operation.responseString==(NSString*) [NSNull null] || [operation.responseString length]==0 || [operation.responseString isEqualToString:@""]){
+			NSLog(@"Siap Siap stream");
+		}
+		else{
+			//[self stream];
+			NSLog(@"gak bisa stream");
+			
+		}
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+		
+	}];
+	[operation start];
 	
 }
 -(void)sell{

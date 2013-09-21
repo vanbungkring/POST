@@ -19,7 +19,8 @@
 #import "POST_AppDelegate.h"
 #import "CoreData+MagicalRecord.h"
 #import "ASDepthModalViewController.h"
-
+#import "PaninStreamer.h"
 #import "netra.h"
 #define vanbungkring ((POST_AppDelegate *)[[UIApplication sharedApplication] delegate])
+#define streamer [PaninStreammer alloc]initWithTarget:self]
 #endif

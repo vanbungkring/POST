@@ -27,4 +27,5 @@
 
 -(void)setCenter:(NSString *)center name:(NSString*)name;
 -(void)logOut;
+-(void)buy;
 @end

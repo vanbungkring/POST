@@ -153,6 +153,7 @@
 			}
 			[netra setSessionId:[xxx objectAtIndex:0]];
 			[vanbungkring setCenter:@"" name:@"Live Trade"];
+			
 		}
 		else{
 			UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error!"
