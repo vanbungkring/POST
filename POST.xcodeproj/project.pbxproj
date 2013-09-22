@@ -15,6 +15,7 @@
 		D040F3FB17E982960017A174 /* details@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D040F3FA17E982960017A174 /* details@2x.png */; };
 		D041468F17EE0E5500DE2E31 /* PaninStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = D041468E17EE0E5500DE2E31 /* PaninStreamer.m */; };
 		D041469317EEA40C00DE2E31 /* Company_fetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D041469217EEA40C00DE2E31 /* Company_fetcher.m */; };
+		D041469617EEA43200DE2E31 /* Streamer.m in Sources */ = {isa = PBXBuildFile; fileRef = D041469517EEA43200DE2E31 /* Streamer.m */; };
 		D07FA5C417E3F488000FE15E /* navbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07FA5C317E3F488000FE15E /* navbar@2x.png */; };
 		D07FA5C817E45713000FE15E /* liveTradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07FA5C717E45713000FE15E /* liveTradeCell.m */; };
 		D07FA5CA17E457E5000FE15E /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07FA5C917E457E5000FE15E /* main_bg@2x.png */; };
@@ -131,6 +132,8 @@
 		D041468E17EE0E5500DE2E31 /* PaninStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaninStreamer.m; sourceTree = "<group>"; };
 		D041469117EEA40C00DE2E31 /* Company_fetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company_fetcher.h; sourceTree = "<group>"; };
 		D041469217EEA40C00DE2E31 /* Company_fetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company_fetcher.m; sourceTree = "<group>"; };
+		D041469417EEA43200DE2E31 /* Streamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Streamer.h; sourceTree = "<group>"; };
+		D041469517EEA43200DE2E31 /* Streamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Streamer.m; sourceTree = "<group>"; };
 		D07FA5C317E3F488000FE15E /* navbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar@2x.png"; sourceTree = "<group>"; };
 		D07FA5C617E45713000FE15E /* liveTradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = liveTradeCell.h; sourceTree = "<group>"; };
 		D07FA5C717E45713000FE15E /* liveTradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = liveTradeCell.m; sourceTree = "<group>"; };
@@ -346,6 +349,8 @@
 			children = (
 				D041468D17EE0E5500DE2E31 /* PaninStreamer.h */,
 				D041468E17EE0E5500DE2E31 /* PaninStreamer.m */,
+				D041469417EEA43200DE2E31 /* Streamer.h */,
+				D041469517EEA43200DE2E31 /* Streamer.m */,
 			);
 			path = streamer;
 			sourceTree = "<group>";
@@ -976,6 +981,7 @@
 			files = (
 				D0C1E1FD17E34815003333A5 /* main.m in Sources */,
 				D0C1E20117E34815003333A5 /* POST_AppDelegate.m in Sources */,
+				D041469617EEA43200DE2E31 /* Streamer.m in Sources */,
 				D0C1E21717E34C4B003333A5 /* post_leftViewController.m in Sources */,
 				D0C1E22217E34C5D003333A5 /* MMDrawerBarButtonItem.m in Sources */,
 				D0C1E22317E34C5D003333A5 /* MMDrawerController.m in Sources */,
