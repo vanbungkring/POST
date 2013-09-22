@@ -11,22 +11,23 @@
 @implementation PaninStreamer
 @synthesize data, target, selector;
 
--(id) initWithTarget:(NSObject*) _target
+static PaninStreamer *sharedObject;
+
++ (PaninStreamer *)sharedInstance
 {
-	if (self = [super init])
-	{
-		self.target = _target;
-	}
-	NSLog(@"123");
-	return self;
+    if (sharedObject == nil) {
+        sharedObject = [[super allocWithZone:NULL] init];
+    }
+    return sharedObject;
 }
 
--(void) StartStream
+
++(void) StartStream
 {
 	NSLog(@"start Stream with session id->%@",[netra getSessionActive]);
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://202.53.249.3/mi2/marketInfoData?request=dataStream"]];
 	[request setValue:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]] forHTTPHeaderField:@"Cookie"];
-	NSURLConnection* connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+	NSURLConnection* connection = [[NSURLConnection alloc]initWithRequest:request delegate:sharedObject];
 	
 	NSLog(@"request-->%@",[request allHTTPHeaderFields]);
 	NSLog(@"request-->%@",request);
@@ -51,7 +52,6 @@
 -(void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
 	NSLog(@"->%@",[error localizedDescription]);
-	[self StartStream];
     // Handle the error properly
 }
 -(void)connectionDidFinishLoading:(NSURLConnection*)connection

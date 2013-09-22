@@ -137,6 +137,14 @@
 }
 -(void)buy{
 	
+	[NSTimer scheduledTimerWithTimeInterval:3
+									 target:self
+								   selector:@selector(sell) // <== see the ':', indicates your function takes an argument
+								   userInfo:nil
+									repeats:YES];
+	
+}
+-(void)sell{
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
 							@"stockQuote", @"request",
 							@"start", @"act",
@@ -171,10 +179,6 @@
 		
 	}];
 	[operation start];
-	
-}
--(void)sell{
-	
 }
 - (void)applicationWillResignActive:(UIApplication *)application
 {

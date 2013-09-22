@@ -161,7 +161,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	[self fetchdata];
 	// Do any additional setup after loading the view.
 }
 
@@ -174,66 +173,5 @@
 
 	
 }
--(void)fetchdata{
-	
-	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"start", @"act",
-							@"runningTrade", @"request",
-							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.2/"]];
-	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
-															path:@"mi2/marketInfoData?"
-													  parameters:params];
-	//[request setTimeoutInterval:];
-	
-	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
-	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
-	
-	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
-	
-	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-		// Print the response body in text
-		NSLog(@"----------->%@",operation);
-		if([operation.responseString isEqualToString:@"msg:\"session timeout\""]){
-			NSLog(@"gak bisa stream");
-		}
-		else{
-			[self stream];
-		}
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		NSLog(@"Error: %@", error);
-	}];
-	[operation start];
-}
--(void)stream{
-	
-	NSLog(@"dataSStream di panggil");
-	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"dataStream", @"request",
-							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
-	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
-															path:@"mi2/marketInfoData?"
-													  parameters:params];
-	
-	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
-	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
-	[httpClient setDefaultHeader:@"Accept" value:@"text/plain"];
-	[request setTimeoutInterval:2];
-	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
-	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-		// Print the response body in text
-		NSLog(@"----------->%@",operation.responseString);
-		[self performSelector:@selector(stream) withObject:nil afterDelay:2];
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		NSLog(@"Error: %@", error);
-		[self performSelector:@selector(stream) withObject:nil afterDelay:2];
-	}];
-	[operation start];
-	
-}
-
 
 @end

@@ -131,8 +131,6 @@
 {
     [super viewWillAppear:YES];
 	
-	PaninStreamer *stream = [[PaninStreamer alloc]initWithTarget:self];
-	[stream StartStream];
 	//[self initLiveTrade:@"start"];
 	//[self initnavbar];
 	//[self callLiveThread];

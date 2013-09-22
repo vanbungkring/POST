@@ -20,7 +20,7 @@
     if (self) {
         // Custom initialization
 		//self.view.backgroundColor = [UIColor colorWithRed:0.141 green:0.196 blue:0.231 alpha:1];
-		self.view.backgroundColor = [UIColor colorWithRed:0.204 green:0.247 blue:0.275 alpha:1];
+		self.view.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
 		
 		login_container =[[UIView alloc]initWithFrame:CGRectMake(30, 100, 500, 300)];
 		//login_container.backgroundColor = [UIColor colorWithRed:0.255 green:0.322 blue:0.353 alpha:1];
@@ -34,18 +34,18 @@
 		*/
 		//UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 20)];
 		
-		userName =[[UITextField alloc]initWithFrame:CGRectMake(10, 90, 480, 44)];
+		userName =[[UITextField alloc]initWithFrame:CGRectMake(10, 90, 300, 44)];
 		userName.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16];
 		userName.placeholder = @"Username";
 		userName.tag=1;
 		userName.delegate = self;
 		userName.clearButtonMode = UITextFieldViewModeWhileEditing;
 		userName.returnKeyType = UIReturnKeyNext;
-		userName.layer.sublayerTransform = CATransform3DMakeTranslation(20, 10, 0);
+		userName.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0);
 		userName.backgroundColor = [UIColor whiteColor];
 		
-		passWord =[[UITextField alloc]initWithFrame:CGRectMake(10, 150, 480, 44)];
-		passWord.layer.sublayerTransform = CATransform3DMakeTranslation(20, 10, 0);
+		passWord =[[UITextField alloc]initWithFrame:CGRectMake(10, 150, 300, 44)];
+		passWord.layer.sublayerTransform = CATransform3DMakeTranslation(20, 0, 0);
 		passWord.returnKeyType = UIReturnKeyDone;
 		passWord.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16];
 		passWord.placeholder = @"Password";
@@ -55,7 +55,7 @@
 		passWord.backgroundColor = [UIColor whiteColor];
 		
 		sign_in =[UIButton buttonWithType:UIButtonTypeCustom];
-		sign_in.frame = CGRectMake(10, 210, 280, 44);
+		sign_in.frame = CGRectMake(10, 210, 300, 44);
 		[sign_in setBackgroundImage:[UIImage imageNamed:@"sign_in"] forState:UIControlStateNormal];
 		[sign_in setBackgroundImage:[UIImage imageNamed:@"sign_in_p"] forState:UIControlStateHighlighted];
 		[sign_in addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
@@ -88,8 +88,8 @@
     // Dispose of any resources that can be recreated.
 }
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-	userName.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tf"]];
-	passWord.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tf"]];
+	//userName.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tf"]];
+	//passWord.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tf"]];
 	return YES;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
@@ -153,6 +153,7 @@
 			}
 			[netra setSessionId:[xxx objectAtIndex:0]];
 			[vanbungkring setCenter:@"" name:@"Live Trade"];
+			[PaninStreamer StartStream];
 			
 		}
 		else{
