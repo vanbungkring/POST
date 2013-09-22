@@ -131,11 +131,6 @@
 {
     [super viewWillAppear:YES];
 	
-	//[self initLiveTrade:@"start"];
-	//[self initnavbar];
-	//[self callLiveThread];
-	//[self login];
-	// Do any additional setup after loading the view.
 }
 -(void)buy{
 	
@@ -155,23 +150,6 @@
 	[self performSelector:@selector(livethread) withObject:Nil afterDelay:1];
 }
 
--(void)livethread{
-	int lowerBound = -1000;
-	int upperBound = 1000;
-	int randNum = lowerBound + arc4random() % (upperBound - lowerBound);
-	
-	NSString *num = [NSString stringWithFormat:@"%d", randNum];
-	[livetrade_data insertObject:num atIndex:0];
-
-	[self performSelector:@selector(reload) withObject:Nil afterDelay:1];
-
-	
-}
--(void)reload{
-	[dataStock reloadData];
-	[liveTrade reloadData];
-	[self callLiveThread];
-}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }

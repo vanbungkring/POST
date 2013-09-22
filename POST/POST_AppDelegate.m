@@ -25,6 +25,8 @@
 	[NSURLCache setSharedURLCache:cache];
 	/* init mainview
 	 */
+	
+	
 	_liveTradeViewController=[[liveTradeViewController alloc]init];
 	_left=[[post_leftViewController alloc]init];
 	
@@ -131,6 +133,12 @@
 
 
 }
+-(void)startS{
+	streamer =[[PaninStreamer alloc]initWithTarget:self];
+	[streamer StartStream];
+
+
+}
 -(void)lefbuttonPush{
 	
 	[_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
@@ -142,6 +150,14 @@
 								   selector:@selector(sell) // <== see the ':', indicates your function takes an argument
 								   userInfo:nil
 									repeats:YES];
+	/*[NSTimer scheduledTimerWithTimeInterval:3
+									 target:self
+								   selector:@selector(bq) // <== see the ':', indicates your function takes an argument
+								   userInfo:nil
+									repeats:YES];
+	 */
+	
+	
 	
 }
 -(void)sell{
@@ -180,6 +196,43 @@
 	}];
 	[operation start];
 }
+-(void)bq{
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"brokerQuote", @"request",
+							@"start", @"act",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	
+	//[request setTimeoutInterval:];
+	
+	
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		// Print the response body in text
+		
+		if(operation.responseString==(NSString*) [NSNull null] || [operation.responseString length]==0 || [operation.responseString isEqualToString:@""]){
+			NSLog(@"Siap Siap stream");
+		}
+		else{
+			//[self stream];
+			NSLog(@"gak bisa stream");
+			
+		}
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+		
+	}];
+	[operation start];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
 	// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

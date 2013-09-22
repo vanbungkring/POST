@@ -8,16 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PaninStreamer : NSObject 
+@interface PaninStreamer : NSObject
 {
 
 	NSMutableData* data;
 	NSObject* target;
 	SEL selector;
 }
-+(PaninStreamer *) sharedInstance;
 @property (nonatomic, retain) NSMutableData* data;
 @property (nonatomic, retain) NSObject* target;
 @property (nonatomic) SEL selector;
-+(void) StartStream;
+-(id) initWithTarget:(NSObject*) target;
+-(void)StartStream;
+-(void)StopStream;
 @end

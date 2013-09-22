@@ -22,7 +22,7 @@
 		self.view.backgroundColor = [UIColor colorWithRed:0.188 green:0.216 blue:0.255 alpha:1];
 		webview =[[UIWebView alloc]initWithFrame:CGRectMake(10, 10, 1004, 680)];
 		webview.delegate = self;
-		NSURL *url = [NSURL URLWithString:@"http://202.53.249.2/mi2/research/research_notes.html"];
+		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/mi2/research/research_notes.html",url]];
 		NSURLRequest *requestURL = [NSURLRequest requestWithURL:url];
 		[webview loadRequest:requestURL];
 		webview.scrollView.bounces = NO;

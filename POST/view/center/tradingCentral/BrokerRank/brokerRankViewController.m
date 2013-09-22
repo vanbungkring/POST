@@ -102,24 +102,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)fetchdata{
-	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"login", @"request",
-							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
-	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
-															path:@"mi2/marketInfoData?"
-													  parameters:params];
-	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
-	[AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
-	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id responseObject) {
-		NSLog(@"responseObject->%@",responseObject);
-		
-    }failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-		NSLog(@"error %@",error);
-    }];
-    
-	// self.filteredArray = [NSMutableArray arrayWithCapacity:netrax.count];
 	
-    [operation start];
+
 }
 @end

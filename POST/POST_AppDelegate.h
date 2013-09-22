@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "post_leftViewController.h"
 #import "liveTradeViewController.h"
-
+#import "PaninStreamer.h"
 @interface POST_AppDelegate : UIResponder <UIApplicationDelegate>
 {
 	UIView *popupView;
 	UILabel *navLabel;
+	PaninStreamer *streamer;
+	
 }
 @property (strong, nonatomic) UIWindow *window;
 
@@ -26,6 +28,7 @@
 @property (strong, nonatomic) NSString *lastController;
 
 -(void)setCenter:(NSString *)center name:(NSString*)name;
+-(void)startS;
 -(void)logOut;
 -(void)buy;
 @end

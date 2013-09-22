@@ -1,5 +1,5 @@
 //
-//  Streamer.h
+//  broker.h
 //  POST
 //
 //  Created by Arie on 9/22/13.
@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Streamer : NSURLConnection
+@interface broker : NSObject
 
++(broker *) sharedInstance;
++(id)broker:(NSString *) stringBroker;
 @end
