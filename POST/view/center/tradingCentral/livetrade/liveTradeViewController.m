@@ -230,10 +230,10 @@
 }
 -(void)liveTradeAssingn{
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"runningTrade", @"request",
+							@"BrokerQuote", @"request",
 							@"start", @"act",
 							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
 	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
 															path:@"mi2/marketInfoData?"
 													  parameters:params];
