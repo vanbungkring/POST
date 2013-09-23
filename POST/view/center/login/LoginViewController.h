@@ -14,6 +14,7 @@
 	UITextField *userName;
 	UITextField *passWord;
 	UIButton *sign_in;
+	UIImageView *logo;
 	
 	
 }

@@ -34,6 +34,9 @@
 		liveTrade.userInteractionEnabled=false;
 		liveTrade.backgroundColor = [UIColor colorWithRed:0.059 green:0.071 blue:0.09 alpha:1];
 		liveTrade.dataSource = self;
+		liveTrade.backgroundColor = [UIColor colorWithRed:0.141 green:0.196 blue:0.251 alpha:1];
+		liveTrade.separatorColor  = [UIColor colorWithRed:0.141 green:0.196 blue:0.251 alpha:1];
+		[liveTrade setSeparatorInset:UIEdgeInsetsZero];
 		[self.view addSubview:liveTrade];
 		
 		///set headerview
@@ -100,7 +103,7 @@
 		stock_vol.backgroundColor = [UIColor clearColor];
 		//stock_accronim.textColor = [UIColor colorWithRed:0.965 green:0.529 blue:0.122 alpha:1];
 		stock_vol.textColor = [UIColor colorWithRed:0.314 green:0.82 blue:0.133 alpha:1];
-		
+			clean_data = [[NSMutableArray alloc]init];
 		stock_change = [[UILabel alloc]initWithFrame:CGRectMake(135.5, 40, 158.5, 50)];
 		stock_change.text = @"10 (1.05%)";
 		stock_change.textAlignment = NSTextAlignmentCenter;
@@ -130,12 +133,139 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+	[self StartStream];
+	[self performSelector:@selector(assingn) withObject:Nil afterDelay:1];
 	
 }
--(void)buy{
+-(void)StartStream
+{
+	NSLog(@"start Stream with session id->%@",[netra getSessionActive]);
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/mi2/marketInfoData?request=dataStream",baseUrl]]];
+	[request setValue:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]] forHTTPHeaderField:@"Cookie"];
+	NSURLConnection* connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+	
+	NSLog(@"request-->%@",[request allHTTPHeaderFields]);
+	NSLog(@"request-->%@",request);
+	[connection start];
+	
 	
 }
--(void)sell{
+#pragma mark - NSURLConnection deleages
+
+-(void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse*)response
+{
+	
+	NSLog(@"response-->%@",response);
+}
+-(void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)_data
+{
+	
+	[self filter:_data];
+	
+}
+-(void)filter:(NSData *)filters{
+	
+	// Print the response body in text
+	//NSLog(@"Response: %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+	NSMutableArray *buffer = [[NSMutableArray alloc]init];
+	NSString *buffers = [[NSString alloc] initWithData:filters encoding:NSUTF8StringEncoding];
+	NSArray *testArray = [buffers componentsSeparatedByString:@"}"];
+	//NSArray *testArrays = [testArray componentsSeparatedByString:@"]}"];
+	
+	buffer = [NSMutableArray arrayWithArray:testArray];
+	
+	NSMutableArray *stringArray =[[NSMutableArray alloc]init];
+
+	//NSMutableArray *stringArray =[[NSMutableArray alloc]init];
+	buffer = [NSMutableArray arrayWithArray:testArray];
+	for (int i=0; i<buffer.count; i++) {
+		NSString *first=[[buffer objectAtIndex:i] stringByReplacingOccurrencesOfString:@"{" withString:@""];
+		NSString *second = [first stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+		NSString *third = [second stringByReplacingOccurrencesOfString:@"data:[" withString:@""];
+		NSString *fourth = [third stringByReplacingOccurrencesOfString:@"id:" withString:@""];
+		
+		NSArray *separate =[fourth componentsSeparatedByString:@","];
+		NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+		for (int i = 0; i<[separate count]; i++) {
+			[dic setValue:[separate objectAtIndex:i] forKey:[NSString stringWithFormat:@"id[%d]", i]];
+			[stringArray insertObject:dic atIndex:0];
+		}
+			[clean_data insertObject:dic atIndex:0];
+		NSLog(@"----->%ds",[clean_data count]);
+		[liveTrade reloadData];
+	}
+	
+}
+
+-(void)reloadTable{
+	[liveTrade reloadData];
+}
+-(void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
+{
+	NSLog(@"->%@",[error localizedDescription]);
+	[self StartStream];
+    // Handle the error properly
+}
+-(void)connectionDidFinishLoading:(NSURLConnection*)connection
+{
+    //NSString* stringData = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+	//[target performSelector:selector withObject:stringData];
+}
+-(void)assingn{
+	
+	[NSTimer scheduledTimerWithTimeInterval:3
+									 target:self
+								   selector:@selector(liveTradeAssingn) // <== see the ':', indicates your function takes an argument
+								   userInfo:nil
+									repeats:YES];
+	/*[NSTimer scheduledTimerWithTimeInterval:3
+	 target:self
+	 selector:@selector(bq) // <== see the ':', indicates your function takes an argument
+	 userInfo:nil
+	 repeats:YES];
+	 */
+	
+	
+	
+}
+-(void)liveTradeAssingn{
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"runningTrade", @"request",
+							@"start", @"act",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	
+	//[request setTimeoutInterval:];
+	
+	
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		// Print the response body in text
+		
+		if(operation.responseString==(NSString*) [NSNull null] || [operation.responseString length]==0 || [operation.responseString isEqualToString:@""]){
+			NSLog(@"Siap Siap stream");
+		}
+		else{
+			//[self stream];
+			NSLog(@"gak bisa stream");
+			
+		}
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+		
+	}];
+	[operation start];
+}
+-(void)stop{
+
 
 }
 - (void)didReceiveMemoryWarning
@@ -155,10 +285,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
-	if(tableView == dataStock){
-		return [livetrade_data count];
-	}
-	return [livetrade_data count];
+	return [clean_data count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
@@ -206,22 +333,11 @@
 	//cell.time.textColor=[UIColor whiteColor];
 	//cell.textLabel.backgroundColor=[UIColor clearColor];
 	//cell.textLabel.text=[livetrade_data objectAtIndex:indexPath.row];
-	NSDate *now = [NSDate date];
-	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	[dateFormatter setDateFormat:@"dd/MM/YY HH:mm:ss"];
-	
-	NSString *string = [dateFormatter stringFromDate:now];
-	if([[livetrade_data objectAtIndex:indexPath.row] intValue] < 0){
-		cell.time.textColor  = [UIColor redColor];
-		cell.code.textColor  = [UIColor redColor];
-		cell.mkt.textColor = [UIColor redColor];
-		cell.price.textColor = [UIColor redColor];
-		cell.vol.textColor = [UIColor redColor];
-	}
 	//cell.time.text = [livetrade_data objectAtIndex:indexPath.row];
-	cell.time.text = string;
-	cell.code.text = @"AAPL";
-	cell.price.text = [livetrade_data objectAtIndex:indexPath.row];
+	cell.time.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[0]"];
+	cell.code.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[1]"];
+	cell.mkt.text =[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[2]"];
+	cell.price.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[3]"];
 	return cell;
 	}
 }

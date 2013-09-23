@@ -60,36 +60,17 @@
 	//NSArray *testArrays = [testArray componentsSeparatedByString:@"]}"];
 
 	buffer = [NSMutableArray arrayWithArray:testArray];
+	
 	NSMutableArray *stringArray =[[NSMutableArray alloc]init];
 	NSMutableArray *clean_data = [[NSMutableArray alloc]init];
 	//NSMutableArray *stringArray =[[NSMutableArray alloc]init];
 	for (int i=0; i<buffer.count; i++) {
-	    NSString *first=[[[buffer objectAtIndex:i] stringByReplacingOccurrencesOfString:@"{" withString:@""]stringByReplacingOccurrencesOfString:@"]," withString:@",SQ"];
-		NSString *second = [first stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-		NSString *third = [[second stringByReplacingOccurrencesOfString:@"data:[" withString:@""]stringByReplacingOccurrencesOfString:@"}" withString:@""];
-		NSString *fourth = [[third stringByReplacingOccurrencesOfString:@"id:" withString:@""] stringByReplacingOccurrencesOfString:@"req:SQ" withString:@""];
 		
-		
-		////start doing filter here
-		
-		
-		NSArray *separate =[fourth componentsSeparatedByString:@","];
-		NSLog(@"separat-->%@",[separate objectAtIndex:i]);
-		NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-		for (int i = 0; i<[separate count]; i++) {
-			[dic setValue:[separate objectAtIndex:i] forKey:[NSString stringWithFormat:@"id[%d]", i]];
-			[stringArray addObject:dic];
-			
-		}
-		if (![clean_data containsObject:dic]) {
-			[clean_data addObject:dic];
-			
-			
-		}
-		//NSLog(@"clean data->%@",clean_data);
-
-
-	}
+		//NSLog(@"data ke %d ==>%@",i,[buffer objectAtIndex:i]);
+	
+	    NSString *first=[[[buffer objectAtIndex:i] stringByReplacingOccurrencesOfString:@"{" withString:@""]stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+		NSLog(@"%@",first);
+			}
 
 }
 -(void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
