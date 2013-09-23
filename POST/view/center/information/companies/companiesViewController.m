@@ -31,7 +31,8 @@
 		table.separatorColor = [UIColor colorWithRed:0.161 green:0.18 blue:0.216 alpha:1];
 		//stockQ.userInteractionEnabled=false;
 		table.backgroundColor = [UIColor colorWithRed:0.059 green:0.071 blue:0.09 alpha:1];
-		
+		table.separatorColor  = [UIColor colorWithRed:0.141 green:0.196 blue:0.251 alpha:1];
+		[table setSeparatorInset:UIEdgeInsetsZero];
 		[self.view addSubview:table];
     }
     return self;
@@ -72,7 +73,10 @@
 	cell.mk_cp.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[10]"];
 	return cell;
 }
-
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	[cell setBackgroundColor:[UIColor clearColor]];
+}
 
 - (void)viewDidLoad
 {

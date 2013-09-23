@@ -32,7 +32,6 @@
 		liveTrade.tableFooterView = [[UIView alloc] init];
 		liveTrade.separatorColor = [UIColor colorWithRed:0.161 green:0.18 blue:0.216 alpha:1];
 		liveTrade.userInteractionEnabled=false;
-		liveTrade.backgroundColor = [UIColor colorWithRed:0.059 green:0.071 blue:0.09 alpha:1];
 		liveTrade.dataSource = self;
 		liveTrade.backgroundColor = [UIColor colorWithRed:0.141 green:0.196 blue:0.251 alpha:1];
 		liveTrade.separatorColor  = [UIColor colorWithRed:0.141 green:0.196 blue:0.251 alpha:1];
@@ -121,6 +120,8 @@
 		
 		[self.view addSubview:right];
 		
+		timer =[[NSTimer alloc]init];
+		
     }
     return self;
 }
@@ -132,20 +133,17 @@
 }
 - (void)viewWillAppear:(BOOL)animated
 {
+	NSLog(@"dipanggil pertama");
     [super viewWillAppear:YES];
-	[self StartStream];
-	[self performSelector:@selector(assingn) withObject:Nil afterDelay:1];
+	[self performSelector:@selector(StartStream) withObject:Nil afterDelay:1];
+	[self performSelector:@selector(assingn) withObject:Nil afterDelay:2];
 	
 }
 -(void)StartStream
 {
-	NSLog(@"start Stream with session id->%@",[netra getSessionActive]);
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/mi2/marketInfoData?request=dataStream",baseUrl]]];
 	[request setValue:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]] forHTTPHeaderField:@"Cookie"];
-	NSURLConnection* connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
-	
-	NSLog(@"request-->%@",[request allHTTPHeaderFields]);
-	NSLog(@"request-->%@",request);
+	connection =[[NSURLConnection alloc]initWithRequest:request delegate:self];
 	[connection start];
 	
 	
@@ -163,6 +161,12 @@
 	[self filter:_data];
 	
 }
+-(void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
+{
+	NSLog(@"->%@",[error localizedDescription]);
+	[self StartStream];
+    // Handle the error properly
+}
 -(void)filter:(NSData *)filters{
 	
 	// Print the response body in text
@@ -179,44 +183,45 @@
 	//NSMutableArray *stringArray =[[NSMutableArray alloc]init];
 	buffer = [NSMutableArray arrayWithArray:testArray];
 	for (int i=0; i<buffer.count; i++) {
-		NSString *first=[[buffer objectAtIndex:i] stringByReplacingOccurrencesOfString:@"{" withString:@""];
-		NSString *second = [first stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-		NSString *third = [second stringByReplacingOccurrencesOfString:@"data:[" withString:@""];
-		NSString *fourth = [third stringByReplacingOccurrencesOfString:@"id:" withString:@""];
 		
-		NSArray *separate =[fourth componentsSeparatedByString:@","];
-		NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-		for (int i = 0; i<[separate count]; i++) {
-			[dic setValue:[separate objectAtIndex:i] forKey:[NSString stringWithFormat:@"id[%d]", i]];
-			[stringArray insertObject:dic atIndex:0];
-		}
+		//{"id":"AALI.TN","data":["AALI","TN",19150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"req":"SQ"}
+		NSString *clean=[[[[[[[[buffer objectAtIndex:i] stringByReplacingOccurrencesOfString:@"{" withString:@""]stringByReplacingOccurrencesOfString:@"\"" withString:@""]stringByReplacingOccurrencesOfString:@"data:[" withString:@""]stringByReplacingOccurrencesOfString:@"]" withString:@""]stringByReplacingOccurrencesOfString:@"req:" withString:@""]stringByReplacingOccurrencesOfString:@"id:" withString:@""]stringByReplacingOccurrencesOfString:@".0" withString:@""];
+		NSLog(@"fourth-->%@",clean);
+		if([clean hasSuffix:@"CUR"]||[clean hasSuffix:@"cur"]){
+			NSArray *separate =[clean componentsSeparatedByString:@","];
+			NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+			for (int i = 0; i<[separate count]; i++) {
+				[dic setValue:[separate objectAtIndex:i] forKey:[NSString stringWithFormat:@"id[%d]", i]];
+				[stringArray insertObject:dic atIndex:0];
+				
+			}
+			
 			[clean_data insertObject:dic atIndex:0];
-		NSLog(@"----->%ds",[clean_data count]);
-		[liveTrade reloadData];
+			
+			[liveTrade reloadData];
+		}
+		else{
+		
+			NSLog(@"gak ada");
+		}
 	}
 	
 }
-
 -(void)reloadTable{
 	[liveTrade reloadData];
 }
--(void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
-{
-	NSLog(@"->%@",[error localizedDescription]);
-	[self StartStream];
-    // Handle the error properly
-}
+
 -(void)connectionDidFinishLoading:(NSURLConnection*)connection
 {
-    //NSString* stringData = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-	//[target performSelector:selector withObject:stringData];
+	NSLog(@"finish");
+	[self StartStream];
 }
 -(void)assingn{
 	
-	[NSTimer scheduledTimerWithTimeInterval:3
+	timer =[NSTimer scheduledTimerWithTimeInterval:3
 									 target:self
-								   selector:@selector(liveTradeAssingn) // <== see the ':', indicates your function takes an argument
-								   userInfo:nil
+								   selector:@selector(liveTradeAssingn:) // <== see the ':', indicates your function takes an argument
+								   userInfo:[NSString stringWithFormat:@"start"]
 									repeats:YES];
 	/*[NSTimer scheduledTimerWithTimeInterval:3
 	 target:self
@@ -228,9 +233,9 @@
 	
 	
 }
--(void)liveTradeAssingn{
+-(void)liveTradeAssingn:(NSString*)status{
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"BrokerQuote", @"request",
+							@"currencies", @"request",
 							@"start", @"act",
 							nil];
 	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
@@ -296,7 +301,10 @@
 			cell=[[liveTradeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellx"];
 		}
 		if(indexPath.row % 2 == 0){
-			cell.contentView.backgroundColor=[UIColor colorWithRed:0.078 green:0.098 blue:0.122 alpha:1];
+			cell.backgroundColor=[UIColor colorWithRed:0.078 green:0.098 blue:0.122 alpha:1];
+		}
+		else{
+		cell.backgroundColor=[UIColor blackColor];
 		}
 		//cell.time.textColor=[UIColor whiteColor];
 		//cell.textLabel.backgroundColor=[UIColor clearColor];
@@ -341,7 +349,10 @@
 	return cell;
 	}
 }
-
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	[cell setBackgroundColor:[UIColor clearColor]];
+}
 
 -(void)initSimpleCompleteBook{
 
@@ -350,12 +361,17 @@
 -(void)streamCompleteBook{
 
 }
+
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
 	return 30;
 }
 -(void)viewWillDisappear:(BOOL)animated{
+	[connection cancel];
+	[timer invalidate];
+	timer = Nil;
 	[super viewWillDisappear:YES];
+	[self liveTradeAssingn:@"stop"];
 	[livetrade_data removeAllObjects];
 }
 

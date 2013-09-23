@@ -56,6 +56,7 @@
 		[self.contentView addSubview:_mkt];
 		[self.contentView addSubview:_price];
 		[self.contentView addSubview:_vol];
+		
     }
     return self;
 }
