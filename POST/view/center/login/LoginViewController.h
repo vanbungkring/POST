@@ -15,7 +15,11 @@
 	UITextField *passWord;
 	UIButton *sign_in;
 	UIImageView *logo;
+	MBProgressHUD *HUD;
 	
 	
 }
+
+-(void)showHud;
+-(void)removeHud;
 @end

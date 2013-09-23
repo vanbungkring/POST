@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D008F97717F095D500EEFF24 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D008F97617F095D500EEFF24 /* MBProgressHUD.m */; };
+		D008F98017F09FD300EEFF24 /* details.m in Sources */ = {isa = PBXBuildFile; fileRef = D008F97F17F09FD300EEFF24 /* details.m */; };
 		D018E18217EFEAA400A132E8 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D018E18117EFEAA400A132E8 /* logo@2x.png */; };
 		D02A4DA917EA880100BB7CCD /* comapanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A4DA817EA880000BB7CCD /* comapanyCell.m */; };
 		D02A4DAB17EA892000BB7CCD /* cp_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D02A4DAA17EA892000BB7CCD /* cp_header@2x.png */; };
@@ -121,6 +123,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D008F97517F095D500EEFF24 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		D008F97617F095D500EEFF24 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		D008F97E17F09FD300EEFF24 /* details.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = details.h; sourceTree = "<group>"; };
+		D008F97F17F09FD300EEFF24 /* details.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = details.m; sourceTree = "<group>"; };
 		D018E18117EFEAA400A132E8 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		D02A4DA717EA880000BB7CCD /* comapanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comapanyCell.h; sourceTree = "<group>"; };
 		D02A4DA817EA880000BB7CCD /* comapanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = comapanyCell.m; sourceTree = "<group>"; };
@@ -672,6 +678,8 @@
 		D0C1E21117E34C31003333A5 /* library */ = {
 			isa = PBXGroup;
 			children = (
+				D008F97517F095D500EEFF24 /* MBProgressHUD.h */,
+				D008F97617F095D500EEFF24 /* MBProgressHUD.m */,
 				D096F6AB17E889D300ADB9F9 /* helper */,
 				D07FA63517E5CB07000FE15E /* ASDepthModal */,
 				D07FA5DD17E5A543000FE15E /* MagicalRecord */,
@@ -772,6 +780,8 @@
 				D0C1E27217E34F61003333A5 /* companiesViewController.m */,
 				D02A4DA717EA880000BB7CCD /* comapanyCell.h */,
 				D02A4DA817EA880000BB7CCD /* comapanyCell.m */,
+				D008F97E17F09FD300EEFF24 /* details.h */,
+				D008F97F17F09FD300EEFF24 /* details.m */,
 			);
 			path = companies;
 			sourceTree = "<group>";
@@ -1030,6 +1040,7 @@
 				D0C1E26717E34F09003333A5 /* chartViewController.m in Sources */,
 				D0C1E26A17E34F16003333A5 /* brokerRankViewController.m in Sources */,
 				D0C1E27017E34F51003333A5 /* accountSettingViewController.m in Sources */,
+				D008F98017F09FD300EEFF24 /* details.m in Sources */,
 				D0C1E27317E34F61003333A5 /* companiesViewController.m in Sources */,
 				D041469D17EECD0500DE2E31 /* login.m in Sources */,
 				D0C1E27B17E36824003333A5 /* leftCell.m in Sources */,
@@ -1071,6 +1082,7 @@
 				D041468F17EE0E5500DE2E31 /* PaninStreamer.m in Sources */,
 				D096F6C317E8BA8C00ADB9F9 /* sqCell.m in Sources */,
 				D040F3F417E8DEE30017A174 /* stockInit.m in Sources */,
+				D008F97717F095D500EEFF24 /* MBProgressHUD.m in Sources */,
 				D040F3F717E8DF6C0017A174 /* brokerCell.m in Sources */,
 				D02A4DA917EA880100BB7CCD /* comapanyCell.m in Sources */,
 				D0FAF5AE17EC016F001F813D /* Panin.xcdatamodeld in Sources */,

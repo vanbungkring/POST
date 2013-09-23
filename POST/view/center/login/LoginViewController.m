@@ -18,6 +18,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+		HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	
 		// Custom initialization
 		//self.view.backgroundColor = [UIColor colorWithRed:0.141 green:0.196 blue:0.231 alpha:1];
 		self.view.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
@@ -122,6 +124,14 @@
 	}
 	else{
 		[login login_toServer:userName.text password:passWord.text];
+		HUD= [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+		HUD.dimBackground = YES;
+		HUD.labelText = @"Loggin To server";
+		HUD.margin = 10.f;
+		HUD.removeFromSuperViewOnHide = YES;
+		
+		[HUD hide:YES afterDelay:3];
+
 		[userName resignFirstResponder];
 		[passWord resignFirstResponder];
 		
