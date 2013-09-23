@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface indexViewController : UIViewController
-
+{
+	UITableView *forex;
+	UITableView *comodity;
+	UITableView *index;
+}
 @end
