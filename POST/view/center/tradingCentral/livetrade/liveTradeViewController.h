@@ -30,6 +30,7 @@
 	UILabel *stock_hi;
 	UILabel *stock_low;
 	UILabel *stock_mcp;
+	NSMutableArray *clean_data;
 	
 	
 	

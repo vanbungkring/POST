@@ -18,43 +18,48 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+		// Custom initialization
 		//self.view.backgroundColor = [UIColor colorWithRed:0.141 green:0.196 blue:0.231 alpha:1];
-		self.view.backgroundColor = [UIColor colorWithRed:0.204 green:0.247 blue:0.275 alpha:1];
+		self.view.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
 		
-		login_container =[[UIView alloc]initWithFrame:CGRectMake(512-150, 100, 300, 300)];
-		login_container.backgroundColor = [UIColor colorWithRed:0.255 green:0.322 blue:0.353 alpha:1];
-		login_container.layer.cornerRadius =10;
+		login_container =[[UIView alloc]initWithFrame:CGRectMake(30, 100, 500, 300)];
+		//login_container.backgroundColor = [UIColor colorWithRed:0.255 green:0.322 blue:0.353 alpha:1];
+		//login_container.layer.cornerRadius =10;
 		// drop shadow
-		[login_container.layer setShadowColor:[UIColor blackColor].CGColor];
-		[login_container.layer setShadowOpacity:0.5];
-		[login_container.layer setShadowRadius:10.0];
-		[login_container.layer setShadowOffset:CGSizeMake(1, 1.0)];
-		
+		/*
+		 [login_container.layer setShadowColor:[UIColor blackColor].CGColor];
+		 [login_container.layer setShadowOpacity:0.5];
+		 [login_container.layer setShadowRadius:10.0];
+		 [login_container.layer setShadowOffset:CGSizeMake(1, 1.0)];
+		 */
 		//UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 20)];
 		
-		userName =[[UITextField alloc]initWithFrame:CGRectMake(10, 100, 280, 44)];
+		logo = [[UIImageView alloc]initWithFrame:CGRectMake((1024-107.5)/2, 60, 107.5, 136.5)];
+		[logo setImage:[UIImage imageNamed:@"logo"]];
+		
+		
+		userName =[[UITextField alloc]initWithFrame:CGRectMake((1024-320)/2, 130, 300, 44)];
 		userName.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16];
 		userName.placeholder = @"Username";
 		userName.tag=1;
 		userName.delegate = self;
 		userName.clearButtonMode = UITextFieldViewModeWhileEditing;
 		userName.returnKeyType = UIReturnKeyNext;
-		userName.layer.sublayerTransform = CATransform3DMakeTranslation(20, 10, 0);
-		userName.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tf"]];
+		userName.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
+		userName.backgroundColor = [UIColor whiteColor];
 		
-		passWord =[[UITextField alloc]initWithFrame:CGRectMake(10, 150, 280, 44)];
-		passWord.layer.sublayerTransform = CATransform3DMakeTranslation(20, 10, 0);
+		passWord =[[UITextField alloc]initWithFrame:CGRectMake((1024-320)/2, 180, 300, 44)];
+		passWord.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
 		passWord.returnKeyType = UIReturnKeyDone;
 		passWord.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16];
 		passWord.placeholder = @"Password";
 		passWord.tag = 2;
 		passWord.delegate = self;
 		passWord.secureTextEntry = YES;
-		passWord.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tf"]];
+		passWord.backgroundColor = [UIColor whiteColor];
 		
 		sign_in =[UIButton buttonWithType:UIButtonTypeCustom];
-		sign_in.frame = CGRectMake(10, 210, 280, 44);
+		sign_in.frame = CGRectMake((1024-300)/2, 240, 280, 44);
 		[sign_in setBackgroundImage:[UIImage imageNamed:@"sign_in"] forState:UIControlStateNormal];
 		[sign_in setBackgroundImage:[UIImage imageNamed:@"sign_in_p"] forState:UIControlStateHighlighted];
 		[sign_in addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
@@ -63,10 +68,11 @@
 		sign_in.layer.borderColor=[UIColor colorWithRed:0.569 green:0.231 blue:0.063 alpha:1].CGColor;
 		sign_in.layer.borderWidth = 1.0f;
 		
-		
+		[self.view addSubview:logo];
 		[login_container addSubview:userName];
 		[login_container addSubview:passWord];
 		[login_container addSubview:sign_in];
+		
 		[self.view addSubview:login_container];
     }
     return self;
@@ -86,12 +92,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+	userName.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tf"]];
+	passWord.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tf"]];
+	return YES;
+}
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
     if (theTextField.tag ==1) {
+		userName.backgroundColor = [UIColor whiteColor];
         [userName resignFirstResponder];
 		[passWord becomeFirstResponder];
     }
 	else{
+		passWord.backgroundColor = [UIColor whiteColor];
 		[passWord resignFirstResponder];
 	}
     return YES;
@@ -108,7 +121,7 @@
 	
 	}
 	else{
-		[self login_toServer];
+		[login login_toServer:userName.text password:passWord.text];
 		[userName resignFirstResponder];
 		[passWord resignFirstResponder];
 		
@@ -116,80 +129,5 @@
 	}
 	
 }
--(void)login_toServer{
-	
-	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"login", @"request",
-							userName.text, @"user",
-							passWord.text, @"password",
-							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.2/"]];
-	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
-															path:@"mi2/marketInfoData?"
-													  parameters:params];
-	
-	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
-	[httpClient setDefaultHeader:@"Accept-Charset" value:@"utf-8"];
-	[httpClient setDefaultHeader:@"Accept" value:@"text/plain"];
-	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-	
-		if(operation.responseString.boolValue ==true){
-			NSMutableArray *xxx=[[NSMutableArray alloc]init];
-			for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
-			{
-				NSLog(@"cookie==>%@",[cookie value]);
-				NSLog(@"cookie==>%@",[cookie name]);
-				[xxx addObject:[cookie value]];
-				
-			}
-			[netra setSessionId:[xxx objectAtIndex:0]];
-			[vanbungkring setCenter:@"" name:@"Live Trade"];
-		}
-		else{
-			UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error!"
-															  message:@"Login Failed! check your username and password"
-															 delegate:nil
-													cancelButtonTitle:@"OK"
-													otherButtonTitles:nil];
-			[message show];
-		}
-		
-		
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error!"
-														  message:[error localizedDescription]
-														 delegate:nil
-												cancelButtonTitle:@"OK"
-												otherButtonTitles:nil];
-		[message show];
-	}];
-	[operation start];
-}
-/*
--(void)fetchData{
-	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"login", @"request",
-							@"jimmy_it", @"user",
-							@"031171", @"password",
-							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
-	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
-															path:@"mi2/marketInfoData?"
-													  parameters:params];
-	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
-	[AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
-	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id responseObject) {
-		NSLog(@"responseObject->%@",responseObject);
-		
-    }failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-		NSLog(@"error %@",error);
-    }];
-    
-	// self.filteredArray = [NSMutableArray arrayWithCapacity:netrax.count];
-	
-    [operation start];
-	
-}
-*/
+
 @end

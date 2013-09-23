@@ -18,7 +18,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-		self.view.backgroundColor = [UIColor colorWithRed:0.204 green:0.247 blue:0.275 alpha:1];
+		self.view.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
 		
 		brQ = [[UITableView alloc]init];
 		brQ.frame= CGRectMake(10, 10, 1004, 608);
@@ -102,24 +102,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)fetchdata{
-	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"login", @"request",
-							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
-	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
-															path:@"mi2/marketInfoData?"
-													  parameters:params];
-	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
-	[AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
-	AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id responseObject) {
-		NSLog(@"responseObject->%@",responseObject);
-		
-    }failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-		NSLog(@"error %@",error);
-    }];
-    
-	// self.filteredArray = [NSMutableArray arrayWithCapacity:netrax.count];
 	
-    [operation start];
+
 }
 @end

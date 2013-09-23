@@ -93,7 +93,7 @@
 							@"stockInit", @"request",
 							nil];
 	
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.3/"]];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
 	
 	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
 															path:@"mi2/marketInfoData?"
@@ -107,9 +107,11 @@
 	
 	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
 		// Print the response body in text
+		//NSLog(@"response string->%@",operation.responseString);
 		//NSLog(@"Response: %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
 		NSString *buffers = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
 		NSArray *testArray = [buffers componentsSeparatedByString:@"]}"];
+		NSLog(@"test array-->%@",testArray);
 		//NSArray *testArrays = [testArray componentsSeparatedByString:@"]}"];
 		buffer = [NSMutableArray arrayWithArray:testArray];
 		NSMutableArray *stringArray =[[NSMutableArray alloc]init];
@@ -132,10 +134,10 @@
 				
             }
 
-			[table reloadData];
+			
 						
 		}
-		
+		[table reloadData];
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		NSLog(@"Error: %@", error);
 	}];

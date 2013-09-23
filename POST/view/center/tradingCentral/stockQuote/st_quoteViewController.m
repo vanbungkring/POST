@@ -46,7 +46,7 @@
 		
 		//[popupView addSubview:top_border];
 		
-		self.view.backgroundColor = [UIColor colorWithRed:0.188 green:0.216 blue:0.255 alpha:1];
+		self.view.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
 		
 		stockQ = [[UITableView alloc]init];
 		stockQ.frame= CGRectMake(10, 10, 1004, 608);
@@ -161,7 +161,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	[self fetchdata];
 	// Do any additional setup after loading the view.
 }
 
@@ -174,62 +173,5 @@
 
 	
 }
--(void)fetchdata{
-	
-	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"start", @"act",
-							@"runningTrade", @"request",
-							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.2/"]];
-	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
-															path:@"mi2/marketInfoData?"
-													  parameters:params];
-	//[request setTimeoutInterval:];
-	
-	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
-	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
-	
-	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
-	
-	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-		// Print the response body in text
-		NSLog(@"----------->%@",operation);
-		if([operation.responseString isEqualToString:@"msg:\"session timeout\""]){
-			NSLog(@"gak bisa stream");
-		}
-		else{
-			[self stream];
-		}
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		NSLog(@"Error: %@", error);
-	}];
-	[operation start];
-}
--(void)stream{
-	
-	NSLog(@"dataSStream di panggil");
-	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"dataStream", @"request",
-							nil];
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://202.53.249.2/"]];
-	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
-															path:@"mi2/marketInfoData?"
-													  parameters:params];
-	
-	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
-	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
-	
-	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
-	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-		// Print the response body in text
-		NSLog(@"----------->%@",operation.responseString);
-		[self stream];
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		NSLog(@"Error: %@", error);
-	}];
-	[operation start];}
-
 
 @end

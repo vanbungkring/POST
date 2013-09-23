@@ -38,5 +38,5 @@ static netra *sharedObject;
 //}
 /////get stock init
 
-
+NSString* const baseUrl =@"http://202.53.249.3" ;
 @end
