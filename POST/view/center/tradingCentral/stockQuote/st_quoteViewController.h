@@ -16,5 +16,8 @@
 	UIView *top_border;
 	UILabel *stock_accronim;
 	UILabel *stock_volume;
+	NSTimer *timer;
+	NSURLConnection* connection ;
+	NSMutableArray *clean_data;
 }
 @end

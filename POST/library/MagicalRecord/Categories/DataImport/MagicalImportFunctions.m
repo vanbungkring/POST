@@ -43,10 +43,6 @@ NSDate * dateFromString(NSString *value, NSString *format)
     return parsedDate;
 }
 
-NSNumber * numberFromString(NSString *value) {
-    return [NSNumber numberWithDouble:[value doubleValue]];
-}
-
 NSInteger* newColorComponentsFromString(NSString *serializedColor);
 NSInteger* newColorComponentsFromString(NSString *serializedColor)
 {

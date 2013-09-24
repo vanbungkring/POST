@@ -15,8 +15,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-	[Company_fetcher syncCompany];
+	
 	[MagicalRecord setupCoreDataStackWithStoreNamed:@"MyDatabase.sqlite"];
+	//[Company_fetcher syncCompany];
 	//set cache url
 	
 	localContext = [NSManagedObjectContext MR_contextForCurrentThread];

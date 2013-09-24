@@ -88,6 +88,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:detailsCompany];
+	detailsCompany.string =[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[1]"];
 	[self.navigationController presentViewController:nav animated:YES completion:Nil];
 	
 }

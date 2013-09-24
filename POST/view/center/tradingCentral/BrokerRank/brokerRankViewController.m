@@ -52,7 +52,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
-	return 123;
+	return 0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	brokerCell *cell = [[brokerCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cex"];

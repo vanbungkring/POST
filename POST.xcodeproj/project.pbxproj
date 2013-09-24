@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		D008F97717F095D500EEFF24 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D008F97617F095D500EEFF24 /* MBProgressHUD.m */; };
 		D008F98017F09FD300EEFF24 /* details.m in Sources */ = {isa = PBXBuildFile; fileRef = D008F97F17F09FD300EEFF24 /* details.m */; };
-		D008F98317F176D900EEFF24 /* StockInit.m in Sources */ = {isa = PBXBuildFile; fileRef = D008F98217F176D900EEFF24 /* StockInit.m */; };
 		D018E18217EFEAA400A132E8 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D018E18117EFEAA400A132E8 /* logo@2x.png */; };
+		D0210CAA17F24A5500586122 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0210CA917F24A5500586122 /* cancel@2x.png */; };
 		D02A4DA917EA880100BB7CCD /* comapanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A4DA817EA880000BB7CCD /* comapanyCell.m */; };
 		D02A4DAB17EA892000BB7CCD /* cp_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D02A4DAA17EA892000BB7CCD /* cp_header@2x.png */; };
 		D040F3F417E8DEE30017A174 /* stockInit.m in Sources */ = {isa = PBXBuildFile; fileRef = D040F3F317E8DEE30017A174 /* stockInit.m */; };
@@ -21,6 +21,7 @@
 		D041469317EEA40C00DE2E31 /* Company_fetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D041469217EEA40C00DE2E31 /* Company_fetcher.m */; };
 		D041469D17EECD0500DE2E31 /* login.m in Sources */ = {isa = PBXBuildFile; fileRef = D041469C17EECD0500DE2E31 /* login.m */; };
 		D04146A117EECD2400DE2E31 /* broker.m in Sources */ = {isa = PBXBuildFile; fileRef = D04146A017EECD2400DE2E31 /* broker.m */; };
+		D050DD3E17F2332C00336141 /* StockInit.m in Sources */ = {isa = PBXBuildFile; fileRef = D050DD3D17F2332C00336141 /* StockInit.m */; };
 		D07FA5C417E3F488000FE15E /* navbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07FA5C317E3F488000FE15E /* navbar@2x.png */; };
 		D07FA5C817E45713000FE15E /* liveTradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07FA5C717E45713000FE15E /* liveTradeCell.m */; };
 		D07FA5CA17E457E5000FE15E /* main_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D07FA5C917E457E5000FE15E /* main_bg@2x.png */; };
@@ -127,9 +128,8 @@
 		D008F97617F095D500EEFF24 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		D008F97E17F09FD300EEFF24 /* details.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = details.h; sourceTree = "<group>"; };
 		D008F97F17F09FD300EEFF24 /* details.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = details.m; sourceTree = "<group>"; };
-		D008F98117F176D900EEFF24 /* StockInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockInit.h; sourceTree = "<group>"; };
-		D008F98217F176D900EEFF24 /* StockInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockInit.m; sourceTree = "<group>"; };
 		D018E18117EFEAA400A132E8 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		D0210CA917F24A5500586122 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
 		D02A4DA717EA880000BB7CCD /* comapanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comapanyCell.h; sourceTree = "<group>"; };
 		D02A4DA817EA880000BB7CCD /* comapanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = comapanyCell.m; sourceTree = "<group>"; };
 		D02A4DAA17EA892000BB7CCD /* cp_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cp_header@2x.png"; sourceTree = "<group>"; };
@@ -147,6 +147,8 @@
 		D041469C17EECD0500DE2E31 /* login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = login.m; sourceTree = "<group>"; };
 		D041469F17EECD2400DE2E31 /* broker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = broker.h; sourceTree = "<group>"; };
 		D04146A017EECD2400DE2E31 /* broker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = broker.m; sourceTree = "<group>"; };
+		D050DD3C17F2332C00336141 /* StockInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockInit.h; sourceTree = "<group>"; };
+		D050DD3D17F2332C00336141 /* StockInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockInit.m; sourceTree = "<group>"; };
 		D07FA5C317E3F488000FE15E /* navbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar@2x.png"; sourceTree = "<group>"; };
 		D07FA5C617E45713000FE15E /* liveTradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = liveTradeCell.h; sourceTree = "<group>"; };
 		D07FA5C717E45713000FE15E /* liveTradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = liveTradeCell.m; sourceTree = "<group>"; };
@@ -650,6 +652,7 @@
 		D0C1E21017E34C31003333A5 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				D0210CA917F24A5500586122 /* cancel@2x.png */,
 				D018E18117EFEAA400A132E8 /* logo@2x.png */,
 				D02A4DAA17EA892000BB7CCD /* cp_header@2x.png */,
 				D040F3FA17E982960017A174 /* details@2x.png */,
@@ -909,8 +912,8 @@
 		D0FAF5AB17EC0163001F813D /* panin */ = {
 			isa = PBXGroup;
 			children = (
-				D008F98117F176D900EEFF24 /* StockInit.h */,
-				D008F98217F176D900EEFF24 /* StockInit.m */,
+				D050DD3C17F2332C00336141 /* StockInit.h */,
+				D050DD3D17F2332C00336141 /* StockInit.m */,
 				D0FAF5AC17EC016F001F813D /* Panin.xcdatamodeld */,
 				D0FAF5BB17EC01DB001F813D /* Server.h */,
 				D0FAF5BC17EC01DB001F813D /* Server.m */,
@@ -974,6 +977,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0210CAA17F24A5500586122 /* cancel@2x.png in Resources */,
 				D0C1E1FB17E34815003333A5 /* InfoPlist.strings in Resources */,
 				D0C1E20317E34815003333A5 /* Default.png in Resources */,
 				D0C1E20517E34815003333A5 /* Default@2x.png in Resources */,
@@ -1060,7 +1064,7 @@
 				D07FA62517E5A543000FE15E /* NSManagedObjectContext+MagicalObserving.m in Sources */,
 				D07FA62617E5A543000FE15E /* NSManagedObjectContext+MagicalRecord.m in Sources */,
 				D07FA62717E5A543000FE15E /* NSManagedObjectContext+MagicalSaves.m in Sources */,
-				D008F98317F176D900EEFF24 /* StockInit.m in Sources */,
+				D050DD3E17F2332C00336141 /* StockInit.m in Sources */,
 				D07FA62817E5A543000FE15E /* NSManagedObjectContext+MagicalThreading.m in Sources */,
 				D07FA62917E5A543000FE15E /* NSManagedObjectModel+MagicalRecord.m in Sources */,
 				D07FA62A17E5A543000FE15E /* NSPersistentStore+MagicalRecord.m in Sources */,

@@ -15,7 +15,7 @@
 
 + (NSFetchRequest *)MR_createFetchRequestInContext:(NSManagedObjectContext *)context
 {
-	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];      // eka chan fix leak add autorelease.
 	[request setEntity:[self MR_entityDescriptionInContext:context]];
     
     return request;
@@ -92,10 +92,10 @@
 
 + (NSFetchRequest *) MR_requestAllSortedBy:(NSString *)sortTerm ascending:(BOOL)ascending inContext:(NSManagedObjectContext *)context
 {
-    return [self MR_requestAllSortedBy:sortTerm
+	return [self MR_requestAllSortedBy:sortTerm
                              ascending:ascending
-                         withPredicate:nil
-                             inContext:context];
+                         withPredicate:nil 
+                             inContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 }
 
 + (NSFetchRequest *) MR_requestAllSortedBy:(NSString *)sortTerm ascending:(BOOL)ascending

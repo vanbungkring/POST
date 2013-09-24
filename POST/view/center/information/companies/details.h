@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface details : UIViewController
+@interface details : UIViewController<UIWebViewDelegate,UIScrollViewDelegate>
 {
-	UIWebView *webviewConten;
+	UIWebView *webviewContent;
+	NSURL *url_link;
 }
+
+@property (nonatomic,strong) NSString *string;
 @end

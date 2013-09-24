@@ -6,10 +6,12 @@
     </entity>
     <entity name="StockInit" representedClassName="StockInit" syncable="YES">
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="mc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mkt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="prev" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="st_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subsector" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="StockWatch" representedClassName="StockWatch" syncable="YES"/>

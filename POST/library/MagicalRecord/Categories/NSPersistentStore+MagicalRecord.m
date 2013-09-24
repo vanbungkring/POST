@@ -44,7 +44,7 @@ static NSPersistentStore *defaultPersistentStore_ = nil;
 + (NSURL *) MR_urlForStoreName:(NSString *)storeFileName
 {
 	NSArray *paths = [NSArray arrayWithObjects:[self MR_applicationDocumentsDirectory], [self MR_applicationStorageDirectory], nil];
-    NSFileManager *fm = [[NSFileManager alloc] init];
+    NSFileManager *fm = [[NSFileManager alloc] init];         // eka chan fix leak by add autorelease.
     
     for (NSString *path in paths) 
     {
