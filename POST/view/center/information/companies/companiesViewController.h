@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "details.h"
 @interface companiesViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 {
 	UITableView *table;
 	NSMutableArray *buffer;
 	NSMutableArray *clean_data;
+	details *detailsCompany;
+
 	
 }
 @end
