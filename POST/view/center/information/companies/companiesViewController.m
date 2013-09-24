@@ -31,7 +31,9 @@
 		table.separatorColor = [UIColor colorWithRed:0.161 green:0.18 blue:0.216 alpha:1];
 		//stockQ.userInteractionEnabled=false;
 		table.backgroundColor = [UIColor colorWithRed:0.059 green:0.071 blue:0.09 alpha:1];
-		
+		table.separatorColor  = [UIColor colorWithRed:0.141 green:0.196 blue:0.251 alpha:1];
+		[table setSeparatorInset:UIEdgeInsetsZero];
+		detailsCompany =[[details alloc]init];
 		[self.view addSubview:table];
     }
     return self;
@@ -62,6 +64,9 @@
 	if(cell == nil){
 		cell = [[comapanyCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cex"];
 	}
+	if(indexPath.row % 2 == 0){
+		cell.contentView.backgroundColor=[UIColor colorWithRed:0.078 green:0.098 blue:0.122 alpha:1];
+	}
 	
 	//cell.textLabel.textColor  = [UIColor whiteColor];
 	cell.no.text = [NSString stringWithFormat:@"%d",indexPath.row+1];
@@ -70,10 +75,22 @@
 	cell.prev.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[4]"];
 	cell.sb_sc.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[6]"];
 	cell.mk_cp.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[10]"];
+	
+	UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [UIColor blueColor];
+    bgColorView.layer.masksToBounds = YES;
+    cell.selectedBackgroundView = bgColorView;
 	return cell;
 }
-
-
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	[cell setBackgroundColor:[UIColor clearColor]];
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:detailsCompany];
+	[self.navigationController presentViewController:nav animated:YES completion:Nil];
+	
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

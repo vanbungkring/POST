@@ -32,6 +32,10 @@
 	UILabel *stock_mcp;
 	NSMutableArray *clean_data;
 	
+	NSURLConnection* connection ;
+	
+	NSTimer *timer;
+	
 	
 	
 	

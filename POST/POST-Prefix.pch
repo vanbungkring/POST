@@ -24,5 +24,6 @@
 #import "login.h"
 #import "PaninStreamer.h"
 #import "broker.h"
+#import "MBProgressHUD.h"
 #define vanbungkring ((POST_AppDelegate *)[[UIApplication sharedApplication] delegate])
 #endif
