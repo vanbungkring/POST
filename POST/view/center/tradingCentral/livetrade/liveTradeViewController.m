@@ -404,7 +404,17 @@
 
 	return 30;
 }
+-(void)viewDidDisappear:(BOOL)animated{
+	[super viewDidDisappear:YES];
+	[connection cancel];
+	[timer invalidate];
+	timer = Nil;
+	[super viewWillDisappear:YES];
+	[self liveTradeAssingn:@"stop"];
+	[livetrade_data removeAllObjects];
+}
 -(void)viewWillDisappear:(BOOL)animated{
+	[super viewDidDisappear:YES];
 	[connection cancel];
 	[timer invalidate];
 	timer = Nil;

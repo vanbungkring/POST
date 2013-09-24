@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface Company_fetcher : NSObject
-
++ (Company_fetcher *)sharedEngine;
++ (void)syncCompany;
 @end

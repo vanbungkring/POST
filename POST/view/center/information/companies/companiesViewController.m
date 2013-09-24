@@ -105,7 +105,6 @@
 }
 -(void)fetchQuote{
 	
-	//http://202.53.249.3//mi2/marketInfoData?request=stockInit#
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
 							@"stockInit", @"request",
 							nil];

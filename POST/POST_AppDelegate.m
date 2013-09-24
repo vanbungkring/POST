@@ -14,15 +14,18 @@
 @synthesize liveTradeViewController = _liveTradeViewController;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	[self getStockInit];
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-		
+	[Company_fetcher syncCompany];
 	[MagicalRecord setupCoreDataStackWithStoreNamed:@"MyDatabase.sqlite"];
 	//set cache url
+	
+	localContext = [NSManagedObjectContext MR_contextForCurrentThread];
+	
+	
 	NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:4*1024*1024
 													  diskCapacity:32*1024*1024
 														  diskPath:@"app_cache"];
-	
+	cleanData =[[NSMutableArray alloc]init];
 	[NSURLCache setSharedURLCache:cache];
 	/* init mainview
 	 */
@@ -237,69 +240,6 @@
 	
 	///data broker get here
 
-}
-- (void)getStockInit{
-	//get stock init here
-	
-	//http://202.53.249.3//mi2/marketInfoData?request=stockInit#
-	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"stockInit", @"request",
-							nil];
-	
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
-	
-	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
-															path:@"mi2/marketInfoData?"
-													  parameters:params];
-	
-	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
-	
-	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-	
-	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
-	
-	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-		// Print the response body in text
-		//NSLog(@"response string->%@",operation.responseString);
-		//NSLog(@"Response: %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-		NSString *buffers = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-		NSArray *testArray = [buffers componentsSeparatedByString:@"]}"];
-		NSLog(@"test array-->%@",testArray);
-		//NSArray *testArrays = [testArray componentsSeparatedByString:@"]}"];
-		NSMutableArray *buffer = [NSMutableArray arrayWithArray:testArray];
-		NSMutableArray *stringArray =[[NSMutableArray alloc]init];
-		for (int i=0; i<buffer.count; i++) {
-			NSString *first=[[buffer objectAtIndex:i] stringByReplacingOccurrencesOfString:@"{" withString:@""];
-			NSString *second = [first stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-			NSString *third = [second stringByReplacingOccurrencesOfString:@"data:[" withString:@""];
-			NSString *fourth = [third stringByReplacingOccurrencesOfString:@"id:" withString:@""];
-			
-			NSArray *separate =[fourth componentsSeparatedByString:@","];
-			NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-			for (int i = 0; i<[separate count]; i++) {
-				[dic setValue:[separate objectAtIndex:i] forKey:[NSString stringWithFormat:@"id[%d]", i]];
-
-				
-			}
-			[stringArray addObject:dic];
-			NSLog(@"dic==>%@",[stringArray objectAtIndex:0]);
-			//if (![clean_data containsObject:dic]) {
-              //  [clean_data addObject:dic];
-				
-				
-		//}
-			
-			
-			
-		}
-		///[table reloadData];
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		NSLog(@"Error: %@", error);
-	}];
-	[operation start];
-	
-
-	
 }
 - (void)applicationWillResignActive:(UIApplication *)application
 {

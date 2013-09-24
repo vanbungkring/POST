@@ -10,11 +10,14 @@
 #import "post_leftViewController.h"
 #import "liveTradeViewController.h"
 #import "PaninStreamer.h"
+#import "StockInit.h"
 @interface POST_AppDelegate : UIResponder <UIApplicationDelegate>
 {
 	UIView *popupView;
 	UILabel *navLabel;
 	PaninStreamer *streamer;
+	NSManagedObjectContext *localContext;
+	NSMutableArray *cleanData;
 	
 }
 @property (strong, nonatomic) UIWindow *window;

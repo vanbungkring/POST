@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-		self.view.backgroundColor =[UIColor whiteColor];
+		self.view.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
 		
     }
     return self;
@@ -37,18 +37,24 @@
 	UISegmentedControl *statFilter = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Company Info", @"Financial Info", @"History", nil]];
 	statFilter.segmentedControlStyle = UISegmentedControlStyleBar;
 	
-	UIColor *newTintColor = [UIColor colorWithRed: 251/255.0 green:175/255.0 blue:93/255.0 alpha:1.0];
+	UIColor *newTintColor = [UIColor colorWithRed:0.149 green:0.212 blue:0.271 alpha:1];
     statFilter.tintColor = newTintColor;
-	
-	UIColor *newSelectedTintColor = [UIColor colorWithRed: 0/255.0 green:175/255.0 blue:0/255.0 alpha:1.0];
-	[[[statFilter subviews] objectAtIndex:0] setTintColor:newSelectedTintColor];
+	//[[[statFilter subviews] objectAtIndex:0] setTintColor:newSelectedTintColor];
 	[statFilter setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-										  [UIFont fontWithName:@"Arial" size:16.0],UITextAttributeFont,
+										  [UIFont fontWithName:@"HelveticaNeue" size:14],UITextAttributeFont,
 										  [UIColor whiteColor], UITextAttributeTextColor,
-										  [UIColor blackColor], UITextAttributeTextShadowColor,
+										  [UIColor whiteColor], UITextAttributeTextShadowColor,
 										  [NSValue valueWithUIOffset:UIOffsetMake(0, 1)], UITextAttributeTextShadowOffset,
 										  nil] forState:UIControlStateNormal];
+	[statFilter setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+										[UIFont fontWithName:@"HelveticaNeue" size:14],UITextAttributeFont,
+										[UIColor whiteColor], UITextAttributeTextColor,
+										[UIColor whiteColor], UITextAttributeTextShadowColor,
+										[NSValue valueWithUIOffset:UIOffsetMake(0, 1)], UITextAttributeTextShadowOffset,
+										nil] forState:UIControlStateSelected];
+	
 	[statFilter setSegmentedControlStyle:UISegmentedControlStyleBar];
+	
 	[statFilter sizeToFit];
 	[statFilter setSelectedSegmentIndex:0];
 	self.navigationItem.titleView = statFilter;
