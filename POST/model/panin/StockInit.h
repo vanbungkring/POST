@@ -2,7 +2,7 @@
 //  StockInit.h
 //  POST
 //
-//  Created by Arie on 9/20/13.
+//  Created by Arie on 9/24/13.
 //  Copyright (c) 2013 netra. All rights reserved.
 //
 
@@ -12,5 +12,11 @@
 
 @interface StockInit : NSManagedObject
 
+@property (nonatomic, retain) NSString * code;
+@property (nonatomic, retain) NSString * mkt;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * prev;
+@property (nonatomic, retain) NSString * subsector;
+@property (nonatomic, retain) NSString * mc;
 
 @end

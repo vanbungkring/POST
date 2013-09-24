@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D008F97717F095D500EEFF24 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D008F97617F095D500EEFF24 /* MBProgressHUD.m */; };
 		D008F98017F09FD300EEFF24 /* details.m in Sources */ = {isa = PBXBuildFile; fileRef = D008F97F17F09FD300EEFF24 /* details.m */; };
+		D008F98317F176D900EEFF24 /* StockInit.m in Sources */ = {isa = PBXBuildFile; fileRef = D008F98217F176D900EEFF24 /* StockInit.m */; };
 		D018E18217EFEAA400A132E8 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D018E18117EFEAA400A132E8 /* logo@2x.png */; };
 		D02A4DA917EA880100BB7CCD /* comapanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A4DA817EA880000BB7CCD /* comapanyCell.m */; };
 		D02A4DAB17EA892000BB7CCD /* cp_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D02A4DAA17EA892000BB7CCD /* cp_header@2x.png */; };
@@ -117,7 +118,6 @@
 		D0C1E28617E3727B003333A5 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0C1E28117E3727B003333A5 /* OpenSans-Semibold.ttf */; };
 		D0FAF5AE17EC016F001F813D /* Panin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0FAF5AC17EC016F001F813D /* Panin.xcdatamodeld */; };
 		D0FAF5B417EC01DA001F813D /* StockWatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FAF5B317EC01DA001F813D /* StockWatch.m */; };
-		D0FAF5B717EC01DB001F813D /* StockInit.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FAF5B617EC01DA001F813D /* StockInit.m */; };
 		D0FAF5BA17EC01DB001F813D /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FAF5B917EC01DB001F813D /* Configuration.m */; };
 		D0FAF5BD17EC01DB001F813D /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = D0FAF5BC17EC01DB001F813D /* Server.m */; };
 /* End PBXBuildFile section */
@@ -127,6 +127,8 @@
 		D008F97617F095D500EEFF24 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		D008F97E17F09FD300EEFF24 /* details.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = details.h; sourceTree = "<group>"; };
 		D008F97F17F09FD300EEFF24 /* details.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = details.m; sourceTree = "<group>"; };
+		D008F98117F176D900EEFF24 /* StockInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockInit.h; sourceTree = "<group>"; };
+		D008F98217F176D900EEFF24 /* StockInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockInit.m; sourceTree = "<group>"; };
 		D018E18117EFEAA400A132E8 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		D02A4DA717EA880000BB7CCD /* comapanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comapanyCell.h; sourceTree = "<group>"; };
 		D02A4DA817EA880000BB7CCD /* comapanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = comapanyCell.m; sourceTree = "<group>"; };
@@ -311,8 +313,6 @@
 		D0FAF5AD17EC016F001F813D /* Panin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Panin.xcdatamodel; sourceTree = "<group>"; };
 		D0FAF5B217EC01DA001F813D /* StockWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockWatch.h; sourceTree = "<group>"; };
 		D0FAF5B317EC01DA001F813D /* StockWatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockWatch.m; sourceTree = "<group>"; };
-		D0FAF5B517EC01DA001F813D /* StockInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockInit.h; sourceTree = "<group>"; };
-		D0FAF5B617EC01DA001F813D /* StockInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockInit.m; sourceTree = "<group>"; };
 		D0FAF5B817EC01DB001F813D /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		D0FAF5B917EC01DB001F813D /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
 		D0FAF5BB17EC01DB001F813D /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
@@ -909,9 +909,9 @@
 		D0FAF5AB17EC0163001F813D /* panin */ = {
 			isa = PBXGroup;
 			children = (
+				D008F98117F176D900EEFF24 /* StockInit.h */,
+				D008F98217F176D900EEFF24 /* StockInit.m */,
 				D0FAF5AC17EC016F001F813D /* Panin.xcdatamodeld */,
-				D0FAF5B517EC01DA001F813D /* StockInit.h */,
-				D0FAF5B617EC01DA001F813D /* StockInit.m */,
 				D0FAF5BB17EC01DB001F813D /* Server.h */,
 				D0FAF5BC17EC01DB001F813D /* Server.m */,
 				D0FAF5B817EC01DB001F813D /* Configuration.h */,
@@ -1060,6 +1060,7 @@
 				D07FA62517E5A543000FE15E /* NSManagedObjectContext+MagicalObserving.m in Sources */,
 				D07FA62617E5A543000FE15E /* NSManagedObjectContext+MagicalRecord.m in Sources */,
 				D07FA62717E5A543000FE15E /* NSManagedObjectContext+MagicalSaves.m in Sources */,
+				D008F98317F176D900EEFF24 /* StockInit.m in Sources */,
 				D07FA62817E5A543000FE15E /* NSManagedObjectContext+MagicalThreading.m in Sources */,
 				D07FA62917E5A543000FE15E /* NSManagedObjectModel+MagicalRecord.m in Sources */,
 				D07FA62A17E5A543000FE15E /* NSPersistentStore+MagicalRecord.m in Sources */,
@@ -1087,7 +1088,6 @@
 				D02A4DA917EA880100BB7CCD /* comapanyCell.m in Sources */,
 				D0FAF5AE17EC016F001F813D /* Panin.xcdatamodeld in Sources */,
 				D0FAF5B417EC01DA001F813D /* StockWatch.m in Sources */,
-				D0FAF5B717EC01DB001F813D /* StockInit.m in Sources */,
 				D0FAF5BA17EC01DB001F813D /* Configuration.m in Sources */,
 				D0FAF5BD17EC01DB001F813D /* Server.m in Sources */,
 			);
