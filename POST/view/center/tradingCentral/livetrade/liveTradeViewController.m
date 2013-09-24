@@ -187,7 +187,7 @@
 		//{"id":"AALI.TN","data":["AALI","TN",19150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"req":"SQ"}
 		NSString *clean=[[[[[[[[buffer objectAtIndex:i] stringByReplacingOccurrencesOfString:@"{" withString:@""]stringByReplacingOccurrencesOfString:@"\"" withString:@""]stringByReplacingOccurrencesOfString:@"data:[" withString:@""]stringByReplacingOccurrencesOfString:@"]" withString:@""]stringByReplacingOccurrencesOfString:@"req:" withString:@""]stringByReplacingOccurrencesOfString:@"id:" withString:@""]stringByReplacingOccurrencesOfString:@".0" withString:@""];
 		NSLog(@"fourth-->%@",clean);
-		if([clean hasSuffix:@"CUR"]||[clean hasSuffix:@"cur"]){
+		if([clean hasSuffix:@"T"]||[clean hasSuffix:@"T"]){
 			NSArray *separate =[clean componentsSeparatedByString:@","];
 			NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
 			for (int i = 0; i<[separate count]; i++) {
@@ -195,7 +195,7 @@
 				[stringArray insertObject:dic atIndex:0];
 				
 			}
-			
+			NSLog(@"string array->%@",[stringArray objectAtIndex:0]);
 			[clean_data insertObject:dic atIndex:0];
 			
 			[liveTrade reloadData];
@@ -235,7 +235,7 @@
 }
 -(void)liveTradeAssingn:(NSString*)status{
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-							@"currencies", @"request",
+							@"runningTrade", @"request",
 							@"start", @"act",
 							nil];
 	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
@@ -342,10 +342,48 @@
 	//cell.textLabel.backgroundColor=[UIColor clearColor];
 	//cell.textLabel.text=[livetrade_data objectAtIndex:indexPath.row];
 	//cell.time.text = [livetrade_data objectAtIndex:indexPath.row];
-	cell.time.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[0]"];
-	cell.code.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[1]"];
-	cell.mkt.text =[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[2]"];
-	cell.price.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[3]"];
+		NSDate *now = [NSDate date];
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setDateFormat:@"HH:mm:ss"];
+		
+		if([[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[3]"] integerValue] < [[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[5]"]integerValue]){
+			cell.status.textColor =[UIColor redColor];
+			cell.time.textColor =[UIColor redColor];
+			cell.code.textColor =[UIColor redColor];
+			cell.mkt.textColor =[UIColor redColor];
+			cell.price.textColor =[UIColor redColor];
+			cell.vol.textColor =[UIColor redColor];
+			cell.pm.textColor = [UIColor redColor];
+			cell.percent.textColor = [UIColor redColor];
+			cell.bs.textColor = [UIColor redColor];
+			cell.sell.textColor = [UIColor redColor];
+
+		}
+		else if([[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[3]"] integerValue] == [[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[5]"]integerValue]){
+			cell.status.textColor =[UIColor yellowColor];
+			cell.time.textColor =[UIColor yellowColor];
+			cell.code.textColor =[UIColor yellowColor];
+			cell.mkt.textColor =[UIColor yellowColor];
+			cell.price.textColor =[UIColor yellowColor];
+			cell.vol.textColor =[UIColor yellowColor];
+			cell.pm.textColor = [UIColor yellowColor];
+			cell.percent.textColor = [UIColor yellowColor];
+			cell.bs.textColor = [UIColor yellowColor];
+			cell.sell.textColor = [UIColor yellowColor];
+		}
+		else{
+		
+		
+		}
+		cell.status.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[10]"];
+		cell.time.text =[dateFormatter stringFromDate:now];
+		cell.code.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[1]"];
+		cell.mkt.text =[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[2]"];
+		cell.price.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[3]"];
+		cell.vol.text = [[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[4]"];
+		cell.bs.text = [NSString stringWithFormat:@"%@ %@",[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[6]"],[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[7]"]];
+		
+		cell.sell.text = [NSString stringWithFormat:@"%@ %@",[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[8]"],[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[9]"]];
 	return cell;
 	}
 }
