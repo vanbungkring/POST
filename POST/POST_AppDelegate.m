@@ -55,7 +55,6 @@
 }
 
 -(void)setCenter:(NSString *)center name:(NSString*)name{
-	NSLog(@"center-->%@",center);
 	navLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 300, 22)];
 	navLabel.backgroundColor = [UIColor clearColor];
 	navLabel.textColor = [UIColor whiteColor];
