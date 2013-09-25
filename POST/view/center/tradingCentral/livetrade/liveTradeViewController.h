@@ -32,9 +32,18 @@
 	UILabel *stock_mcp;
 	NSMutableArray *clean_data;
 	
-	NSURLConnection* connection ;
+	NSURLConnection* connections ;
+	UIView *ihsg;
 	
 	NSTimer *timer;
+	NSTimer *timer2;
+	
+	
+	UILabel *ihsg_now;
+	UILabel *ihsg_last;
+	UILabel *ihsg_prev;
+	UILabel *ihsg_total;
+	NSString *statusx;
 	
 	
 	

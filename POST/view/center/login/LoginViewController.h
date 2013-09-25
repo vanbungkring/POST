@@ -19,7 +19,4 @@
 	
 	
 }
-
--(void)showHud;
--(void)removeHud;
 @end

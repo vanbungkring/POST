@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F37" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Configuration" representedClassName="Configuration" syncable="YES"/>
+    <entity name="Configuration" representedClassName="Configuration" syncable="YES">
+        <attribute name="brokerInit" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="stockinit" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
     <entity name="Server" representedClassName="Server" syncable="YES">
+        <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="StockInit" representedClassName="StockInit" syncable="YES">
@@ -15,10 +19,14 @@
         <attribute name="subsector" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="StockWatch" representedClassName="StockWatch" syncable="YES"/>
+    <entity name="Trading_acc" representedClassName="Trading_acc" syncable="YES">
+        <attribute name="pin" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Configuration" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Server" positionX="0" positionY="0" width="0" height="0"/>
         <element name="StockInit" positionX="0" positionY="0" width="0" height="0"/>
         <element name="StockWatch" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Trading_acc" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

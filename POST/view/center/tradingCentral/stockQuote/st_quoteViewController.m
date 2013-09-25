@@ -182,7 +182,7 @@
 {
 	NSLog(@"->%@",[error localizedDescription]);
 	[self StartStream];
-    // Handle the error properly
+
 }
 -(void)filter:(NSData *)filters{
 	

@@ -9,6 +9,8 @@
 #endif
 
 #ifdef __OBJC__
+#define MR_SHORTHAND
+#define MR_ENABLE_ACTIVE_RECORD_LOGGING 0
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
@@ -19,12 +21,12 @@
 #import "POST_AppDelegate.h"
 #import "CoreData+MagicalRecord.h"
 #import "ASDepthModalViewController.h"
-#import "PaninStreamer.h"
 #import "netra.h"
 #import "login.h"
-#import "PaninStreamer.h"
 #import "broker.h"
+#import "dataStreamer.h"
 #import "MBProgressHUD.h"
 #import "Company_fetcher.h"
 #define vanbungkring ((POST_AppDelegate *)[[UIApplication sharedApplication] delegate])
+
 #endif

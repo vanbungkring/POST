@@ -20,11 +20,25 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 		
+		ihsg = [[UIView alloc]initWithFrame:CGRectMake((1024/2)-400, 620, 800, 60)];
+		ihsg.layer.borderColor =[UIColor colorWithRed:0.314 green:0.82 blue:0.133 alpha:1].CGColor;
+		ihsg.layer.borderWidth =1.0;
+		
+		ihsg.backgroundColor = [UIColor colorWithRed:0.059 green:0.071 blue:0.09 alpha:1];
+		
+		ihsg_now = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 200, 60)];
+		ihsg_now.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
+		ihsg_now.textColor = [UIColor whiteColor];
+		ihsg_now.text =@"0000,0";
+		ihsg_now.backgroundColor = [UIColor clearColor];
+		[ihsg addSubview:ihsg_now];
+		
 		popupView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 270, 350)];
 		popupView.backgroundColor=[UIColor whiteColor];
 
         // Custom initialization
-		self.view.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
+		//self.view.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
+		self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
 		//self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"main_bg"]];
 		/* running thread 1 */
 		liveTrade = [[UITableView alloc]initWithFrame:CGRectMake(10, 10, 490, 595)];
@@ -52,7 +66,7 @@
 
 		liveTrade.tableHeaderView = headerView;
 		
-		livetrade_data = [[NSMutableArray alloc]initWithCapacity:101];
+		livetrade_data = [[NSMutableArray alloc]init];
 		
 		//rightview;
 		
@@ -119,13 +133,44 @@
 		[right addSubview:dataStock];
 		
 		[self.view addSubview:right];
+		[self.view addSubview:ihsg];
 		
 		timer =[[NSTimer alloc]init];
 		
     }
     return self;
 }
+-(void)initIhsg{
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"localIndexInit", @"request",
+							@"COMPOSITE", @"indexCode",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	
+	//[request setTimeoutInterval:];
+	
+	
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		// Print the response body in text
+		
+		NSArray *array = [[operation.responseString stringByReplacingOccurrencesOfString:@"[" withString:@""] componentsSeparatedByString:@","];
+		ihsg_now.text= [array objectAtIndex:5];
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+		
+	}];
+	[operation start];
 
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -141,10 +186,11 @@
 }
 -(void)StartStream
 {
+	NSLog(@"Start Stream");
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/mi2/marketInfoData?request=dataStream",baseUrl]]];
 	[request setValue:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]] forHTTPHeaderField:@"Cookie"];
-	connection =[[NSURLConnection alloc]initWithRequest:request delegate:self];
-	[connection start];
+	connections =[[NSURLConnection alloc]initWithRequest:request delegate:self];
+	[connections start];
 	
 	
 }
@@ -158,13 +204,21 @@
 -(void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)_data
 {
 	
+	NSLog(@"data->%@",[[NSString alloc] initWithData:_data
+											encoding:NSUTF8StringEncoding]);
 	[self filter:_data];
 	
 }
 -(void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
 	NSLog(@"->%@",[error localizedDescription]);
-	[self StartStream];
+	
+	[timer invalidate];
+	[timer2 invalidate];
+	[connections cancel];
+	[self performSelector:@selector(assingn) withObject:Nil afterDelay:5];
+
+	
     // Handle the error properly
 }
 -(void)filter:(NSData *)filters{
@@ -186,7 +240,7 @@
 		
 		//{"id":"AALI.TN","data":["AALI","TN",19150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"req":"SQ"}
 		NSString *clean=[[[[[[[[buffer objectAtIndex:i] stringByReplacingOccurrencesOfString:@"{" withString:@""]stringByReplacingOccurrencesOfString:@"\"" withString:@""]stringByReplacingOccurrencesOfString:@"data:[" withString:@""]stringByReplacingOccurrencesOfString:@"]" withString:@""]stringByReplacingOccurrencesOfString:@"req:" withString:@""]stringByReplacingOccurrencesOfString:@"id:" withString:@""]stringByReplacingOccurrencesOfString:@".0" withString:@""];
-		NSLog(@"fourth-->%@",clean);
+		//NSLog(@"fourth-->%@",clean);
 		if([clean hasSuffix:@"T"]||[clean hasSuffix:@"T"]){
 			NSArray *separate =[clean componentsSeparatedByString:@","];
 			NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
@@ -195,7 +249,7 @@
 				[stringArray insertObject:dic atIndex:0];
 				
 			}
-			NSLog(@"string array->%@",[stringArray objectAtIndex:0]);
+			//NSLog(@"string array->%@",[stringArray objectAtIndex:0]);
 			[clean_data insertObject:dic atIndex:0];
 			
 			[liveTrade reloadData];
@@ -215,28 +269,28 @@
 {
 	NSLog(@"finish");
 	[self StartStream];
+	
 }
 -(void)assingn{
+	statusx = @"start";
 	
 	timer =[NSTimer scheduledTimerWithTimeInterval:3
 									 target:self
-								   selector:@selector(liveTradeAssingn:) // <== see the ':', indicates your function takes an argument
-								   userInfo:[NSString stringWithFormat:@"start"]
+								   selector:@selector(liveTradeAssingn) // <== see the ':', indicates your function takes an argument
+								   userInfo:Nil
 									repeats:YES];
-	/*[NSTimer scheduledTimerWithTimeInterval:3
-	 target:self
-	 selector:@selector(bq) // <== see the ':', indicates your function takes an argument
-	 userInfo:nil
-	 repeats:YES];
-	 */
-	
-	
-	
+	timer2 =[NSTimer scheduledTimerWithTimeInterval:3
+											target:self
+										  selector:@selector(initIhsg) // <== see the ':', indicates your function takes an argument
+										  userInfo:Nil
+											repeats:YES];
 }
--(void)liveTradeAssingn:(NSString*)status{
+-(void)liveTradeAssingn{
+
+	NSLog(@"statusx-->%@",statusx);
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
 							@"runningTrade", @"request",
-							@"start", @"act",
+							statusx, @"act",
 							nil];
 	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
 	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
@@ -406,20 +460,26 @@
 }
 -(void)viewDidDisappear:(BOOL)animated{
 	[super viewDidDisappear:YES];
-	[connection cancel];
+	
+	NSLog(@"viewDidDisappear");
+	[connections cancel];
 	[timer invalidate];
+	[timer2 invalidate];
 	timer = Nil;
 	[super viewWillDisappear:YES];
-	[self liveTradeAssingn:@"stop"];
+	statusx = @"stop";
+	[self liveTradeAssingn];
 	[livetrade_data removeAllObjects];
 }
 -(void)viewWillDisappear:(BOOL)animated{
+	NSLog(@"viewWillDisappear");
 	[super viewDidDisappear:YES];
-	[connection cancel];
+	[connections cancel];
 	[timer invalidate];
+	[timer2 invalidate];
 	timer = Nil;
 	[super viewWillDisappear:YES];
-	[self liveTradeAssingn:@"stop"];
+	statusx = @"stop";
 	[livetrade_data removeAllObjects];
 }
 

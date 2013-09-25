@@ -1,5 +1,5 @@
 //
-//  Server.h
+//  Trading_acc.h
 //  POST
 //
 //  Created by Arie on 9/25/13.
@@ -10,9 +10,8 @@
 #import <CoreData/CoreData.h>
 
 
-@interface Server : NSManagedObject
+@interface Trading_acc : NSManagedObject
 
-@property (nonatomic, retain) NSString * url;
-@property (nonatomic, retain) NSNumber * active;
+@property (nonatomic, retain) NSString * pin;
 
 @end

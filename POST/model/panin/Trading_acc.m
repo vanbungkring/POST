@@ -1,17 +1,16 @@
 //
-//  Server.m
+//  Trading_acc.m
 //  POST
 //
 //  Created by Arie on 9/25/13.
 //  Copyright (c) 2013 netra. All rights reserved.
 //
 
-#import "Server.h"
+#import "Trading_acc.h"
 
 
-@implementation Server
+@implementation Trading_acc
 
-@dynamic url;
-@dynamic active;
+@dynamic pin;
 
 @end

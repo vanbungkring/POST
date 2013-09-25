@@ -21,19 +21,11 @@
 		HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	
 		// Custom initialization
-		//self.view.backgroundColor = [UIColor colorWithRed:0.141 green:0.196 blue:0.231 alpha:1];
-		self.view.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
+		self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
+		//self.view.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
 		
 		login_container =[[UIView alloc]initWithFrame:CGRectMake(30, 100, 500, 300)];
-		//login_container.backgroundColor = [UIColor colorWithRed:0.255 green:0.322 blue:0.353 alpha:1];
-		//login_container.layer.cornerRadius =10;
-		// drop shadow
-		/*
-		 [login_container.layer setShadowColor:[UIColor blackColor].CGColor];
-		 [login_container.layer setShadowOpacity:0.5];
-		 [login_container.layer setShadowRadius:10.0];
-		 [login_container.layer setShadowOffset:CGSizeMake(1, 1.0)];
-		 */
+
 		//UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 20)];
 		
 		logo = [[UIImageView alloc]initWithFrame:CGRectMake((1024-107.5)/2, 60, 107.5, 136.5)];
@@ -44,6 +36,7 @@
 		userName.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16];
 		userName.placeholder = @"Username";
 		userName.tag=1;
+		userName.keyboardAppearance =UIKeyboardAppearanceDark;
 		userName.delegate = self;
 		userName.clearButtonMode = UITextFieldViewModeWhileEditing;
 		userName.returnKeyType = UIReturnKeyNext;
@@ -53,6 +46,7 @@
 		passWord =[[UITextField alloc]initWithFrame:CGRectMake((1024-320)/2+10, 300, 300, 44)];
 		passWord.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
 		passWord.returnKeyType = UIReturnKeyDone;
+		passWord.keyboardAppearance =UIKeyboardAppearanceDark;
 		passWord.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16];
 		passWord.placeholder = @"Password";
 		passWord.tag = 2;

@@ -1,17 +1,13 @@
 //
-//  Server.m
+//  dataStreamer.h
 //  POST
 //
 //  Created by Arie on 9/25/13.
 //  Copyright (c) 2013 netra. All rights reserved.
 //
 
-#import "Server.h"
+#import <Foundation/Foundation.h>
 
-
-@implementation Server
-
-@dynamic url;
-@dynamic active;
+@interface dataStreamer : NSURLConnection
 
 @end

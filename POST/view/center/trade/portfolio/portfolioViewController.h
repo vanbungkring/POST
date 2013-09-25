@@ -9,5 +9,18 @@
 #import <UIKit/UIKit.h>
 
 @interface portfolioViewController : UIViewController
-
+{
+	UITableView *portFolio;
+	UILabel *account;
+	UILabel *name;
+	UILabel *trading_limit;
+	UILabel *ratio;
+	UILabel *cashL;
+	UILabel *stockVal;
+	UILabel *netToday;
+	UILabel *Equity;
+	UIView *portfoliox;
+	UIView *popupView;
+	
+}
 @end

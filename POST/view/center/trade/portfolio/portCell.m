@@ -1,26 +1,24 @@
 //
-//  orderListViewController.m
+//  portCell.m
 //  POST
 //
-//  Created by Arie on 9/17/13.
+//  Created by Arie on 9/25/13.
 //  Copyright (c) 2013 netra. All rights reserved.
 //
 
-#import "orderListViewController.h"
+#import "portCell.h"
 
-@interface orderListViewController ()
+@interface portCell ()
 
 @end
 
-@implementation orderListViewController
+@implementation portCell
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-		self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
-		//self.view.backgroundColor = [UIColor colorWithRed:0.204 green:0.247 blue:0.275 alpha:1];
     }
     return self;
 }

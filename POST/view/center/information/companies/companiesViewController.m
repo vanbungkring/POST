@@ -64,10 +64,7 @@
 	if(cell == nil){
 		cell = [[comapanyCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cex"];
 	}
-	if(indexPath.row % 2 == 0){
-		cell.contentView.backgroundColor=[UIColor colorWithRed:0.078 green:0.098 blue:0.122 alpha:1];
-	}
-	
+
 	//cell.textLabel.textColor  = [UIColor whiteColor];
 	cell.no.text = [NSString stringWithFormat:@"%d",indexPath.row+1];
 	cell.code.text = [NSString stringWithFormat:@"%@ - %@",[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[1]"],[[clean_data objectAtIndex:indexPath.row]objectForKey:@"id[2]"]];

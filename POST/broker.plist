@@ -1,0 +1,1236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>AD</string>
+			<string>OSO SECURITIES</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>AD.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>AF</string>
+			<string>HARITA KENCANA SECURITIES</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>AF.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>AG</string>
+			<string>KIWOOM SECURITIES INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>AG.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>AH</string>
+			<string>MAKINTA SECURITIES</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>AH.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>AI</string>
+			<string>UOB KAY HIAN SECURITIES</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>AI.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>AK</string>
+			<string>UBS SECURITIES INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>AK.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>AN</string>
+			<string>WANTEG SECURINDO</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>AN.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>AO</string>
+			<string>ERDIKHA ELIT SEKURITAS</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>AO.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>AP</string>
+			<string>PACIFIC CAPITAL</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>AP.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>AR</string>
+			<string>BINAARTHA PARAMA</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>AR.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>AT</string>
+			<string>PHINTRACO SECURITIES</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>AT.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>AY</string>
+			<string>FINAN CORPINDO NUSA</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>AY.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>AZ</string>
+			<string>SUCORINVEST CENTRAL GANI</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>AZ.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>BD</string>
+			<string>INDOMITRA SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>BD.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>BF</string>
+			<string>INTI FIKASA SECURINDO</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>BF.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>BJ</string>
+			<string>ANDALAN ARTHA ADVISINDO SEK.</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>BJ.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>BK</string>
+			<string>J.PMORGAN SECURITIES INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>BK.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>BM</string>
+			<string>OVERSEAS SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>BM.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>BP</string>
+			<string>BAPINDO BUMI SEKURITAS</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>BP.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>BQ</string>
+			<string>DANPAC SEKURITAS</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>BQ.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>BR</string>
+			<string>TRUST SECURITIES</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>BR.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>BS</string>
+			<string>EQUITY SECURITIES INDONESIA</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>BS.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>BW</string>
+			<string>BNP PARIBAS SECURITIES INDONES</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>BW.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>BZ</string>
+			<string>BATAVIA PROSPERINDO SEKURITAS</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>BZ.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>CC</string>
+			<string>MANDIRI SEKURITAS</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>CC.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>CD</string>
+			<string>MEGA CAPITAL INDONESIA</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>CD.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>CG</string>
+			<string>CITIGROUP SECURITIES INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>CG.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>CM</string>
+			<string>OPTIMA KHARYA CAPITAL SEC.</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>CM.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>CP</string>
+			<string>VALBURY ASIA SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>CP.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>CS</string>
+			<string>CREDIT SUISSE SECURITIES IND</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>CS.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>DB</string>
+			<string>DEUTSCHE SECURITIES INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>DB.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>DD</string>
+			<string>MAKINDO SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>DD.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>DG</string>
+			<string>TIGA PILAR SEKURITAS</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>DG.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>DH</string>
+			<string>SINARMAS SEKURITAS</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>DH.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>DM</string>
+			<string>MASINDO ARTHA SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>DM.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>DP</string>
+			<string>DBS VICKERS SECURITIES INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>DP.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>DR</string>
+			<string>RHB OSK Securities Indonesia</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>DR.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>DS</string>
+			<string>DINAR SECURITIES</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>DS.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>DU</string>
+			<string>REDIALINDO MANDIRI</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>DU.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>DX</string>
+			<string>BAHANA SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>DX.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>EL</string>
+			<string>EVERGREEN CAPITAL</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>EL.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>EP</string>
+			<string>MNC SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>EP.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>ES</string>
+			<string>EKOKAPITAL SEKURITAS</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>ES.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>FG</string>
+			<string>NOMURA INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>FG.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>FM</string>
+			<string>ONIX SEKURITAS</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>FM.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>FO</string>
+			<string>FORTE MENTARI SECURITIES</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>FO.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>FS</string>
+			<string>AMCAPITAL INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>FS.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>FZ</string>
+			<string>WATERFRONT SECURITIES INDONESIA</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>FZ.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>GA</string>
+			<string>BLOOM NUSANTARA CAPITAL</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>GA.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>GI</string>
+			<string>MAHASTRA CAPITAL</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>GI.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>GR</string>
+			<string>PANIN SEKURITAS Tbk.</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>GR.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>GW</string>
+			<string>HSBC SECURITIES INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>GW.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>HD</string>
+			<string>HD CAPITAL Tbk.</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>HD.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>HG</string>
+			<string>RBS ASIA SECURITIES INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>HG.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>HK</string>
+			<string>BRENT SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>HK.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>HP</string>
+			<string>HENAN PUTIHRAI</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>HP.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>ID</string>
+			<string>ANUGERAH SECURINDO INDAH</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>ID.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>IF</string>
+			<string>SAMUEL SEKURITAS INDONESIA</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>IF.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>IH</string>
+			<string>PACIFIC 2000 SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>IH.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>II</string>
+			<string>DANATAMA MAKMUR</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>II.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>IN</string>
+			<string>INVESTINDO NUSANTARA SEKURITA</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>IN.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>IP</string>
+			<string>ASJAYA INDOSURYA SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>IP.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>IT</string>
+			<string>INTITELADANARTHASWADAYA</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>IT.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>IU</string>
+			<string>INOVASI UTAMA SEKURINDO</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>IU.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>KC</string>
+			<string>MAJAPAHIT SECURITIES Tbk.</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>KC.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>KI</string>
+			<string>CIPTADANA SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>KI.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>KK</string>
+			<string>PHILLIP SECURITIES INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>KK.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>KS</string>
+			<string>KRESNA GRAHA SEKURINDO Tbk.</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>KS.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>KW</string>
+			<string>MADANI SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>KW.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>KZ</string>
+			<string>CLSA INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>KZ.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>LG</string>
+			<string>TRIMEGAH SECURITIES Tbk.</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>LG.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>LH</string>
+			<string>NC SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>LH.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>LK</string>
+			<string>RECAPITAL SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>LK.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>LS</string>
+			<string>RELIANCE SECURITIES</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>LS.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>MG</string>
+			<string>SEMESTA INDOVEST</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>MG.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>MI</string>
+			<string>VICTORIA SECURITIES INDONESIA</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>MI.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>MK</string>
+			<string>EQUATOR SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>MK.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>ML</string>
+			<string>MERRILL LYNCH INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>ML.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>MS</string>
+			<string>MORGAN STANLEY ASIA INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>MS.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>MU</string>
+			<string>MINNA PADI INVESTAMA</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>MU.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>NI</string>
+			<string>BNI SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>NI.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>OD</string>
+			<string>DANAREKSA SEKURITAS</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>OD.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>OK</string>
+			<string>NET SEKURITAS</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>OK.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>PC</string>
+			<string>FIRST ASIA CAPITAL</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>PC.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>PD</string>
+			<string>INDO PREMIER SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>PD.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>PF</string>
+			<string>DANASAKTI SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>PF.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>PG</string>
+			<string>PANCA GLOBAL SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>PG.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>PI</string>
+			<string>MAGENTA KAPITAL INDONESIA</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>PI.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>PK</string>
+			<string>PRATAMA CAPITAL INDONESIA</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>PK.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>PO</string>
+			<string>PILARMAS INVESTINDO</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>PO.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>PP</string>
+			<string>ALDIRACITA CORPOTAMA</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>PP.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>PS</string>
+			<string>PARAMITRA ALFA SEKURITAS</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>PS.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>QA</string>
+			<string>PRIME CAPITAL SECURITIES</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>QA.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>RB</string>
+			<string>NIKKO SECURITIES INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>RB.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>RF</string>
+			<string>BUANA CAPITAL</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>RF.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>RG</string>
+			<string>PROFINDO INTERNATIONAL SECURITIES</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>RG.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>RO</string>
+			<string>NISP SEKURITAS</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>RO.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>RS</string>
+			<string>YULIE SEKURINDO</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>RS.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>RX</string>
+			<string>MACQUARIE CAPITAL SEC. IND.</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>RX.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>SA</string>
+			<string>BOSOWA SEKURITAS</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>SA.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>SC</string>
+			<string>SENNI CAHAYA</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>SC.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>SH</string>
+			<string>ARTHA SECURITIES INDONESIA</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>SH.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>SM</string>
+			<string>MILLENIUM DANATAMA SEKURITAS</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>SM.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>SQ</string>
+			<string>BCA Sekuritas</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>SQ.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>SS</string>
+			<string>SUPRA SECURINVEST</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>SS.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>TA</string>
+			<string>MAGNUS Capital</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>TA.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>TF</string>
+			<string>UNIVERSAL BROKER INDONESIA</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>TF.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>TP</string>
+			<string>OCBC Sekuritas Indonesia</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>TP.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>TS</string>
+			<string>DWIDANA SAKTI SEKURINDO</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>TS.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>TX</string>
+			<string>DHANAWIBAWA ARTA CEMERLANG</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>TX.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>VI</string>
+			<string>IFIS</string>
+			<integer>0</integer>
+		</array>
+		<key>id</key>
+		<string>VI.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>WW</string>
+			<string>JAKARTA SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>WW.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>XA</string>
+			<string>WOORI KORINDO SECURITIES INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>XA.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>XC</string>
+			<string>PRIMASIA SECURITIES</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>XC.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>XL</string>
+			<string>MAHAKARYA ARTHA SECURITIES</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>XL.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>YB</string>
+			<string>JASA UTAMA CAPITAL</string>
+			<integer>2</integer>
+		</array>
+		<key>id</key>
+		<string>YB.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>YJ</string>
+			<string>LAUTANDHANA SECURINDO</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>YJ.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>YO</string>
+			<string>AMANTARA SECURITIES</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>YO.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>YP</string>
+			<string>eTRADING SECURITIES</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>YP.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>YU</string>
+			<string>CIMB SECURITIES INDONESIA</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>YU.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>ZP</string>
+			<string>MAYBANK KIM ENG SECURITIES</string>
+			<integer>1</integer>
+		</array>
+		<key>id</key>
+		<string>ZP.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>ZR</string>
+			<string>BUMIPUTERA CAPITAL INDONESIA</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>ZR.RG</string>
+	</dict>
+	<dict>
+		<key>data</key>
+		<array>
+			<string>ZZ</string>
+			<string>Kliring &amp; Penjaminan Efek Ind.</string>
+			<integer>3</integer>
+		</array>
+		<key>id</key>
+		<string>ZZ.RG</string>
+	</dict>
+</array>
+</plist>

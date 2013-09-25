@@ -18,17 +18,21 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-		self.view.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
-		
+		//self.view.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
+		self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
 		brQ = [[UITableView alloc]init];
 		brQ.frame= CGRectMake(10, 10, 1004, 608);
 		brQ.delegate = self;
 		brQ.dataSource = self;
-		
+		brQ.separatorColor = [UIColor colorWithRed:0.161 green:0.18 blue:0.216 alpha:1];
+		//stockQ.userInteractionEnabled=false;
+		brQ.backgroundColor = [UIColor colorWithRed:0.059 green:0.071 blue:0.09 alpha:1];
+		brQ.separatorInset =UIEdgeInsetsZero;
 		brQ.separatorColor = [UIColor colorWithRed:0.161 green:0.18 blue:0.216 alpha:1];
 		//stockQ.userInteractionEnabled=false;
 		brQ.backgroundColor = [UIColor colorWithRed:0.059 green:0.071 blue:0.09 alpha:1];
 		[self.view addSubview:brQ];
+		
 		
     }
     return self;
@@ -52,7 +56,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
-	return 0;
+	return plist.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	brokerCell *cell = [[brokerCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cex"];
@@ -65,34 +69,40 @@
 	}
 
 	cell.no.text = [NSString stringWithFormat:@"%d",indexPath.row+1];
-	cell.code.textColor = [UIColor greenColor];
+	cell.code.textColor = [UIColor yellowColor];
+	cell.code.text =[[plist objectAtIndex:indexPath.row]objectForKey:@"id"];
 	cell.b_freq.textColor = [UIColor greenColor];
 	
-	cell.b_vol.textColor = [UIColor greenColor];
-	cell.b_val.textColor = [UIColor greenColor];
-	cell.s_freq.textColor = [UIColor greenColor];
+	cell.b_vol.textColor = [UIColor yellowColor];
+	cell.b_val.textColor = [UIColor yellowColor];
+	cell.s_freq.textColor = [UIColor yellowColor];
 	
-	cell.s_vol.textColor = [UIColor greenColor];
-	cell.s_val.textColor = [UIColor greenColor];
-	cell.n_vol.textColor = [UIColor greenColor];
+	cell.s_vol.textColor = [UIColor yellowColor];
+	cell.s_val.textColor = [UIColor yellowColor];
+	cell.n_vol.textColor = [UIColor yellowColor];
 	
-	cell.t_vol.textColor = [UIColor greenColor];
-	cell.n_val.textColor = [UIColor greenColor];
-	cell.t_val.textColor = [UIColor greenColor];
+	cell.t_vol.textColor = [UIColor yellowColor];
+	cell.n_val.textColor = [UIColor yellowColor];
+	cell.t_val.textColor = [UIColor yellowColor];
 	
 	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	[cell setBackgroundColor:[UIColor clearColor]];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
 }
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 	
-	return 30;
+	return 44;
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	[self fetchdata];
+	[self setupBroker];
 	// Do any additional setup after loading the view.
 }
 
@@ -101,8 +111,32 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)fetchdata{
+-(void)setupBroker{
+	NSString *file = [[NSBundle mainBundle] pathForResource:@"broker" ofType:@"plist"];
+	plist = [NSArray arrayWithContentsOfFile:file];
+	NSLog(@"plist lengt->%d",plist.count);
+	[self performSelector:@selector(updateCell) withObject:Nil afterDelay:10];
+	[brQ reloadData];
+}
+-(void)StreamData{
 	
+}
+-(void)pinData{
 
+}
+-(void) updateCell{
+	NSIndexPath* indexPath;
+   
+	NSArray *data = [NSArray arrayWithObjects:@"AD.RG",@"AH.RG",@"AF.RG",nil];
+	for (int i= 0; i <plist.count ; i++) {
+		indexPath= [NSIndexPath indexPathForRow:i inSection:0];
+		 brokerCell *cell = (brokerCell *)[brQ cellForRowAtIndexPath:indexPath];
+		for (int x=0; x<data.count; x++) {
+			if([[[plist objectAtIndex:i]objectForKey:@"id"] isEqualToString:[data objectAtIndex:x]]){
+			
+				cell.b_freq.text = @"100.000";
+			}
+		}
+	}
 }
 @end

@@ -11,6 +11,7 @@
 @interface brokerRankViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
 	UITableView *brQ;
+	NSArray *plist;
 }
 
 @end
