@@ -136,9 +136,7 @@
 
 
 }
--(void) startS{
 
-}
 -(void)lefbuttonPush{
 	
 	[_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
