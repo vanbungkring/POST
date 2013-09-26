@@ -313,8 +313,12 @@
 			NSLog(@"Siap Siap stream");
 		}
 		else{
-			//[self stream];
-			NSLog(@"gak bisa stream");
+			UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error!"
+															  message:@"It seems Your Trading Session Is Expired, Please Login Again"
+															 delegate:nil
+													cancelButtonTitle:@"OK"
+													otherButtonTitles:nil];
+			[message show];
 			
 		}
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -460,26 +464,29 @@
 }
 -(void)viewDidDisappear:(BOOL)animated{
 	[super viewDidDisappear:YES];
-	
+		statusx = @"stop";
 	NSLog(@"viewDidDisappear");
 	[connections cancel];
 	[timer invalidate];
 	[timer2 invalidate];
 	timer = Nil;
+	timer2 = Nil;
 	[super viewWillDisappear:YES];
-	statusx = @"stop";
+
 	[self liveTradeAssingn];
 	[livetrade_data removeAllObjects];
 }
 -(void)viewWillDisappear:(BOOL)animated{
 	NSLog(@"viewWillDisappear");
+	statusx = @"stop";
 	[super viewDidDisappear:YES];
 	[connections cancel];
 	[timer invalidate];
 	[timer2 invalidate];
 	timer = Nil;
+	timer2 = Nil;
 	[super viewWillDisappear:YES];
-	statusx = @"stop";
+	
 	[livetrade_data removeAllObjects];
 }
 

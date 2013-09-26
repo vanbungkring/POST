@@ -236,15 +236,6 @@
 										  selector:@selector(liveTradeAssingn:) // <== see the ':', indicates your function takes an argument
 										  userInfo:[NSString stringWithFormat:@"start"]
 										   repeats:YES];
-	/*[NSTimer scheduledTimerWithTimeInterval:3
-	 target:self
-	 selector:@selector(bq) // <== see the ':', indicates your function takes an argument
-	 userInfo:nil
-	 repeats:YES];
-	 */
-	
-	
-	
 }
 -(void)liveTradeAssingn:(NSString*)status{
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
