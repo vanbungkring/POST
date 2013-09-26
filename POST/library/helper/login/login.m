@@ -45,7 +45,7 @@ static login *sharedObject;
 				
 			}
 			[netra setSessionId:[xxx objectAtIndex:0]];
-			[vanbungkring setCenter:@"" name:@"Live Trade"];
+			[vanbungkring setCenter:@"brokerRankViewController" name:@"Live Trade"];
 			//[vanbungkring startS];
 			
 		}
