@@ -12,6 +12,12 @@
 {
 	UITableView *brQ;
 	NSArray *plist;
+	NSURLConnection *connections;
+	NSTimer *timer;
+	NSTimer *timer2;
+	NSMutableArray *bq;
+
+	
 }
 
 @end

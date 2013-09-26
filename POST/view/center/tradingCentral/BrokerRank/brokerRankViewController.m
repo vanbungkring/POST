@@ -32,6 +32,7 @@
 		//stockQ.userInteractionEnabled=false;
 		brQ.backgroundColor = [UIColor colorWithRed:0.059 green:0.071 blue:0.09 alpha:1];
 		[self.view addSubview:brQ];
+		bq = [[NSMutableArray alloc]init];
 		
 		
     }
@@ -117,26 +118,191 @@
 	NSLog(@"plist lengt->%d",plist.count);
 	[self performSelector:@selector(updateCell) withObject:Nil afterDelay:10];
 	[brQ reloadData];
+	[self performSelector:@selector(StartStream) withObject:Nil afterDelay:5];
+	[self assingn];
 }
--(void)StreamData{
-	
-}
+
 -(void)pinData{
 
 }
+-(void)assingn{
+	[self StartStream];
+	timer =[NSTimer scheduledTimerWithTimeInterval:2
+											target:self
+										  selector:@selector(liveTradeAssingn) // <== see the ':', indicates your function takes an argument
+										  userInfo:Nil
+										   repeats:YES];
+	timer2 =[NSTimer scheduledTimerWithTimeInterval:20
+											 target:self
+										   selector:@selector(manageData) // <== see the ':', indicates your function takes an argument
+										   userInfo:Nil
+											repeats:YES];
+}
+-(void)manageData{
+	NSLog(@"manage");
+	[connections cancel];
+	connections=Nil;
+	[timer invalidate];
+	timer2 =Nil;
+	timer =Nil;
+	[timer2 invalidate];
+	[self performSelector:@selector(assingn) withObject:Nil afterDelay:20];
+
+
+
+}
+-(void)liveTradeAssingn{
+
+	
+	//NSLog(@"statusx-->%@",statusx);
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"brokerQuote", @"request",
+							@"start", @"act",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	
+	//[request setTimeoutInterval:];
+	
+	
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		// Print the response body in text
+		
+		if(operation.responseString==(NSString*) [NSNull null] || [operation.responseString length]==0 || [operation.responseString isEqualToString:@""]){
+			NSLog(@"Siap Siap stream");
+		}
+		else{
+			UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error!"
+															  message:@"It seems Your Trading Session Is Expired, Please Login Again"
+															 delegate:nil
+													cancelButtonTitle:@"OK"
+													otherButtonTitles:nil];
+			[message show];
+			[timer invalidate];
+			[timer2 invalidate];
+			[connections cancel];
+		}
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+		
+	}];
+	[operation start];
+
+}
+/////streamer
+
+-(void)StartStream
+{
+	NSLog(@"Start Stream");
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/mi2/marketInfoData?request=dataStream",baseUrl]]];
+	[request setValue:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]] forHTTPHeaderField:@"Cookie"];
+	connections =[[NSURLConnection alloc]initWithRequest:request delegate:self];
+	[connections start];
+	
+	
+}
+-(void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse*)response
+{
+	
+	NSLog(@"response-->%@",response);
+}
+-(void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)_data
+{
+	
+	[self filter:_data];
+;
+	
+}
+-(void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
+{
+	NSLog(@"->%@",[error localizedDescription]);
+	
+	[timer invalidate];
+	[timer2 invalidate];
+	[connections cancel];
+	[self assingn];
+	//[self performSelector:@selector(assingn) withObject:Nil afterDelay:5];
+	
+	
+    // Handle the error properly
+}
+-(void)filter:(NSData *)filters{
+	
+	// Print the response body in text
+	//NSLog(@"Response: %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+	NSMutableArray *buffer = [[NSMutableArray alloc]init];
+	NSString *buffers = [[NSString alloc] initWithData:filters encoding:NSUTF8StringEncoding];
+	NSArray *testArray = [buffers componentsSeparatedByString:@"}"];
+	//NSArray *testArrays = [testArray componentsSeparatedByString:@"]}"];
+	
+	buffer = [NSMutableArray arrayWithArray:testArray];
+	
+	NSMutableArray *stringArray =[[NSMutableArray alloc]init];
+	
+	//NSMutableArray *stringArray =[[NSMutableArray alloc]init];
+	buffer = [NSMutableArray arrayWithArray:testArray];
+	  dispatch_semaphore_t _semaphore = dispatch_semaphore_create(0);
+	dispatch_queue_t checkUSers = dispatch_queue_create("CheckUsers", NULL);
+    dispatch_async(checkUSers, ^{
+	for (int i=0; i<buffer.count; i++) {
+		
+		//{"id":"AALI.TN","data":["AALI","TN",19150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"req":"SQ"}
+		NSString *clean=[[[[[[[[buffer objectAtIndex:i] stringByReplacingOccurrencesOfString:@"{" withString:@""]stringByReplacingOccurrencesOfString:@"\"" withString:@""]stringByReplacingOccurrencesOfString:@"data:[" withString:@""]stringByReplacingOccurrencesOfString:@"]" withString:@""]stringByReplacingOccurrencesOfString:@"req:" withString:@""]stringByReplacingOccurrencesOfString:@"id:" withString:@""]stringByReplacingOccurrencesOfString:@".0" withString:@""];
+		//NSLog(@"fourth-->%@",clean);
+		if([clean hasSuffix:@"BQ"]||[clean hasSuffix:@"BQ"]){
+			NSArray *separate =[clean componentsSeparatedByString:@","];
+			NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+			for (int i = 0; i<[separate count]; i++) {
+				[dic setValue:[separate objectAtIndex:i] forKey:[NSString stringWithFormat:@"id[%d]", i]];
+				[stringArray insertObject:dic atIndex:0];
+				
+			}
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[bq insertObject:dic atIndex:0];
+			});
+			
+		
+
+		}
+		else{
+			
+			NSLog(@"gak ada");
+		}
+	}
+	  dispatch_semaphore_signal(_semaphore);
+	});
+	[self updateCell];
+	dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
+	
+	
+}
 -(void) updateCell{
+	NSLog(@"dipanggil");
 	NSIndexPath* indexPath;
-   
-	NSArray *data = [NSArray arrayWithObjects:@"AD.RG",@"AH.RG",@"AF.RG",nil];
+	if(bq.count>0){
 	for (int i= 0; i <plist.count ; i++) {
 		indexPath= [NSIndexPath indexPathForRow:i inSection:0];
 		 brokerCell *cell = (brokerCell *)[brQ cellForRowAtIndexPath:indexPath];
-		for (int x=0; x<data.count; x++) {
-			if([[[plist objectAtIndex:i]objectForKey:@"id"] isEqualToString:[data objectAtIndex:x]]){
+		
 			
-				cell.b_freq.text = @"100.000";
-			}
+			if([[[[plist objectAtIndex:i]objectForKey:@"data"]objectAtIndex:0] isEqualToString:[[bq objectAtIndex:0]objectForKey:@"id[1]"]]){
+				NSLog(@"pair");
+				cell.b_freq.text =[[bq objectAtIndex:0]objectForKey:@"id[1]"];
+				cell.b_vol.text = [[bq objectAtIndex:0]objectForKey:@"id[2]"];
+				[brQ reloadData];
+		
 		}
+		
+	}
+	
 	}
 }
 @end
