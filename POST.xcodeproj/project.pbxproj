@@ -12,7 +12,6 @@
 		D018CCA517F2733F000FD801 /* portCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D018CCA417F2733F000FD801 /* portCell.m */; };
 		D018CCA717F27787000FD801 /* portfolio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D018CCA617F27787000FD801 /* portfolio@2x.png */; };
 		D018CCA917F27937000FD801 /* prtflio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D018CCA817F27937000FD801 /* prtflio@2x.png */; };
-		D018CCAB17F2798F000FD801 /* prtflio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D018CCAA17F2798F000FD801 /* prtflio@2x.png */; };
 		D018CCAD17F29982000FD801 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D018CCAC17F29982000FD801 /* background@2x.png */; };
 		D018E18217EFEAA400A132E8 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D018E18117EFEAA400A132E8 /* logo@2x.png */; };
 		D0210CAA17F24A5500586122 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0210CA917F24A5500586122 /* cancel@2x.png */; };
@@ -967,7 +966,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = "Suara Hewan";
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = netra;
 			};
 			buildConfigurationList = D0C1E1E817E34815003333A5 /* Build configuration list for PBXProject "POST" */;
@@ -1010,7 +1009,6 @@
 				D018CCA917F27937000FD801 /* prtflio@2x.png in Resources */,
 				D07FA5C417E3F488000FE15E /* navbar@2x.png in Resources */,
 				D07FA5CA17E457E5000FE15E /* main_bg@2x.png in Resources */,
-				D018CCAB17F2798F000FD801 /* prtflio@2x.png in Resources */,
 				D07FA5CC17E45AB6000FE15E /* livetrade_head@2x.png in Resources */,
 				D07FA5CE17E4737D000FE15E /* table_s@2x.png in Resources */,
 				D018E18217EFEAA400A132E8 /* logo@2x.png in Resources */,
