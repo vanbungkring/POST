@@ -23,7 +23,7 @@
 		
 		[self.contentView addSubview:_text];
 		
-		self.contentView.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
+		self.contentView.backgroundColor = [UIColor colorWithRed:0.051 green:0.051 blue:0.055 alpha:1];
     }
     return self;
 }
@@ -31,7 +31,7 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-	self.contentView.backgroundColor = [UIColor colorWithRed:0.173 green:0.239 blue:0.31 alpha:1] ;
+	self.contentView.backgroundColor = [UIColor colorWithRed:0.051 green:0.051 blue:0.055 alpha:1] ;
     // Configure the view for the selected state
 }
 

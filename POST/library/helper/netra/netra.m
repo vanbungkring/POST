@@ -30,13 +30,14 @@ static netra *sharedObject;
     netra *shared = [netra sharedInstance];
     shared.sessionString = session;
 }
+///configure once in live
++(BOOL)server{
 
-//+(id)getcity{
+	return true;
+}
++(BOOL)stockWatch {
 	
-	//return getcity;
-
-//}
-/////get stock init
-
-NSString* const baseUrl =@"http://202.53.249.2" ;
+	return true;
+}
+NSString* const baseUrl =@"http://202.53.249.3" ;
 @end

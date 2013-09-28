@@ -29,7 +29,7 @@
 	[NSURLCache setSharedURLCache:cache];
 	/* init mainview
 	 */
-	
+	[self config];
 	
 	_liveTradeViewController=[[liveTradeViewController alloc]init];
 	_left=[[post_leftViewController alloc]init];
@@ -38,14 +38,14 @@
 	[[UINavigationBar appearance]setShadowImage:[[UIImage alloc] init]];
 	_drawerController = [[MMDrawerController alloc] init];
 	[self setCenter:@"LoginViewController" name:@"Live Trade"];
-
+	
     [_drawerController setRestorationIdentifier:@"netra"];
     [_drawerController setMaximumRightDrawerWidth:200.0];
     [_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [_drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
 	[_drawerController setShouldStretchDrawer:FALSE];
 	[_drawerController setDrawerVisualStateBlock:[MMDrawerVisualState slideAndScaleVisualStateBlock]];
-	_drawerController.showsShadow = NO;
+	[_drawerController setShowsShadow:NO];
 	
 	self.window.rootViewController=_drawerController;
     [self.window makeKeyAndVisible];
@@ -59,10 +59,10 @@
 	navLabel.textColor = [UIColor whiteColor];
 	navLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
 	navLabel.textAlignment = NSTextAlignmentCenter;
-
+	
 	
 	if ([center isEqualToString:@""]) {
-			[_drawerController setLeftDrawerViewController:_left];
+		[_drawerController setLeftDrawerViewController:_left];
 		_nav=[[UINavigationController alloc]initWithRootViewController:_liveTradeViewController];
 		[self.drawerController setCenterViewController:_nav withCloseAnimation:YES completion:nil];
 		self.lastController = @"liveTradeViewController";
@@ -70,7 +70,7 @@
 	else if([center isEqualToString:self.lastController]){
 		
 		[_drawerController closeDrawerAnimated:YES completion:nil];
-			[_drawerController setLeftDrawerViewController:_left];
+		[_drawerController setLeftDrawerViewController:_left];
 	}
 	else{
 		_nav=[[UINavigationController alloc]initWithRootViewController:[[NSClassFromString(center) alloc]init]];
@@ -81,24 +81,24 @@
 		else{
 			[_drawerController setCenterViewController:_nav withCloseAnimation:YES completion:nil];
 			self.lastController = center;
-				[_drawerController setLeftDrawerViewController:_left];
+			[_drawerController setLeftDrawerViewController:_left];
 		}
 		
 	}
-
-		
+	
+	
 	UIView *main_center = [[UIView alloc]initWithFrame:CGRectMake(362, 0, 300, 44)];
 	main_center.backgroundColor = [UIColor clearColor];
 	[main_center addSubview:navLabel];
 	[_nav.navigationBar addSubview:main_center];
-
+	
 	
 	[_nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
 	
 	UIView *buy_sell=[[UIView alloc]initWithFrame:CGRectMake(1024-300, 0, 300, 44)];
 	[buy_sell setBackgroundColor:[UIColor clearColor]];
 	[_nav.navigationBar addSubview:buy_sell];
-
+	
 	UIView *left=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 300, 44)];
 	[left setBackgroundColor:[UIColor clearColor]];
 	
@@ -112,7 +112,7 @@
 	leftbuttonView.backgroundColor=[UIColor clearColor];
 	[leftbuttonView addSubview:leftbutton];
 	[_nav.navigationBar addSubview:leftbuttonView];
-
+	
 	UIButton *buy = [UIButton buttonWithType:UIButtonTypeCustom];
 	buy.frame = CGRectMake(70, 0, 100, 44);
 	buy.backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"buy"]];
@@ -131,10 +131,10 @@
 	[buy_sell addSubview:sell];
 	navLabel.text = [name uppercaseString];
 	_nav.navigationItem.titleView = navLabel;
-
-
-
-
+	
+	
+	
+	
 }
 
 -(void)lefbuttonPush{
@@ -149,10 +149,10 @@
 								   userInfo:nil
 									repeats:YES];
 	/*[NSTimer scheduledTimerWithTimeInterval:3
-									 target:self
-								   selector:@selector(bq) // <== see the ':', indicates your function takes an argument
-								   userInfo:nil
-									repeats:YES];
+	 target:self
+	 selector:@selector(bq) // <== see the ':', indicates your function takes an argument
+	 userInfo:nil
+	 repeats:YES];
 	 */
 	
 	
@@ -162,7 +162,7 @@
 - (void)getBroker{
 	
 	///data broker get here
-
+	
 }
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -211,5 +211,56 @@
 }
 -(void)logOut{
 	[self setCenter:@"LoginViewController" name:@"Live Trade"];
+}
+-(void)config{
+	
+	NSArray *config = [NSArray arrayWithArray:[Configuration MR_findAll]];
+	if (config.count!=0) {
+		NSArray *server = [NSArray arrayWithArray:[Server MR_findAll]];
+		
+		if (server.count==0) {
+			NSArray *server_default = [NSArray arrayWithObjects:@"http://202.53.249.2",@"http://202.53.249.3", nil];
+			for (int i=0; i<server_default.count; i++) {
+				Server *servers = [Server MR_createInContext:localContext];
+				servers.url = [server_default objectAtIndex:0];
+				if (i==0) {
+					servers.active = [NSNumber numberWithBool:YES];
+				}
+				else{
+					servers.active = [NSNumber numberWithBool:NO];
+				}
+			}
+			
+			NSArray *sWatch = [NSArray arrayWithArray:[StockWatch MR_findAll]];
+			if(sWatch.count <= 0){
+				NSArray *st_w = [NSArray arrayWithObjects:@"PORT 1",@"PORT 2",@"Minnig",@"Banking",@"Consumer", nil];
+				for (int i=0; i<st_w.count; i++) {
+					StockWatch *st = [StockWatch MR_createInContext:localContext];
+					st.stock_watch_id = [NSNumber numberWithInteger:i];
+					st.name = [st_w objectAtIndex:i];
+				}
+				NSArray *child = [NSArray arrayWithArray:[StockWatchChild MR_findAll]];
+				if(child.count <= 0){
+					for (int i=0; i<=4; i++) {
+						for (int j=1; j<=20; j++) {
+							StockWatchChild *stwC = [StockWatchChild MR_createInContext:localContext];
+							stwC.st_watch_id =[NSNumber numberWithInteger:i];
+							stwC.st_name = @"Bank PAN Indonesia";
+							stwC.st_code = @"PNBN";
+						}
+					}
+					
+					
+				}
+				NSLog(@"saving data to server");
+				
+				[localContext MR_save];
+			}
+			else{
+				
+			}
+			
+		}
+	}
 }
 @end

@@ -26,6 +26,10 @@
 #import "broker.h"
 #import "MBProgressHUD.h"
 #import "Company_fetcher.h"
+#import "Configuration.h"
+#import "Server.h"
+#import "StockWatch.h"
+#import "StockWatchChild.h"
 #define vanbungkring ((POST_AppDelegate *)[[UIApplication sharedApplication] delegate])
 
 #endif

@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface netra : NSObject
-
+{
+	NSManagedObjectContext *localContext;
+}
 @property (nonatomic, retain) NSString *sessionString;
 // Required: A method to retrieve the shared instance
 +(netra *) sharedInstance;
@@ -18,5 +20,9 @@
 +(void) fetchBroker;
 +(void) fetchCompany;
 
++(BOOL)server;
++(BOOL)stockInit;
++(BOOL)brokerInit;
++(BOOL)stockWatch;
 extern NSString* const baseUrl;
 @end

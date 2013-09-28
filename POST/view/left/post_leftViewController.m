@@ -32,7 +32,7 @@
 		information_c = [NSArray arrayWithObjects: @"contactViewController",@"researchViewController",@"Logout",Nil];
 		self.view.backgroundColor=[UIColor blackColor];
 		menu=[[UITableView alloc]initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 750)];
-		menu.backgroundColor = [UIColor colorWithRed:0.141 green:0.196 blue:0.251 alpha:1];
+		menu.backgroundColor = [UIColor colorWithRed:0.051 green:0.051 blue:0.055 alpha:1];
 		menu.separatorColor  = [UIColor colorWithRed:0.141 green:0.196 blue:0.251 alpha:1];
 		[menu setSeparatorInset:UIEdgeInsetsZero];
 		menu.dataSource = self;

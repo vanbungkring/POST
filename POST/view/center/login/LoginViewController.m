@@ -75,7 +75,7 @@
 		[self.view addSubview:ihsg];
 		// Custom initialization
 		//self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
-		self.view.backgroundColor = [UIColor colorWithRed:0.173 green:0.243 blue:0.314 alpha:1] ;
+		self.view.backgroundColor = [UIColor colorWithRed:0.043 green:0.047 blue:0.063 alpha:1];
 		
 		login_container =[[UIView alloc]initWithFrame:CGRectMake(30, 100, 500, 300)];
 
@@ -117,6 +117,11 @@
 		sign_in.layer.borderColor=[UIColor colorWithRed:0.569 green:0.231 blue:0.063 alpha:1].CGColor;
 		sign_in.layer.borderWidth = 1.0f;
 		
+		config =[UIButton buttonWithType:UIButtonTypeRoundedRect];
+		config.backgroundColor = [UIColor whiteColor];
+		config.frame = CGRectMake(0, 0, 44, 44);
+		
+		[self.view addSubview:config];
 		[self.view addSubview:logo];
 		[self.view addSubview:userName];
 		[self.view addSubview:passWord];

@@ -17,14 +17,17 @@
 		D0210CAA17F24A5500586122 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0210CA917F24A5500586122 /* cancel@2x.png */; };
 		D0286FA317F6114900B4241A /* stock.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0286FA117F6114900B4241A /* stock.plist */; };
 		D0286FA417F6114900B4241A /* stockInit.json in Resources */ = {isa = PBXBuildFile; fileRef = D0286FA217F6114900B4241A /* stockInit.json */; };
-		D0286FA717F65AE300B4241A /* StockInit.m in Sources */ = {isa = PBXBuildFile; fileRef = D0286FA617F65AE300B4241A /* StockInit.m */; };
-		D0286FAA17F65AE400B4241A /* StockWatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D0286FA917F65AE400B4241A /* StockWatch.m */; };
 		D0286FAD17F65AE400B4241A /* Trading_acc.m in Sources */ = {isa = PBXBuildFile; fileRef = D0286FAC17F65AE400B4241A /* Trading_acc.m */; };
-		D0286FB017F65AE400B4241A /* StockWatchChild.m in Sources */ = {isa = PBXBuildFile; fileRef = D0286FAF17F65AE400B4241A /* StockWatchChild.m */; };
-		D0286FB317F65AE400B4241A /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = D0286FB217F65AE400B4241A /* Server.m */; };
-		D0286FB617F65AE400B4241A /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = D0286FB517F65AE400B4241A /* Configuration.m */; };
 		D0286FBA17F65CFE00B4241A /* streamerOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0286FB917F65CFE00B4241A /* streamerOperation.m */; };
 		D0286FBD17F65D1E00B4241A /* streamerSync.m in Sources */ = {isa = PBXBuildFile; fileRef = D0286FBC17F65D1E00B4241A /* streamerSync.m */; };
+		D0286FBF17F6B31A00B4241A /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0286FBE17F6B31A00B4241A /* bg@2x.png */; };
+		D0286FC117F6C39A00B4241A /* sw_ijo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0286FC017F6C39A00B4241A /* sw_ijo@2x.png */; };
+		D0286FC317F6C45E00B4241A /* sw_merah@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0286FC217F6C45E00B4241A /* sw_merah@2x.png */; };
+		D0286FE417F72ADE00B4241A /* StockWatchChild.m in Sources */ = {isa = PBXBuildFile; fileRef = D0286FE317F72ADE00B4241A /* StockWatchChild.m */; };
+		D0286FE717F72ADF00B4241A /* StockWatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D0286FE617F72ADF00B4241A /* StockWatch.m */; };
+		D0286FEA17F72AE000B4241A /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = D0286FE917F72ADF00B4241A /* Server.m */; };
+		D0286FED17F72AE000B4241A /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = D0286FEC17F72AE000B4241A /* Configuration.m */; };
+		D0286FF017F72AE100B4241A /* StockInit.m in Sources */ = {isa = PBXBuildFile; fileRef = D0286FEF17F72AE100B4241A /* StockInit.m */; };
 		D02A4DA917EA880100BB7CCD /* comapanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D02A4DA817EA880000BB7CCD /* comapanyCell.m */; };
 		D02A4DAB17EA892000BB7CCD /* cp_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D02A4DAA17EA892000BB7CCD /* cp_header@2x.png */; };
 		D040F3F717E8DF6C0017A174 /* brokerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D040F3F617E8DF6C0017A174 /* brokerCell.m */; };
@@ -151,22 +154,25 @@
 		D0210CA917F24A5500586122 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
 		D0286FA117F6114900B4241A /* stock.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = stock.plist; sourceTree = "<group>"; };
 		D0286FA217F6114900B4241A /* stockInit.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stockInit.json; sourceTree = "<group>"; };
-		D0286FA517F65AE300B4241A /* StockInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockInit.h; sourceTree = "<group>"; };
-		D0286FA617F65AE300B4241A /* StockInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockInit.m; sourceTree = "<group>"; };
-		D0286FA817F65AE400B4241A /* StockWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockWatch.h; sourceTree = "<group>"; };
-		D0286FA917F65AE400B4241A /* StockWatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockWatch.m; sourceTree = "<group>"; };
 		D0286FAB17F65AE400B4241A /* Trading_acc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trading_acc.h; sourceTree = "<group>"; };
 		D0286FAC17F65AE400B4241A /* Trading_acc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trading_acc.m; sourceTree = "<group>"; };
-		D0286FAE17F65AE400B4241A /* StockWatchChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockWatchChild.h; sourceTree = "<group>"; };
-		D0286FAF17F65AE400B4241A /* StockWatchChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockWatchChild.m; sourceTree = "<group>"; };
-		D0286FB117F65AE400B4241A /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
-		D0286FB217F65AE400B4241A /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
-		D0286FB417F65AE400B4241A /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
-		D0286FB517F65AE400B4241A /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
 		D0286FB817F65CFE00B4241A /* streamerOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = streamerOperation.h; sourceTree = "<group>"; };
 		D0286FB917F65CFE00B4241A /* streamerOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = streamerOperation.m; sourceTree = "<group>"; };
 		D0286FBB17F65D1E00B4241A /* streamerSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = streamerSync.h; sourceTree = "<group>"; };
 		D0286FBC17F65D1E00B4241A /* streamerSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = streamerSync.m; sourceTree = "<group>"; };
+		D0286FBE17F6B31A00B4241A /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
+		D0286FC017F6C39A00B4241A /* sw_ijo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sw_ijo@2x.png"; sourceTree = "<group>"; };
+		D0286FC217F6C45E00B4241A /* sw_merah@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sw_merah@2x.png"; sourceTree = "<group>"; };
+		D0286FE217F72ADE00B4241A /* StockWatchChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockWatchChild.h; sourceTree = "<group>"; };
+		D0286FE317F72ADE00B4241A /* StockWatchChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockWatchChild.m; sourceTree = "<group>"; };
+		D0286FE517F72ADF00B4241A /* StockWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockWatch.h; sourceTree = "<group>"; };
+		D0286FE617F72ADF00B4241A /* StockWatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockWatch.m; sourceTree = "<group>"; };
+		D0286FE817F72ADF00B4241A /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
+		D0286FE917F72ADF00B4241A /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
+		D0286FEB17F72AE000B4241A /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
+		D0286FEC17F72AE000B4241A /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
+		D0286FEE17F72AE100B4241A /* StockInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockInit.h; sourceTree = "<group>"; };
+		D0286FEF17F72AE100B4241A /* StockInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockInit.m; sourceTree = "<group>"; };
 		D02A4DA717EA880000BB7CCD /* comapanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comapanyCell.h; sourceTree = "<group>"; };
 		D02A4DA817EA880000BB7CCD /* comapanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = comapanyCell.m; sourceTree = "<group>"; };
 		D02A4DAA17EA892000BB7CCD /* cp_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cp_header@2x.png"; sourceTree = "<group>"; };
@@ -688,17 +694,20 @@
 		D0C1E21017E34C31003333A5 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				D0286FC017F6C39A00B4241A /* sw_ijo@2x.png */,
 				D08A687117F5F56B001BA920 /* ihsg@2x.png */,
 				D08A687217F5F56B001BA920 /* ihsg_zero@2x.png */,
 				D09E27CC17F5E27100C11C96 /* ihsg@2x.png */,
 				D018CCA617F27787000FD801 /* portfolio@2x.png */,
 				D0210CA917F24A5500586122 /* cancel@2x.png */,
+				D0286FC217F6C45E00B4241A /* sw_merah@2x.png */,
 				D018E18117EFEAA400A132E8 /* logo@2x.png */,
 				D018CCAC17F29982000FD801 /* background@2x.png */,
 				D018CCAA17F2798F000FD801 /* prtflio@2x.png */,
 				D02A4DAA17EA892000BB7CCD /* cp_header@2x.png */,
 				D040F3FA17E982960017A174 /* details@2x.png */,
 				D040F3F817E8E1500017A174 /* bq_header@2x.png */,
+				D0286FBE17F6B31A00B4241A /* bg@2x.png */,
 				D07FA63E17E5F69A000FE15E /* sq_header@2x.png */,
 				D0AA8A4817EB2C8700FB2497 /* sign_in@2x.png */,
 				D07FA5CB17E45AB6000FE15E /* livetrade_head@2x.png */,
@@ -956,18 +965,18 @@
 			isa = PBXGroup;
 			children = (
 				D0FAF5AC17EC016F001F813D /* Panin.xcdatamodeld */,
-				D0286FA517F65AE300B4241A /* StockInit.h */,
-				D0286FA617F65AE300B4241A /* StockInit.m */,
-				D0286FB117F65AE400B4241A /* Server.h */,
-				D0286FB217F65AE400B4241A /* Server.m */,
-				D0286FB417F65AE400B4241A /* Configuration.h */,
-				D0286FB517F65AE400B4241A /* Configuration.m */,
-				D0286FAE17F65AE400B4241A /* StockWatchChild.h */,
-				D0286FAF17F65AE400B4241A /* StockWatchChild.m */,
+				D0286FEE17F72AE100B4241A /* StockInit.h */,
+				D0286FEF17F72AE100B4241A /* StockInit.m */,
+				D0286FEB17F72AE000B4241A /* Configuration.h */,
+				D0286FEC17F72AE000B4241A /* Configuration.m */,
+				D0286FE817F72ADF00B4241A /* Server.h */,
+				D0286FE917F72ADF00B4241A /* Server.m */,
+				D0286FE517F72ADF00B4241A /* StockWatch.h */,
+				D0286FE617F72ADF00B4241A /* StockWatch.m */,
+				D0286FE217F72ADE00B4241A /* StockWatchChild.h */,
+				D0286FE317F72ADE00B4241A /* StockWatchChild.m */,
 				D0286FAB17F65AE400B4241A /* Trading_acc.h */,
 				D0286FAC17F65AE400B4241A /* Trading_acc.m */,
-				D0286FA817F65AE400B4241A /* StockWatch.h */,
-				D0286FA917F65AE400B4241A /* StockWatch.m */,
 			);
 			path = panin;
 			sourceTree = "<group>";
@@ -1027,6 +1036,8 @@
 				D0210CAA17F24A5500586122 /* cancel@2x.png in Resources */,
 				D0C1E1FB17E34815003333A5 /* InfoPlist.strings in Resources */,
 				D0C1E20317E34815003333A5 /* Default.png in Resources */,
+				D0286FBF17F6B31A00B4241A /* bg@2x.png in Resources */,
+				D0286FC117F6C39A00B4241A /* sw_ijo@2x.png in Resources */,
 				D018CCAD17F29982000FD801 /* background@2x.png in Resources */,
 				D0C1E20517E34815003333A5 /* Default@2x.png in Resources */,
 				D0C1E20717E34815003333A5 /* Default-568h@2x.png in Resources */,
@@ -1060,6 +1071,7 @@
 				D040F3FB17E982960017A174 /* details@2x.png in Resources */,
 				D0286FA417F6114900B4241A /* stockInit.json in Resources */,
 				D02A4DAB17EA892000BB7CCD /* cp_header@2x.png in Resources */,
+				D0286FC317F6C45E00B4241A /* sw_merah@2x.png in Resources */,
 				D0AA8A4517EB280200FB2497 /* login@2x.png in Resources */,
 				D0AA8A4717EB2B0800FB2497 /* tf@2x.png in Resources */,
 				D0AA8A4917EB2C8700FB2497 /* sign_in@2x.png in Resources */,
@@ -1086,16 +1098,17 @@
 				D0C1E22517E34C5D003333A5 /* UIViewController+MMDrawerController.m in Sources */,
 				D0C1E23C17E34CBE003333A5 /* AFHTTPClient.m in Sources */,
 				D0C1E23D17E34CBE003333A5 /* AFHTTPRequestOperation.m in Sources */,
-				D0286FB617F65AE400B4241A /* Configuration.m in Sources */,
+				D0286FE417F72ADE00B4241A /* StockWatchChild.m in Sources */,
+				D0286FE717F72ADF00B4241A /* StockWatch.m in Sources */,
 				D0C1E23E17E34CBE003333A5 /* AFImageRequestOperation.m in Sources */,
 				D0286FBA17F65CFE00B4241A /* streamerOperation.m in Sources */,
-				D0286FAA17F65AE400B4241A /* StockWatch.m in Sources */,
 				D0C1E23F17E34CBE003333A5 /* AFJSONRequestOperation.m in Sources */,
 				D0C1E24017E34CBE003333A5 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				D0C1E24117E34CBE003333A5 /* AFPropertyListRequestOperation.m in Sources */,
 				D0C1E24217E34CBE003333A5 /* AFURLConnectionOperation.m in Sources */,
 				D0C1E24317E34CBE003333A5 /* AFXMLRequestOperation.m in Sources */,
 				D0C1E24417E34CBE003333A5 /* UIImageView+AFNetworking.m in Sources */,
+				D0286FF017F72AE100B4241A /* StockInit.m in Sources */,
 				D018CCA517F2733F000FD801 /* portCell.m in Sources */,
 				D0C1E25817E34EC7003333A5 /* liveTradeViewController.m in Sources */,
 				D0C1E25B17E34ED8003333A5 /* st_watchViewController.m in Sources */,
@@ -1118,10 +1131,8 @@
 				D07FA61C17E5A543000FE15E /* NSNumber+MagicalDataImport.m in Sources */,
 				D07FA61D17E5A543000FE15E /* NSObject+MagicalDataImport.m in Sources */,
 				D07FA61E17E5A543000FE15E /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
-				D0286FB317F65AE400B4241A /* Server.m in Sources */,
 				D07FA61F17E5A543000FE15E /* NSString+MagicalDataImport.m in Sources */,
 				D07FA62017E5A543000FE15E /* NSManagedObject+MagicalAggregation.m in Sources */,
-				D0286FB017F65AE400B4241A /* StockWatchChild.m in Sources */,
 				D07FA62117E5A543000FE15E /* NSManagedObject+MagicalDataImport.m in Sources */,
 				D07FA62217E5A543000FE15E /* NSManagedObject+MagicalFinders.m in Sources */,
 				D07FA62317E5A543000FE15E /* NSManagedObject+MagicalRecord.m in Sources */,
@@ -1144,7 +1155,9 @@
 				D07FA63B17E5CB07000FE15E /* UIImage+Blur.m in Sources */,
 				D09EA39E17E75FDB00DD22CB /* LoginViewController.m in Sources */,
 				D096F6AF17E889E700ADB9F9 /* netra.m in Sources */,
+				D0286FED17F72AE000B4241A /* Configuration.m in Sources */,
 				D096F6B317E891A800ADB9F9 /* researchViewController.m in Sources */,
+				D0286FEA17F72AE000B4241A /* Server.m in Sources */,
 				D096F6B717E89B8C00ADB9F9 /* contactViewController.m in Sources */,
 				D096F6BD17E8B7F800ADB9F9 /* portfolioViewController.m in Sources */,
 				D096F6C017E8B80400ADB9F9 /* orderListViewController.m in Sources */,
@@ -1153,7 +1166,6 @@
 				D040F3F717E8DF6C0017A174 /* brokerCell.m in Sources */,
 				D02A4DA917EA880100BB7CCD /* comapanyCell.m in Sources */,
 				D0FAF5AE17EC016F001F813D /* Panin.xcdatamodeld in Sources */,
-				D0286FA717F65AE300B4241A /* StockInit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

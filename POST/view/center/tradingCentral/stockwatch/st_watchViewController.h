@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface st_watchViewController : UIViewController
-
+{
+	UIView *card_view;
+}
 @end

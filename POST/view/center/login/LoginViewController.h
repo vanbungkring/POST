@@ -26,5 +26,7 @@
 	UILabel *percentage;
 	NSTimer *timer;
 	
+	UIButton *config;
+	
 }
 @end
