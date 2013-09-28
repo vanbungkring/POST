@@ -1,13 +1,13 @@
 //
-//  dataStreamer.h
+//  streamerSync.h
 //  POST
 //
-//  Created by Arie on 9/25/13.
+//  Created by Arie on 9/28/13.
 //  Copyright (c) 2013 netra. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface dataStreamer : NSURLConnection
+@interface streamerSync : NSObject
 
 @end

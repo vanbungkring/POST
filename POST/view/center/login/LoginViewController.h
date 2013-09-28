@@ -17,6 +17,14 @@
 	UIImageView *logo;
 	MBProgressHUD *HUD;
 	
+	UIView *ihsg;
+	UILabel *now;
+	UILabel *hi;
+	UILabel *low;
+	UILabel *val;
+	UILabel *vol;
+	UILabel *percentage;
+	NSTimer *timer;
 	
 }
 @end

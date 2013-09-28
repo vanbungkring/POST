@@ -1,17 +1,13 @@
 //
-//  Server.m
+//  streamerOperation.m
 //  POST
 //
 //  Created by Arie on 9/28/13.
 //  Copyright (c) 2013 netra. All rights reserved.
 //
 
-#import "Server.h"
+#import "streamerOperation.h"
 
-
-@implementation Server
-
-@dynamic active;
-@dynamic url;
+@implementation streamerOperation
 
 @end

@@ -19,10 +19,63 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 		HUD = [[MBProgressHUD alloc] initWithView:self.view];
-	
+		ihsg = [[UIView alloc]initWithFrame:CGRectMake((1024-593)/2, 500, 593, 67.5)];
+		ihsg.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ihsg_zero"]];
+		timer = [[NSTimer alloc]init];
+		now = [[UILabel alloc]initWithFrame:CGRectMake(150, 00, 100, 50)];
+		now.backgroundColor = [UIColor clearColor];
+		now.textColor = [UIColor whiteColor];
+		now.textAlignment = NSTextAlignmentCenter;
+		now.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:24];
+		now.text = @"0000";
+		
+		percentage = [[UILabel alloc]initWithFrame:CGRectMake(150, 20, 100, 50)];
+		percentage.backgroundColor = [UIColor clearColor];
+		percentage.textColor = [UIColor whiteColor];
+		percentage.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12];
+		percentage.text = @"0000";
+		percentage.textAlignment = NSTextAlignmentCenter;
+		
+		
+		hi = [[UILabel alloc]initWithFrame:CGRectMake(310, 7, 100, 20)];
+		hi.backgroundColor = [UIColor clearColor];
+		hi.textColor = [UIColor whiteColor];
+		hi.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12];
+		hi.text = @"0000";
+		hi.textAlignment = NSTextAlignmentCenter;
+		
+		low = [[UILabel alloc]initWithFrame:CGRectMake(310, 37, 100, 20)];
+		low.backgroundColor = [UIColor clearColor];
+		low.textColor = [UIColor whiteColor];
+		low.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12];
+		low.text = @"0000";
+		low.textAlignment = NSTextAlignmentCenter;
+		
+		
+		val = [[UILabel alloc]initWithFrame:CGRectMake(450, 7, 140, 20)];
+		val.backgroundColor = [UIColor clearColor];
+		val.textColor = [UIColor whiteColor];
+		val.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12];
+		val.text = @"0000";
+		val.textAlignment = NSTextAlignmentCenter;
+		
+		vol = [[UILabel alloc]initWithFrame:CGRectMake(450, 37, 140, 20)];
+		vol.backgroundColor = [UIColor clearColor];
+		vol.textColor = [UIColor whiteColor];
+		vol.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:12];
+		vol.text = @"0000";
+		vol.textAlignment = NSTextAlignmentCenter;
+		
+		[ihsg addSubview:hi];
+		[ihsg addSubview:low];
+		[ihsg addSubview:val];
+		[ihsg addSubview:vol];
+		[ihsg addSubview:now];
+		[ihsg addSubview:percentage];
+		[self.view addSubview:ihsg];
 		// Custom initialization
-		self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
-		//self.view.backgroundColor = [UIColor colorWithRed:0.106 green:0.145 blue:0.184 alpha:1];
+		//self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
+		self.view.backgroundColor = [UIColor colorWithRed:0.173 green:0.243 blue:0.314 alpha:1] ;
 		
 		login_container =[[UIView alloc]initWithFrame:CGRectMake(30, 100, 500, 300)];
 
@@ -76,6 +129,12 @@
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
 	[self.navigationController setNavigationBarHidden:YES];
+	//[self trade];
+}
+-(void)trade{
+
+	timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(initIhsg) userInfo:Nil repeats:YES];
+	
 }
 - (void)viewDidLoad
 {
@@ -133,5 +192,55 @@
 	}
 	
 }
+-(void)initIhsg{
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"localIndexInit", @"request",
+							@"COMPOSITE", @"indexCode",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	
+	//[request setTimeoutInterval:];
+	
+	
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		// Print the response body in text
+		
+		NSArray *array = [[operation.responseString stringByReplacingOccurrencesOfString:@"[" withString:@""] componentsSeparatedByString:@","];
+		NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+		[numberFormatter setGroupingSeparator:@","];
+		[numberFormatter setGroupingSize:3];
+		[numberFormatter setUsesGroupingSeparator:YES];
+		[numberFormatter setDecimalSeparator:@"."];
+		[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+		[numberFormatter setMaximumFractionDigits:2];
+		//now.text=[NSString stringWithFormat:@"%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[array objectAtIndex:5]floatValue]]]];
 
+		now.text=[NSString stringWithFormat:@"%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[array objectAtIndex:5]floatValue]]]];
+		hi.text=[NSString stringWithFormat:@"%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[array objectAtIndex:5]floatValue]]]];
+		low.text=[NSString stringWithFormat:@"%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[array objectAtIndex:5]floatValue]]]];
+		vol.text=[NSString stringWithFormat:@"%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[array objectAtIndex:5]floatValue]]]];
+		val.text=[NSString stringWithFormat:@"%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[array objectAtIndex:5]floatValue]]]];
+		percentage.text=[NSString stringWithFormat:@"%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[array objectAtIndex:5]floatValue]]]];
+
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+		
+	}];
+	[operation start];
+	
+}
+-(void)viewWillDisappear:(BOOL)animated{
+	[super viewWillDisappear:animated];
+	[timer invalidate];
+	timer  = Nil;
+}
 @end

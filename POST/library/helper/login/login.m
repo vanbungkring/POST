@@ -45,7 +45,9 @@ static login *sharedObject;
 				
 			}
 			[netra setSessionId:[xxx objectAtIndex:0]];
-			[vanbungkring setCenter:@"brokerRankViewController" name:@"Live Trade"];
+			[sharedObject startStream];
+			[NSTimer timerWithTimeInterval:5 target:self selector:@selector(initReq) userInfo:Nil repeats:YES];
+			//[vanbungkring setCenter:@"st_watchViewController" name:@"Live Trade"];
 			//[vanbungkring startS];
 			
 		}
@@ -69,5 +71,61 @@ static login *sharedObject;
 	}];
 	[operation start];
 }
+-(void)startStream{
+	NSLog(@"datastream");
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"dataStream", @"request",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	
+	//[request setTimeoutInterval:];
+	
+	
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		// Print the response body in text
+		NSLog(@"operation->%@",operation.responseString);
 
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+		
+	}];
+	[operation start];
+}
+
+-(void)initReq{
+	NSLog(@"start");
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"brokerQuote", @"request",
+							@"start", @"act",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	
+	//[request setTimeoutInterval:];
+	
+	
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+		
+	}];
+	[operation start];
+}
 @end

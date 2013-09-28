@@ -180,8 +180,8 @@
 {
 	NSLog(@"dipanggil pertama");
     [super viewWillAppear:YES];
-	[self performSelector:@selector(StartStream) withObject:Nil afterDelay:1];
-	[self performSelector:@selector(assingn) withObject:Nil afterDelay:2];
+	//[self performSelector:@selector(StartStream) withObject:Nil afterDelay:1];
+	//[self performSelector:@selector(assingn) withObject:Nil afterDelay:2];
 	
 }
 -(void)StartStream

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F37" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Configuration" representedClassName="Configuration" syncable="YES">
-        <attribute name="brokerInit" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="stockinit" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="config_done" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="server_config" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="stock_child_init" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="stockWatch_init" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <entity name="Server" representedClassName="Server" syncable="YES">
         <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -18,7 +20,36 @@
         <attribute name="st_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subsector" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="StockWatch" representedClassName="StockWatch" syncable="YES"/>
+    <entity name="StockWatch" representedClassName="StockWatch" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stock_watch_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="StockWatchChild" representedClassName="StockWatchChild" syncable="YES">
+        <attribute name="child" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child6" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child7" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child8" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child9" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child10" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child11" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child12" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child13" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child14" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child15" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child16" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child17" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="child18" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="st_watch_id_1" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="st_watch_id_2" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="st_watch_id_3" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="st_watch_id_4" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="st_watch_id_5" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="Trading_acc" representedClassName="Trading_acc" syncable="YES">
         <attribute name="pin" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -28,5 +59,6 @@
         <element name="StockInit" positionX="0" positionY="0" width="0" height="0"/>
         <element name="StockWatch" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Trading_acc" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="StockWatchChild" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

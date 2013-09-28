@@ -2,7 +2,7 @@
 //  Server.h
 //  POST
 //
-//  Created by Arie on 9/25/13.
+//  Created by Arie on 9/28/13.
 //  Copyright (c) 2013 netra. All rights reserved.
 //
 
@@ -12,7 +12,7 @@
 
 @interface Server : NSManagedObject
 
-@property (nonatomic, retain) NSString * url;
 @property (nonatomic, retain) NSNumber * active;
+@property (nonatomic, retain) NSString * url;
 
 @end
