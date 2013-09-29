@@ -31,7 +31,7 @@
 		no.font =  [UIFont fontWithName:@"HelveticaNeue" size:10];
 		no.textColor = [UIColor whiteColor];
 		
-		code = [[UILabel alloc] initWithFrame:CGRectMake(70, 2, 50, 25)];
+		code = [[UILabel alloc] initWithFrame:CGRectMake(50, 2, 80, 25)];
 		code.backgroundColor = [UIColor clearColor];
 		code.textAlignment =  NSTextAlignmentCenter;
 		code.font =  [UIFont fontWithName:@"HelveticaNeue" size:10];

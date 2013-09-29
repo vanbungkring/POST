@@ -53,16 +53,30 @@
 		stockQ.frame= CGRectMake(10, 10, 1004, 608);
 		stockQ.delegate = self;
 		stockQ.dataSource = self;
+		stockQ.separatorInset = UIEdgeInsetsZero;
 		
 		stockQ.separatorColor = [UIColor colorWithRed:0.161 green:0.18 blue:0.216 alpha:1];
 		//stockQ.userInteractionEnabled=false;
 		stockQ.backgroundColor = [UIColor colorWithRed:0.059 green:0.071 blue:0.09 alpha:1];
 		[self.view addSubview:stockQ];
-	
+		data_stream  = [[NSMutableData alloc]init];
+		
+		
+		
     }
     return self;
 }
 
+
+-(void)setupBroker{
+	NSString *file = [[NSBundle mainBundle] pathForResource:@"stock" ofType:@"plist"];
+	plist = [NSArray arrayWithContentsOfFile:file];
+	NSLog(@"plist lengt->%d",plist.count);
+	//[self performSelector:@selector(uxpdateCell) withObject:Nil afterDelay:10];
+	[stockQ reloadData];
+	[self performSelector:@selector(StartStream) withObject:Nil afterDelay:1];
+	[self assingn];
+}
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
 	UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1004, 25)];
@@ -71,8 +85,9 @@
 	[headerView addSubview:imageView];
 	
 	return headerView;
-
+	
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 	return 25;
 }
@@ -81,7 +96,12 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
-	return clean_data.count;
+	return plist.count;
+}
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+	
+	
+	cell.backgroundColor = [UIColor clearColor];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	sqCell *cell = [[sqCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cex"];
@@ -89,32 +109,10 @@
 	if(cell == nil){
 		cell = [[sqCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cex"];
 	}
-	/*
-	2013-09-25 04:39:15.944 POST[2520:a0b] string array->{
-		"id[0]" = "
-		\nAMAG.NG";
-		"id[10]" = 0;
-		"id[11]" = 0;
-		"id[12]" = 0;
-		"id[13]" = 0;
-		"id[14]" = 0;
-		"id[15]" = 500;
-		"id[16]" = 0;
-		"id[17]" = 0;
-		"id[18]" = 0;
-		"id[1]" = AMAG;
-		"id[2]" = NG;
-		"id[3]" = 220;
-		"id[4]" = 0;
-		"id[5]" = 0;
-		"id[6]" = 0;
-		"id[7]" = 0;
-		"id[8]" = 0;
-		"id[9]" = 0;
-	 */
-	//}
+	
 	cell.no.text = [NSString stringWithFormat:@"%d",indexPath.row+1];
-	cell.code.text =  [clean_data objectAtIndex:0];
+	cell.code.text =[[[plist objectAtIndex:indexPath.row]objectForKey:@"data"]objectAtIndex:0];
+	//cell.code.text =  [clean_data objectAtIndex:0];
 	//cell.no.text = [NSString stringWithFormat:@"%@",[clean_data objectAtIndex:indexPath.row] objectForkey];
 	
 	return cell;
@@ -139,10 +137,34 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
+-(void)invoke{
+	operationQueue = [NSOperationQueue new];
+	
+	// Create a new NSOperation object using the NSInvocationOperation subclass.
+	// Tell it to run the counterTask method.
+	operation_thread = [[NSInvocationOperation alloc] initWithTarget:self
+															selector:@selector(filter)
+															  object:nil];
+	// Add the operation to the queue and let it to be executed.
+	[operationQueue addOperation:operation_thread];
+	[operation_thread waitUntilFinished];
+	
+	// Create a new NSOperation object using the NSInvocationOperation subclass.
+	// Tell it to run the counterTask method.
+	operation2_thread = [[NSInvocationOperation alloc] initWithTarget:self
+															 selector:@selector(updateCell)
+															   object:nil];
+	// Add the operation to the queue and let it to be executed.
+	//[operationQueue addOperation:operation2_thread];
+	
+	
+	
+}
 - (void)viewWillAppear:(BOOL)animated
 {
 	NSLog(@"dipanggil pertama");
     [super viewWillAppear:YES];
+	[self setupBroker];
 	[self performSelector:@selector(StartStream) withObject:Nil afterDelay:1];
 	[self performSelector:@selector(assingn) withObject:Nil afterDelay:2];
 	
@@ -153,85 +175,71 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+	
+	
+}
 
-	
-}
--(void)StartStream
-{
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/mi2/marketInfoData?request=dataStream",baseUrl]]];
-	[request setValue:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]] forHTTPHeaderField:@"Cookie"];
-	connection =[[NSURLConnection alloc]initWithRequest:request delegate:self];
-	[connection start];
-	
-	
-}
-#pragma mark - NSURLConnection deleages
-
--(void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse*)response
-{
-	
-	NSLog(@"response-->%@",response);
-}
--(void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)_data
-{
-	
-	[self filter:_data];
-	
-}
--(void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
-{
-	NSLog(@"->%@",[error localizedDescription]);
-	[self StartStream];
-
-}
--(void)filter:(NSData *)filters{
+-(void)filter{
 	
 	// Print the response body in text
 	//NSLog(@"Response: %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
 	NSMutableArray *buffer = [[NSMutableArray alloc]init];
-	NSString *buffers = [[NSString alloc] initWithData:filters encoding:NSUTF8StringEncoding];
+	NSString *buffers = [[NSString alloc] initWithData:data_stream encoding:NSUTF8StringEncoding];
 	NSArray *testArray = [buffers componentsSeparatedByString:@"}"];
 	//NSArray *testArrays = [testArray componentsSeparatedByString:@"]}"];
 	
 	buffer = [NSMutableArray arrayWithArray:testArray];
 	
+	NSMutableArray *stringArray =[[NSMutableArray alloc]init];
+	
 	//NSMutableArray *stringArray =[[NSMutableArray alloc]init];
 	buffer = [NSMutableArray arrayWithArray:testArray];
-	for (int i=0; i<buffer.count; i++) {
-		
-		//{"id":"AALI.TN","data":["AALI","TN",19150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"req":"SQ"}
-		NSString *clean=[[[[[[[[buffer objectAtIndex:i] stringByReplacingOccurrencesOfString:@"{" withString:@""]stringByReplacingOccurrencesOfString:@"\"" withString:@""]stringByReplacingOccurrencesOfString:@"data:[" withString:@""]stringByReplacingOccurrencesOfString:@"]" withString:@""]stringByReplacingOccurrencesOfString:@"req:" withString:@""]stringByReplacingOccurrencesOfString:@"id:" withString:@""]stringByReplacingOccurrencesOfString:@".0" withString:@""];
-
-		if([clean hasSuffix:@"SQ"]||[clean hasSuffix:@"SQ"]){
-			NSArray *separate =[clean componentsSeparatedByString:@","];
-			NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-			for (int i = 0; i<[separate count]; i++) {
-				[dic setValue:[separate objectAtIndex:i] forKey:[NSString stringWithFormat:@"id[%d]", i]];
+	NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+	dispatch_semaphore_t _semaphore = dispatch_semaphore_create(0);
+	dispatch_queue_t checkUSers = dispatch_queue_create("CheckUsers", NULL);
+    dispatch_async(checkUSers, ^{
+		for (int i=0; i<buffer.count; i++) {
+			
+			//{"id":"AALI.TN","data":["AALI","TN",19150,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"req":"SQ"}
+			NSString *clean=[[[[[[[[buffer objectAtIndex:i] stringByReplacingOccurrencesOfString:@"{" withString:@""]stringByReplacingOccurrencesOfString:@"\"" withString:@""]stringByReplacingOccurrencesOfString:@"data:[" withString:@""]stringByReplacingOccurrencesOfString:@"]" withString:@""]stringByReplacingOccurrencesOfString:@"req:" withString:@""]stringByReplacingOccurrencesOfString:@"id:" withString:@""]stringByReplacingOccurrencesOfString:@".0" withString:@""];
+			//NSLog(@"fourth-->%@",clean);
+			//NSLog(@"fourth-->%@",clean);
+			if([clean hasSuffix:@"SQ"]||[clean hasSuffix:@"SQ"]){
+				NSArray *separate =[clean componentsSeparatedByString:@","];
+				for (int i = 0; i<[separate count]; i++) {
+					[dic setValue:[separate objectAtIndex:i] forKey:[NSString stringWithFormat:@"id[%d]", i]];
+					
+					if([[dic objectForKey:@"id[2]"] isEqualToString:@"NG"]){
+						//NSLog(@"[dic objectForKey:%@",[dic objectForKey:@"id[2]"]);
+						[clean_data addObject:dic];
+					}
+					
+				}
+				sleep(5.0f);
+				dispatch_async(dispatch_get_main_queue(), ^{
+					//[self updateCell];
+				});
 				
-					NSLog(@"string array->%@",dic);
+				
+				
 			}
-		
-			[clean_data insertObject:dic atIndex:0];
-			
-			[stockQ reloadData];
+			else{
+				
+				NSLog(@"gak ada");
+			}
 		}
-		else{
-			
-			NSLog(@"gak ada");
-		}
-	}
+		dispatch_semaphore_signal(_semaphore);
+	});
+	dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
+	
+	
+	
 	
 }
 
-
--(void)connectionDidFinishLoading:(NSURLConnection*)connection
-{
-	NSLog(@"finish");
-	[self StartStream];
-}
 -(void)assingn{
 	
-	timer =[NSTimer scheduledTimerWithTimeInterval:10
+	timer =[NSTimer scheduledTimerWithTimeInterval:5
 											target:self
 										  selector:@selector(liveTradeAssingn:) // <== see the ':', indicates your function takes an argument
 										  userInfo:[NSString stringWithFormat:@"start"]
@@ -273,5 +281,80 @@
 	}];
 	[operation start];
 }
-
+-(void)StartStream{
+	NSLog(@"startStream");
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+							@"dataStream", @"request",
+							nil];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+															path:@"mi2/marketInfoData?"
+													  parameters:params];
+	
+	//[request setTimeoutInterval:];
+	
+	
+	[httpClient setParameterEncoding:AFFormURLParameterEncoding];
+	[httpClient setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]]];
+	
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	[request setTimeoutInterval:10];
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		// Print the response body in text
+		[data_stream appendData:operation.responseData];
+		//[self invoke];
+		[self StartStream];
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+		[self performSelector:@selector(StartStream) withObject:Nil afterDelay:5];
+		
+	}];
+	[operation start];
+}
+-(void)updateCell{
+	
+	NSLog(@"dipanggil");
+	
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		if(clean_data.count>0){
+			for (int i= 0; i <clean_data.count ; i++) {
+				
+				NSIndexPath* indexPath;
+				indexPath= [NSIndexPath indexPathForRow:i inSection:0];
+				sqCell *cell = (sqCell *)[stockQ cellForRowAtIndexPath:indexPath];
+				if([[[clean_data objectAtIndex:i]objectForKey:@"id[2]"] isEqualToString:@"NG"])
+				{
+					NSLog(@"--->%@",[[clean_data objectAtIndex:i]objectForKey:@"id[1]"]);
+				}
+			}
+			
+		}
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[stockQ reloadData];
+		});
+	});
+	
+	
+	
+}
+-(void)viewDidDisappear:(BOOL)animated{
+	NSLog(@"viewDidDisappear");
+	[connections cancel];
+	[operationQueue cancelAllOperations];
+	operationQueue =Nil;
+	[timer invalidate];
+	timer = Nil;
+	[super viewWillDisappear:YES];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+	NSLog(@"viewWillDisappear");
+	NSLog(@"viewDidDisappear");
+	[connections cancel];
+	[operationQueue cancelAllOperations];
+	[timer invalidate];
+	timer = Nil;
+	[super viewWillDisappear:YES];
+	
+}
 @end

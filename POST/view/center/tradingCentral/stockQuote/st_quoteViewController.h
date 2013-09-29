@@ -17,7 +17,15 @@
 	UILabel *stock_accronim;
 	UILabel *stock_volume;
 	NSTimer *timer;
+	NSTimer *timer2;
 	NSURLConnection* connection ;
 	NSMutableArray *clean_data;
+	NSMutableArray *plist;
+	NSURLConnection *connections;
+	NSOperationQueue *operationQueue;
+	NSMutableData *data_stream;
+	NSInvocationOperation *operation_thread;
+	NSInvocationOperation *operation2_thread;
+	
 }
 @end

@@ -30,6 +30,8 @@
 #import "Server.h"
 #import "StockWatch.h"
 #import "StockWatchChild.h"
+#import "CompleteBook.h"
+#import "TradeBook.h"
 #define vanbungkring ((POST_AppDelegate *)[[UIApplication sharedApplication] delegate])
 
 #endif

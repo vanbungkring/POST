@@ -205,6 +205,7 @@
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/mi2/marketInfoData?request=dataStream",baseUrl]]];
 	[request setValue:[NSString stringWithFormat:@"JSESSIONID=%@",[netra getSessionActive]] forHTTPHeaderField:@"Cookie"];
 	connections =[[NSURLConnection alloc]initWithRequest:request delegate:self];
+	[request setTimeoutInterval:10];
 	[connections start];
 	
 	
