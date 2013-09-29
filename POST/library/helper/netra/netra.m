@@ -39,5 +39,5 @@ static netra *sharedObject;
 	
 	return true;
 }
-NSString* const baseUrl =@"http://202.53.249.3" ;
+NSString* const baseUrl =@"http://114.199.82.126/" ;
 @end

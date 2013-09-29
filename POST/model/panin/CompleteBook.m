@@ -1,17 +1,17 @@
 //
-//  Server.m
+//  CompleteBook.m
 //  POST
 //
 //  Created by Arie on 9/29/13.
 //  Copyright (c) 2013 netra. All rights reserved.
 //
 
-#import "Server.h"
+#import "CompleteBook.h"
 
 
-@implementation Server
+@implementation CompleteBook
 
-@dynamic active;
-@dynamic url;
+@dynamic cb_name;
+@dynamic cb_code;
 
 @end

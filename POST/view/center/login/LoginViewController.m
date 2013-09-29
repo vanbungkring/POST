@@ -134,7 +134,7 @@
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
 	[self.navigationController setNavigationBarHidden:YES];
-	//[self trade];
+	[self trade];
 }
 -(void)trade{
 
@@ -229,7 +229,7 @@
 		[numberFormatter setMaximumFractionDigits:2];
 		//now.text=[NSString stringWithFormat:@"%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[array objectAtIndex:5]floatValue]]]];
 
-		now.text=[NSString stringWithFormat:@"%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[array objectAtIndex:5]floatValue]]]];
+		now.text=[NSString stringWithFormat:@"%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[array objectAtIndex:1]floatValue]]]];
 		hi.text=[NSString stringWithFormat:@"%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[array objectAtIndex:5]floatValue]]]];
 		low.text=[NSString stringWithFormat:@"%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[array objectAtIndex:5]floatValue]]]];
 		vol.text=[NSString stringWithFormat:@"%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[array objectAtIndex:5]floatValue]]]];

@@ -247,6 +247,7 @@
 							stwC.st_watch_id =[NSNumber numberWithInteger:i];
 							stwC.st_name = @"Bank PAN Indonesia";
 							stwC.st_code = @"PNBN";
+							stwC.index = [NSNumber numberWithInteger:j];
 						}
 					}
 					

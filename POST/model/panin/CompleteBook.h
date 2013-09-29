@@ -1,5 +1,5 @@
 //
-//  Server.h
+//  CompleteBook.h
 //  POST
 //
 //  Created by Arie on 9/29/13.
@@ -10,9 +10,9 @@
 #import <CoreData/CoreData.h>
 
 
-@interface Server : NSManagedObject
+@interface CompleteBook : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * active;
-@property (nonatomic, retain) NSString * url;
+@property (nonatomic, retain) NSString * cb_name;
+@property (nonatomic, retain) NSString * cb_code;
 
 @end

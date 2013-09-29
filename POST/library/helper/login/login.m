@@ -46,8 +46,8 @@ static login *sharedObject;
 			}
 			[netra setSessionId:[xxx objectAtIndex:0]];
 			[sharedObject startStream];
-			[NSTimer timerWithTimeInterval:5 target:self selector:@selector(initReq) userInfo:Nil repeats:YES];
-			//[vanbungkring setCenter:@"st_watchViewController" name:@"Live Trade"];
+			//[NSTimer timerWithTimeInterval:5 target:self selector:@selector(initReq) userInfo:Nil repeats:YES];
+			[vanbungkring setCenter:@"" name:@"Live Trade"];
 			//[vanbungkring startS];
 			
 		}
